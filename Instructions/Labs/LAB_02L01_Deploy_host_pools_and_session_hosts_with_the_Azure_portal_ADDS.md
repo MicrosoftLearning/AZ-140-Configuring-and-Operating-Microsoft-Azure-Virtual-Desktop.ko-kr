@@ -1,40 +1,40 @@
 ---
 lab:
-    title: '랩: Azure Portal을 사용하여 호스트 풀 및 세션 호스트 배포(AD DS)'
-    module: '모듈 2: AVD 인프라 구현'
+  title: '랩: Azure Portal을 사용하여 호스트 풀과 세션 호스트 배포(AD DS)'
+  module: 'Module 2: Implement a AVD Infrastructure'
 ---
 
-# 랩 - Azure Portal을 사용하여 호스트 풀 및 세션 호스트 배포(AD DS)
-# 학생 랩 매뉴얼
+# <a name="lab---deploy-host-pools-and-session-hosts-by-using-the-azure-portal-ad-ds"></a>랩 - Azure Portal을 사용하여 호스트 풀 및 세션 호스트 배포(AD DS)
+# <a name="student-lab-manual"></a>학생용 랩 매뉴얼
 
-## 랩 종속성
+## <a name="lab-dependencies"></a>랩 종속성
 
 - 이 랩에서 사용할 Azure 구독
 - 이 랩에서 사용할 Azure 구독에 대한 Owner 또는 Contributor 역할, 그리고 해당 Azure 구독에 연결된 Azure AD 테넌트의 전역 관리자 역할이 할당되어 있는 Microsoft 계정 또는 Azure AD 계정
 - **Azure Virtual Desktop의 배포 준비(AD DS)** 랩 완료
 
-## 예상 시간
+## <a name="estimated-time"></a>예상 소요 시간
 
 60분
 
-## 랩 시나리오
+## <a name="lab-scenario"></a>랩 시나리오
 
 Active Directory Domain Services(AD DS) 환경에서 호스트 풀과 세션 호스트를 만들고 구성해야 합니다.
 
-## 목표
+## <a name="objectives"></a>목표
   
 이 랩을 완료하면 다음을 수행할 수 있습니다.
 
 - AD DS 도메인에서 Azure Virtual Desktop 환경 구현
 - AD DS 도메인에서 Azure Virtual Desktop 환경 유효성 검사
 
-## 랩 파일
+## <a name="lab-files"></a>랩 파일 
 
 - 없음
 
-## 지침
+## <a name="instructions"></a>지침
 
-### 연습 1: AD DS 도메인에서 Azure Virtual Desktop 환경 구현
+### <a name="exercise-1-implement-an-azure-virtual-desktop-environment-in-an-ad-ds-domain"></a>연습 1: AD DS 도메인에서 Azure Virtual Desktop 환경 구현
   
 이 연습의 주요 작업은 다음과 같습니다.
 
@@ -44,16 +44,16 @@ Active Directory Domain Services(AD DS) 환경에서 호스트 풀과 세션 호
 1. Azure Virtual Desktop 애플리케이션 그룹 구성
 1. Azure Virtual Desktop 작업 영역 구성
 
-#### 작업 1: Azure Virtual Desktop 호스트 풀 배포용 AD DS 도메인 구독 준비
+#### <a name="task-1-prepare-ad-ds-domain-and-the-azure-subscription-for-deployment-of-an-azure-virtual-desktop-host-pool"></a>작업 1: Azure Virtual Desktop 호스트 풀 배포용 AD DS 도메인 구독 준비
 
 1. 랩 컴퓨터에서 웹 브라우저를 시작하여 [Azure Portal]( )로 이동하고 이 랩에서 사용할 구독에서 Owner 역할을 가진 사용자 계정의 자격 증명을 제공하여 로그인합니다.
 1. Azure Portal에서 **가상 머신**을 검색하여 선택하고 **가상 머신** 블레이드에서 **az140-dc-vm11**을 선택합니다.
-1. **az140-dc-vm11** 블레이드에서 **연결**을 선택하고 드롭다운 메뉴에서 **Bastion**을 선택합니다. 그런 다음 **az140-dc-vm11 \| 연결** 블레이드의 **Bastion** 탭에서 **Bastion 사용**을 선택합니다.
+1. **az140-dc-vm11** 블레이드에서 **연결**을 선택하고 드롭다운 메뉴에서 **베스천**을 선택합니다. **az140-dc-vm11 \| 연결** 블레이드의 **베스천** 탭에서 **베스천 사용**을 선택합니다.
 1. 메시지가 표시되면 다음 자격 증명을 제공하고 **연결**을 선택합니다.
 
    |설정|값|
    |---|---|
-   |사용자 이름|**Student**|
+   |사용자 이름|**학생**|
    |암호|**Pa55w.rd1234**|
 
 1. **az140-dc-vm11**에 연결된 원격 데스크톱 세션 내에서 **Windows PowerShell ISE**를 관리자 권한으로 시작합니다.
@@ -76,7 +76,7 @@ Active Directory Domain Services(AD DS) 환경에서 호스트 풀과 세션 호
    (Get-AzADUser -DisplayName 'aduser1').UserPrincipalName
    ```
 
-   > **참고**: 이 단계에서 확인한 사용자 계정 이름을 적어 두세요. 이 랩 뒷부분에서 해당 이름이 필요합니다.
+   > **참고**: 이 단계에서 확인한 사용자 계정 이름을 적어 두세요. 이 랩의 후반부에서 필요합니다.
 
 1. **관리자: Windows PowerShell ISE** 콘솔에서 다음 명령을 실행하여 **Microsoft.DesktopVirtualization** 리소스 공급자를 등록합니다.
 
@@ -86,42 +86,42 @@ Active Directory Domain Services(AD DS) 환경에서 호스트 풀과 세션 호
 
 1. **az140-dc-vm11**에 연결된 원격 데스크톱 세션 내에서 Microsoft Edge를 시작하고 [Azure Portal](https://portal.azure.com)로 이동합니다. 메시지가 표시되면 이 랩에서 사용 중인 구독의 Owner 역할이 할당된 사용자 계정의 Azure AD 자격 증명을 사용하여 로그인합니다.
 1. **az140-dc-vm11**에 연결된 원격 데스크톱 세션 내의 Azure Portal에서 Azure Portal 페이지 상단의 **리소스, 서비스 및 문서 검색** 텍스트 상자를 사용하여 **가상 네트워크**를 검색한 후 해당 위치로 이동합니다. 그런 다음 **가상 네트워크** 블레이드에서 **az140-adds-vnet11**을 선택합니다. 
-1. **az140-adds-vnet11** 블레이드에서 **서브넷**을 선택하고 **서브넷**블레이드에서 **+ 서브넷**을 선택합니다. 그런 다음 **서브넷 추가** 블레이드에서 다음 설정을 지정하고(나머지 설정은 모두 기본값으로 유지) 저장을 클릭합니다.
+1. **az140-adds-vnet11** 블레이드에서 **서브넷**을 선택하고 **서브넷 **블레이드에서 **+ 서브넷**을 선택합니다. 그런 다음 **서브넷 추가** 블레이드에서 다음 설정을 지정하고(나머지 설정은 모두 기본값으로 유지) **저장**을 클릭합니다.
 
    |설정|값|
    |---|---|
-   |이름|**hp1-Subnet**|
+   |속성|**hp1-Subnet**|
    |서브넷 주소 범위|**10.0.1.0/24**|
 
-#### 작업 2: Azure Virtual Desktop 호스트 풀 배포
+#### <a name="task-2-deploy-an-azure-virtual-desktop-host-pool"></a>작업 2: Azure Virtual Desktop 호스트 풀 배포
 
-1. **az140-dc-vm11**에 연결된 원격 데스크톱 세션 내의 Azure Portal이 표시된 Microsoft Edge 창에서 **Azure Virtual Desktop**을 검색하여 선택한 후 **Azure Virtual Desktop** 블레이드에서 **호스트 풀**을 선택합니다. 그런 다음 **Azure Virtual Desktop \| 호스트 풀** 블레이드에서 **+ 추가**를 선택합니다. 
+1. **az140-dc-vm11**에 연결된 원격 데스크톱 세션 내의 Azure Portal이 표시된 Microsoft Edge 창에서 **Azure Virtual Desktop**을 검색하여 선택한 후 **Azure Virtual Desktop** 블레이드에서 **호스트 풀**을 선택합니다. 그런 다음, **Azure Virtual Desktop \| 호스트 풀** 블레이드에서 **+ 만들기**를 선택합니다. 
 1. **호스트 풀 만들기** 블레이드의 **기본** 탭에서 다음 설정을 지정하고 **다음: 가상 머신 >** 을 선택합니다(다른 설정은 기본값 유지).
 
    |설정|값|
    |---|---|
-   |구독|이 랩에서 사용 중인 Azure 구독의 이름|
-   |리소스 그룹|새 리소스 그룹 **az140-21-RG**의 이름|
+   |Subscription|이 랩에서 사용 중인 Azure 구독의 이름|
+   |Resource group|새 리소스 그룹 **az140-21-RG**의 이름|
    |호스트 풀 이름|**az140-21-hp1**|
-   |부하 분산 알고리즘|**폭 우선**|
+   |부하 분산 알고리즘|**너비 우선**|
    |최대 세션 제한|**50**|
    |위치|이 랩의 첫 번째 연습에서 리소스를 배포한 Azure 지역 또는 이와 가까운 지역의 이름 |
    |유효성 검사 환경|**아니요**|
-   |호스트 풀 유형|**풀링됨**|
+   |호스트 풀 유형|**풀링된**|
 
 
 1. **호스트 풀 만들기** 블레이드의 **가상 머신** 탭에서 다음 설정을 지정하고 **다음: 작업 영역 >** 을 선택합니다(다른 모든 설정은 기본값 유지).
 
    |설정|값|
    |---|---|
-   |가상 머신 추가|**예**|
-   |리소스 그룹|**호스트 풀과 같은 그룹으로 기본 지정됨**|
+   |Azure 가상 머신 추가|**예**|
+   |Resource group|**호스트 풀과 같은 그룹으로 기본 지정됨**|
    |이름 접두사|**az140-21-p1**|
    |가상 머신 위치|이 랩의 첫 번째 연습에서 리소스를 배포한 Azure 지역의 이름|
-   |가용성 옵션|**인프라 중복은 필요하지 않음**|
+   |가용성 옵션|**인프라 중복 필요 없음**|
    |이미지 형식|**갤러리**|
    |이미지|**Windows 10 Enterprise 다중 세션, 버전 20H2 + Microsoft 365 Apps**|
-   |가상 머신 크기|**Standard D2s v3**|
+   |가상 머신 크기|**표준 D2s v3**|
    |VM 수|**2**|
    |OS 디스크 유형|**표준 SSD**|
    |가상 네트워크|**az140-adds-vnet11**|
@@ -134,7 +134,7 @@ Active Directory Domain Services(AD DS) 환경에서 호스트 풀과 세션 호
    |도메인 또는 단위 지정|**예**|
    |가입할 도메인|**adatum.com**|
    |조직 구성 단위 경로|**OU=WVDInfra,DC=adatum,DC=com**|
-   |사용자 이름|**Student**|
+   |사용자 이름|**학생**|
    |암호|**Pa55w.rd1234**|
    |암호 확인|**Pa55w.rd1234**|
 
@@ -146,9 +146,9 @@ Active Directory Domain Services(AD DS) 환경에서 호스트 풀과 세션 호
 
 1. **호스트 풀 만들기** 블레이드의 **검토 + 만들기** 탭에서 **만들기**를 선택합니다.
 
-   > **참고**: 배포가 완료될 때까지 기다립니다. 10분 정도 걸릴 수 있습니다.
+   > **참고**: 배포가 완료될 때까지 기다리세요. 10분 정도 걸릴 수 있습니다.
 
-#### 작업 3: Azure Virtual Desktop 호스트 풀 세션 호스트 관리
+#### <a name="task-3-manage-the-azure-virtual-desktop-host-pool-session-hosts"></a>작업 3: Azure Virtual Desktop 호스트 풀 세션 호스트 관리
 
 1. **az140-dc-vm11**에 연결된 원격 데스크톱 내의 Azure Portal이 표시된 웹 브라우저 창에서 **Azure Virtual Desktop**을 검색하여 선택합니다. 그런 다음 **Azure Virtual Desktop** 블레이드 세로 메뉴 모음에 있는 **관리 섹션**에서 **호스트 풀**을 선택합니다.
 1. **Azure Virtual Desktop \| 호스트 풀** 블레이드의 호스트 풀 목록에서 **az140-21-hp1**을 선택합니다.
@@ -159,17 +159,15 @@ Active Directory Domain Services(AD DS) 환경에서 호스트 풀과 세션 호
 
    |설정|값|
    |---|---|
-   |리소스 그룹|**az140-21-RG**|
+   |Resource group|**az140-21-RG**|
    |이름 접두사|**az140-21-p1**|
    |가상 머신 위치|처음 2개 세션 호스트 VM을 배포한 Azure 지역의 이름|
-   |가용성 옵션|**인프라 중복은 필요하지 않음**|
+   |가용성 옵션|**인프라 중복 필요 없음**|
    |이미지 형식|**갤러리**|
-   |이미지|**Windows 10 Enterprise 다중 세션, 버전 2004 + Microsoft 365 Apps**|
+   |이미지|**Windows 10 Enterprise 다중 세션 버전 2004 + Microsoft 365 Apps**|
    |VM 수|**1**|
    |가상 네트워크|**az140-adds-vnet11**|
    |서브넷|**hp1-Subnet(10.0.1.0/24)**|
-   |SKU 구성|**기본**|
-   |할당 구성|**동적**|
    |네트워크 보안 그룹|**기본**|
    |공용 인바운드 포트|**아니요**|
    |AD 도메인 가입 UPN|**student@adatum.com**|
@@ -184,34 +182,34 @@ Active Directory Domain Services(AD DS) 환경에서 호스트 풀과 세션 호
 
 1. **호스트 풀에 가상 머신 추가** 블레이드의 **검토 + 만들기** 탭에서 **만들기**를 선택합니다.
 
-   > **참고**: 다음 작업을 진행하기 전에 배포가 완료될 때까지 기다립니다. 배포는 5분 정도 걸릴 수 있습니다. 
+   > **참고**: 배포가 완료될 때까지 기다린 후 다음 작업을 진행하세요. 배포는 5분 정도 걸릴 수 있습니다. 
 
-#### 작업 4: Azure Virtual Desktop 애플리케이션 그룹 구성
+#### <a name="task-4-configure-azure-virtual-desktop-application-groups"></a>작업 4: Azure Virtual Desktop 애플리케이션 그룹 구성
 
 1. **az140-dc-vm11**에 연결된 원격 데스크톱 세션 내의 Azure Portal이 표시된 웹 브라우저 창에서 **Azure Virtual Desktop**을 검색하여 선택한 후 **Azure Virtual Desktop** 블레이드에서 **애플리케이션 그룹**을 선택합니다.
 1. **Azure Virtual Desktop \| 애플리케이션 그룹** 블레이드에서 자동 생성된 기존 **az140-21-hp1-DAG** 데스크톱 애플리케이션 그룹을 찾아서 선택합니다. 
 1. **az140-21-hp1-DAG** 블레이드에서 **할당**을 선택합니다.
 1. **az140-21-hp1-DAG \| 할당** 블레이드에서 **+ 추가**를 선택합니다.
 1. **Azure AD 사용자 또는 사용자 그룹 선택** 블레이드에서 **az140-wvd-pooled**를 선택하고 **선택**을 클릭합니다.
-1. **Azure Virtual Desktop \| 애플리케이션 그룹** 블레이드에서 **+ 추가**를 선택합니다. 
+1. **Azure Virtual Desktop \| 애플리케이션 그룹** 블레이드로 다시 이동하여 **+ 만들기**를 선택합니다. 
 1. **애플리케이션 그룹 만들기** 블레이드의 **기본** 탭에서 다음 설정을 지정하고 **다음: 애플리케이션 >** 을 선택합니다.
 
    |설정|값|
    |---|---|
-   |구독|이 랩에서 사용 중인 Azure 구독의 이름|
-   |리소스 그룹|**az140-21-RG**|
+   |Subscription|이 랩에서 사용 중인 Azure 구독의 이름|
+   |Resource group|**az140-21-RG**|
    |호스트 풀|**az140-21-hp1**|
-   |애플리케이션 그룹 유형|**RemoteApp**|
+   |애플리케이션 그룹 종류|**RemoteApp**|
    |애플리케이션 그룹 이름|**az140-21-hp1-Office365-RAG**|
 
-1. **애플리케이션 그룹 만들기** 블레이드의 **애플리케이션** 탭에서 **+ 애플리케이션 추가**를 선택합니다.
+1. **애플리케이션 그룹 만들기** 블레이드의 **애플리케이션** 탭에서 **+ 애플리케이션 추가를** 선택합니다.
 1. **애플리케이션 추가** 블레이드에서 다음 설정을 지정하고 **저장**을 선택합니다.
 
    |설정|값|
    |---|---|
-   |애플리케이션 원본|**시작 메뉴**|
+   |애플리케이션 소스|**시작 메뉴**|
    |애플리케이션|**Word**|
-   |설명|**Microsoft Word**|
+   |Description|**Microsoft Word**|
    |명령줄 필요|**아니요**|
 
 1. **애플리케이션 그룹 만들기** 블레이드의 **애플리케이션** 탭으로 돌아와 **+ 애플리케이션 추가**를 선택합니다.
@@ -219,9 +217,9 @@ Active Directory Domain Services(AD DS) 환경에서 호스트 풀과 세션 호
 
    |설정|값|
    |---|---|
-   |애플리케이션 원본|**시작 메뉴**|
+   |애플리케이션 소스|**시작 메뉴**|
    |애플리케이션|**Excel**|
-   |설명|**Microsoft Excel**|
+   |Description|**Microsoft Excel**|
    |명령줄 필요|**아니요**|
 
 1. **애플리케이션 그룹 만들기** 블레이드의 **애플리케이션** 탭으로 돌아와 **+ 애플리케이션 추가**를 선택합니다.
@@ -229,9 +227,9 @@ Active Directory Domain Services(AD DS) 환경에서 호스트 풀과 세션 호
 
    |설정|값|
    |---|---|
-   |애플리케이션 원본|**시작 메뉴**|
+   |애플리케이션 소스|**시작 메뉴**|
    |애플리케이션|**PowerPoint**|
-   |설명|**Microsoft PowerPoint**|
+   |Description|**Microsoft PowerPoint**|
    |명령줄 필요|**아니요**|
 
 1. **애플리케이션 그룹 만들기** 블레이드의 **애플리케이션** 탭으로 돌아와 **다음: 할당 >** 을 선택합니다.
@@ -246,34 +244,34 @@ Active Directory Domain Services(AD DS) 환경에서 호스트 풀과 세션 호
 
 1. **애플리케이션 그룹 만들기** 블레이드의 **검토 + 만들기** 탭에서 **만들기**를 선택합니다.
 
-   > **참고**: 애플리케이션 그룹이 만들어질 때까지 기다립니다. 1분도 걸리지 않습니다. 
+   > **참고**: 애플리케이션 그룹이 만들어질 때까지 기다립니다. 이는 1분 이내에 완료됩니다. 
 
    > **참고**: 다음으로는 파일 경로를 기준으로 하여 애플리케이션 그룹을 애플리케이션 원본으로 만듭니다.
 
 1. **az140-dc-vm11**에 연결된 원격 데스크톱 세션 내에서 **Azure Virtual Desktop**을 검색하여 선택한 후 **Azure Virtual Desktop** 블레이드에서 **애플리케이션 그룹**을 선택합니다.
-1. **Azure Virtual Desktop \| 애플리케이션 그룹** 블레이드에서 **+ 추가**를 선택합니다. 
+1. **Azure Virtual Desktop \| 애플리케이션 그룹** 블레이드에서 **+ 만들기**를 선택합니다. 
 1. **애플리케이션 그룹 만들기** 블레이드의 **기본** 탭에서 다음 설정을 지정하고 **다음: 애플리케이션 >** 을 선택합니다.
 
    |설정|값|
    |---|---|
-   |구독|이 랩에서 사용 중인 Azure 구독의 이름|
-   |리소스 그룹|**az140-21-RG**|
+   |Subscription|이 랩에서 사용 중인 Azure 구독의 이름|
+   |Resource group|**az140-21-RG**|
    |호스트 풀|**az140-21-hp1**|
-   |애플리케이션 그룹 유형|**RemoteApp**|
+   |애플리케이션 그룹 종류|**RemoteApp**|
    |애플리케이션 그룹 이름|**az140-21-hp1-Utilities-RAG**|
 
-1. **애플리케이션 그룹 만들기** 블레이드의 **애플리케이션** 탭에서 **+ 애플리케이션 추가**를 선택합니다.
+1. **애플리케이션 그룹 만들기** 블레이드의 **애플리케이션** 탭에서 **+ 애플리케이션 추가를** 선택합니다.
 1. **애플리케이션 추가** 블레이드에서 다음 설정을 지정하고 **저장**을 선택합니다.
 
    |설정|값|
    |---|---|
-   |애플리케이션 원본|**파일 경로**|
+   |애플리케이션 소스|**파일 경로**|
    |애플리케이션 경로|**C:\Windows\system32\cmd.exe**|
    |애플리케이션 이름|**명령 프롬프트**|
    |표시 이름|**명령 프롬프트**|
    |아이콘 경로|**C:\Windows\system32\cmd.exe**|
-   |아이콘 색인|**0**|
-   |설명|**Windows 명령 프롬프트**|
+   |아이콘 인덱스|**0**|
+   |Description|**Windows 명령 프롬프트**|
    |명령줄 필요|**아니요**|
 
 1. **애플리케이션 그룹 만들기** 블레이드의 **애플리케이션** 탭으로 돌아와 **다음: 할당 >** 을 선택합니다.
@@ -288,18 +286,18 @@ Active Directory Domain Services(AD DS) 환경에서 호스트 풀과 세션 호
 
 1. **애플리케이션 그룹 만들기** 블레이드의 **검토 + 만들기** 탭에서 **만들기**를 선택합니다.
 
-#### 작업 5: Azure Virtual Desktop 작업 영역 구성
+#### <a name="task-5-configure-azure-virtual-desktop-workspaces"></a>작업 5: Azure Virtual Desktop 작업 영역 구성
 
 1. **az140-dc-vm11**에 연결된 원격 데스크톱 세션 내의 Azure Portal이 표시된 Microsoft Edge 창에서 **Azure Virtual Desktop**을 검색하여 선택한 후 **Azure Virtual Desktop** 블레이드에서 **작업 영역**을 선택합니다.
-1. **Azure Virtual Desktop \| 작업 영역** 블레이드에서 **+ 추가**를 선택합니다. 
+1. **Azure Virtual Desktop \| 작업 영역** 블레이드에서 **+ 만들기**를 선택합니다. 
 1. **작업 영역 만들기** 블레이드의 **기본** 탭에서 다음 설정을 지정하고 **다음: 애플리케이션 그룹 >** 을 선택합니다.
 
    |설정|값|
    |---|---|
-   |구독|이 랩에서 사용 중인 Azure 구독의 이름|
-   |리소스 그룹|**az140-21-RG**|
+   |Subscription|이 랩에서 사용 중인 Azure 구독의 이름|
+   |Resource group|**az140-21-RG**|
    |작업 영역 이름|**az140-21-ws1**|
-   |식별 이름|**az140-21-ws1**|
+   |이름|**az140-21-ws1**|
    |위치|이 랩의 첫 번째 연습에서 리소스를 배포한 Azure 지역 또는 이와 가까운 지역의 이름|
 
 1. **작업 영역 만들기** 블레이드의 **애플리케이션 그룹** 탭에서 다음 설정을 지정합니다.
@@ -313,7 +311,7 @@ Active Directory Domain Services(AD DS) 환경에서 호스트 풀과 세션 호
 1. **작업 영역 만들기** 블레이드의 **애플리케이션 그룹** 탭으로 돌아와 **검토 + 만들기**를 선택합니다.
 1. **작업 영역 만들기** 블레이드의 **검토 + 만들기** 탭에서 **만들기**를 선택합니다.
 
-### 연습 2: Azure Virtual Desktop 환경 유효성 검사
+### <a name="exercise-2-validate-azure-virtual-desktop-environment"></a>연습 2: Azure Virtual Desktop 환경 유효성 검사
   
 이 연습의 주요 작업은 다음과 같습니다.
 
@@ -321,13 +319,13 @@ Active Directory Domain Services(AD DS) 환경에서 호스트 풀과 세션 호
 1. Azure Virtual Desktop 작업 영역 구독
 1. Azure Virtual Desktop 앱 테스트
 
-#### 작업 1: Windows 10 컴퓨터에 MSRDC(Microsoft Remote Desktop 클라이언트) 설치
+#### <a name="task-1-install-microsoft-remote-desktop-client-msrdc-on-a-windows-10-computer"></a>작업 1: Windows 10 컴퓨터에 MSRDC(Microsoft Remote Desktop 클라이언트) 설치
 
 1. **az140-dc-vm11**에 연결된 원격 데스크톱 세션 내의 Azure Portal이 표시된 브라우저 창에서 **가상 머신**을 검색하여 선택한 후 **가상 머신** 블레이드에서 **az140-cl-vm11** 항목을 선택합니다.
 1. **az140-cl-vm11** 블레이드 아래쪽의 **작업** 섹션으로 스크롤하여 **명령 실행**을 선택합니다. 
 1. **az140-cl-vm11 \| 명령 실행** 블레이드에서 **EnableRemotePS**, **실행**을 차례로 선택합니다. 
 
-   > **참고**: 명령이 완료될 때까지 기다렸다가 다음 단계를 진행합니다. 1분 정도 걸릴 수 있습니다.
+   > **참고**: 명령이 완료될 때까지 기다렸다가 다음 단계를 진행합니다. 1분 정도 걸릴 수 있습니다. 도메인 프로필이 아니라 사용 중인 퍼블릭 프로필을 나타내는 빨간색 텍스트 오류가 표시될 수 있습니다. 그렇다면 무시하고 다음 단계로 넘어갈 수 있습니다.
 
 1. **az140-dc-vm11**에 연결된 원격 데스크톱 세션 내의 **관리자: Windows PowerShell ISE** 스크립트 창에서 다음 명령을 실행하여 Windows 10을 실행 중인 Azure VM **az140-cl-vm11**의 로컬 **Remote Desktop Users** 그룹에 **ADATUM\\az140-wvd-users**의 모든 구성원을 추가합니다. 이 VM은 **Azure Virtual Desktop의 배포 준비(AD DS)** 랩에서 배포했던 VM입니다.
 
@@ -337,7 +335,7 @@ Active Directory Domain Services(AD DS) 환경에서 호스트 풀과 세션 호
    ```
 
 1. 랩 컴퓨터로 전환한 후 랩 컴퓨터 내의 Azure Portal이 표시된 브라우저 창에서 **가상 머신**을 검색하여 선택합니다. 그런 다음 **가상 머신** 블레이드에서 **az140-cl-vm11** 항목을 선택합니다.
-1. **az140-cl-vm11** 블레이드에서 **연결**을 선택하고 드롭다운 메뉴에서 **Bastion**을 선택합니다. 그런 다음 **az140-cl-vm11 \| 연결** 블레이드의 **Bastion** 탭에서 **Bastion 사용**을 선택합니다.
+1. **az140-cl-vm11** 블레이드에서 **연결**을 선택하고 드롭다운 메뉴에서 **베스천**을 선택합니다. **az140-cl-vm11 \| 연결** 블레이드의 **베스천** 탭에서 **베스천 사용**을 선택합니다.
 1. 메시지가 표시되면 다음 자격 증명을 제공하고 **연결**을 선택합니다.
 
    |설정|값|
@@ -348,18 +346,18 @@ Active Directory Domain Services(AD DS) 환경에서 호스트 풀과 세션 호
 1. **az140-cl-vm11**에 연결된 원격 데스크톱 세션 내에서 Microsoft Edge를 시작하고 [Windows Desktop 클라이언트 다운로드 페이지](https://go.microsoft.com/fwlink/?linkid=2068602)로 이동합니다. 해당 페이지에서 메시지가 표시되면 **실행**을 선택하여 설치를 시작합니다. **Remote Desktop Setup** 마법사의 **Installation Scope** 페이지에서 **Install for all users of this machine** 옵션을 선택하고 **Install**을 클릭합니다. 관리 자격 증명에 대한 사용자 계정 컨트롤 관련 메시지가 표시되면 암호로 **Pa55w.rd1234**를 사용하여 **ADATUM\\Student** 사용자 이름으로 인증합니다.
 1. 설치가 완료되면 **Launch Remote Desktop when setup exits** 체크박스가 선택되어 있는지 확인한 후 **Finish**를 클릭하여 Remote Desktop 클라이언트를 시작합니다.
 
-#### 작업 2: Azure Virtual Desktop 작업 영역 구독
+#### <a name="task-2-subscribe-to-a-azure-virtual-desktop-workspace"></a>작업 2: Azure Virtual Desktop 작업 영역 구독
 
-1. **Remote Desktop** 클라이언트 창에서 **Subscribe**를 선택하고 메시지가 표시되면 **aduser1** 자격 증명으로 로그인합니다. 로그인할 때는 이 랩 앞부분에서 확인한 userPrincipalName, 그리고 이 계정을 만들 때 설정한 암호를 입력합니다.
+1. **Remote Desktop** 클라이언트 창에서 **구독**을 선택하고 메시지가 표시되면 **aduser1** 자격 증명으로 로그인합니다. 이 랩의 앞부분에서 확인한 userPrincipalName과 이 계정을 만들 때 설정한 암호를 사용합니다.
 
-   > **참고**: Subscribe 옵션 대신 **Remote Desktop** 클라이언트 창에서 **Subscribe with URL**을 선택할 수도 있습니다. 그러면 표시되는 **Subscribe to a Workspace** 창의 **Email or Workspace URL**에 **https://rdweb.wvd.microsoft.com/api/arm/feeddiscovery** 를 입력하고 **Next**를 선택합니다. 메시지가 표시되면 **aduser1** 자격 증명으로 로그인합니다(사용자 이름으로는 userPrincipalName 특성을 사용하고 암호로는 이 계정을 만들 때 설정한 암호 사용). 
+   > **참고**: 또는 **원격 데스크톱** 클라이언트 창에서 **URL로 구독**을 선택합니다. 그리고 **작업 영역 구독** 창의 **메일 또는 작업 영역 URL**에 **https://rdweb.wvd.microsoft.com/api/arm/feeddiscovery** 를 입력하고 **다음**을 선택한 다음, 메시지가 표시되면 **aduser1** 자격 증명으로 로그인합니다(userPrincipalName 특성을 사용자 이름으로 사용하고 이 계정을 만들 때 설정한 암호). 
 
-1. **Stay signed in to all your apps** 창에서 **Allow my organization to manage my device** 체크박스 선택을 취소하고 **No, sign in to this app only**를 선택합니다. 
+1. **모든 앱에 로그인 상태 유지** 창에서 **내 조직에서 내 기기를 관리하도록 허용** 체크박스 선택을 취소하고 **아니요, 이 앱에만 로그인합니다.** 를 선택합니다. 
 1. **Remote Desktop** 페이지에 **aduser1** 사용자 계정과 그룹 등록을 통해 연결되어 있으며 작업 영역에 게시된 애플리케이션 그룹에 포함되어 있는 애플리케이션 목록이 표시되는지 확인합니다. 
 
-#### 작업 3: Azure Virtual Desktop 앱 테스트
+#### <a name="task-3-test-azure-virtual-desktop-apps"></a>작업 3: Azure Virtual Desktop 앱 테스트
 
-1. **az140-cl-vm11**에 연결된 원격 데스크톱 세션 내의 **Remote Desktop**클라이언트 창에 있는 애플리케이션 목록에서 **Command Prompt**를 두 번 클릭하여 **Command Prompt** 창이 시작되는지 확인합니다. 인증하라는 메시지가 표시되면 **aduser1** 사용자 계정을 만들 때 설정한 암호를 입력하고 **Remember me** 체크박스를 선택한 후 **OK**를 선택합니다.
+1. **az140-cl-vm11**에 연결된 원격 데스크톱 세션 내의 **Remote Desktop** 클라이언트 창에 있는 애플리케이션 목록에서 **명령 프롬프트**를 두 번 클릭하여 **명령 프롬프트** 창이 시작되는지 확인합니다. 인증하라는 메시지가 표시되면 **aduser1** 사용자 계정을 만들 때 설정한 암호를 입력하고 **기억하기** 확인란을 선택한 다음, **확인**을 선택합니다.
 
    > **참고**: 처음에는 애플리케이션이 시작되려면 몇 분 정도 걸릴 수 있지만 그 이후부터는 애플리케이션이 훨씬 빠르게 시작됩니다.
 
@@ -369,11 +367,11 @@ Active Directory Domain Services(AD DS) 환경에서 호스트 풀과 세션 호
 
 1. 명령 프롬프트에 **logoff**를 입력하고 **Enter** 키를 눌러 현재 원격 앱 세션에서 로그오프합니다.
 1. **az140-cl-vm11**에 연결된 원격 데스크톱 세션 내의 **Remote Desktop** 클라이언트 창에 있는 애플리케이션 목록에서 **SessionDesktop**을 두 번 클릭하여 원격 데스크톱 세션이 시작되는지 확인합니다. 
-1. **Default Desktop**세션 내에서 **시작**을 마우스 오른쪽 단추로 클릭하고 **실행**을 선택합니다. 그런 다음 **실행** 대화 상자의 **열기** 텍스트 상자에 **cmd**를 입력하고 **확인**을 선택합니다. 
+1. **Default Desktop **세션 내에서 **시작**을 마우스 오른쪽 단추로 클릭하고 **실행**을 선택합니다. 그런 다음 **실행** 대화 상자의 **열기** 텍스트 상자에 **cmd**를 입력하고 **확인**을 선택합니다. 
 1. **Default Desktop** 세션 내의 명령 프롬프트에 **hostname**을 입력하고 **Enter** 키를 눌러 원격 데스크톱 세션이 실행되고 있는 컴퓨터의 이름을 표시합니다.
 1. 표시되는 이름이 **az140-21-p1-0**, **az140-21-p1-1** 또는 **az140-21-p1-2**.인지 확인합니다.
 
-### 연습 3: 랩에서 프로비전한 Azure VM 중지 및 할당 취소
+### <a name="exercise-3-stop-and-deallocate-azure-vms-provisioned-in-the-lab"></a>연습 3: 랩에서 프로비전한 Azure VM 중지 및 할당 취소
 
 이 연습의 주요 작업은 다음과 같습니다.
 
@@ -381,7 +379,7 @@ Active Directory Domain Services(AD DS) 환경에서 호스트 풀과 세션 호
 
 >**참고**: 이 연습에서는 해당 컴퓨팅 비용을 최소화하기 위해 이 랩에서 프로비전한 Azure VM의 할당을 취소합니다.
 
-#### 작업 1: 랩에서 프로비전한 Azure VM 할당 취소
+#### <a name="task-1-deallocate-azure-vms-provisioned-in-the-lab"></a>작업 1: 랩에서 프로비전한 Azure VM 할당 취소
 
 1. 랩 컴퓨터로 전환한 다음 Azure Portal이 표시된 웹 브라우저 창에서 **Cloud Shell** 창 내에 **PowerShell** 셸 세션을 엽니다.
 1. Cloud Shell 창 내의 PowerShell 세션에서 다음 명령을 실행하여 이 랩에서 만든 모든 Azure VM의 목록을 표시합니다.

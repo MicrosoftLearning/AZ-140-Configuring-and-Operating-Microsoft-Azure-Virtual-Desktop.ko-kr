@@ -1,8 +1,8 @@
-﻿# AZ-140: Microsoft Azure Virtual Desktop 구성 및 작동
+# <a name="az-140-configuring-and-operating-microsoft-azure-virtual-desktop"></a>AZ-140: Microsoft Azure Virtual Desktop 구성 및 작동
 
-## 중요
+## <a name="important"></a>중요
 
-**이 랩은 사용하기로 결정한 ID 공급자에 따라 2개의 별도 트랙으로 구성됩니다.**
+**이 랩은 사용하기로 결정한 ID 공급자에 따라 2개의 별도 트랙으로 구성됩니다. **
 
 - AD DS(Active Directory Domain Services) 이 트랙은 다음과 같은 랩으로 구성됩니다.
 

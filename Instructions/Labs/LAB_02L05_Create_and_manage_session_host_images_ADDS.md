@@ -97,7 +97,7 @@ Active Directory Domain Services(AD DS) 환경에서 Azure Virtual Desktop 호�
 
    |설정|값|
    |---|---|
-   |Subscription|이 랩에서 사용 중인 Azure 구독의 이름|
+   |구독|이 랩에서 사용 중인 Azure 구독의 이름|
    |Resource group|**az140-25-RG**|
    |속성|**az140-25-bastion**|
    |지역|이 연습의 이전 작업에서 리소스를 배포한 동일한 Azure 지역|
@@ -220,7 +220,7 @@ Active Directory Domain Services(AD DS) 환경에서 Azure Virtual Desktop 호�
 1. **az140-25-vm0**에 연결된 원격 데스크톱 세션 내의 **관리자: C:\windows\system32\cmd.exe** 창 내 명령 프롬프트에서 sysprep 유틸리티를 실행하여 운영 체제에서 이미지 생성을 준비한 후 운영 체제를 자동 종료합니다.
 
    ```cmd
-   C:\Windows\System32\Sysprep\sysprep.exe /oobe /generalize /shutdown
+   C:\Windows\System32\Sysprep\sysprep.exe /oobe /generalize /shutdown /mode:vm
    ```
 
    > **참고**: sysprep 프로세스가 완료될 때까지 기다립니다. 2분 정도 걸릴 수 있습니다. 이 프로세스가 완료되면 운영 체제가 자동 종료됩니다. 
@@ -279,7 +279,7 @@ Active Directory Domain Services(AD DS) 환경에서 Azure Virtual Desktop 호�
 
    |설정|값|
    |---|---|
-   |Subscription|이 랩에서 사용 중인 Azure 구독의 이름|
+   |구독|이 랩에서 사용 중인 Azure 구독의 이름|
    |Resource group|**az140-25-RG**|
    |호스트 풀 이름|**az140-25-hp4**|
    |위치|이 랩의 첫 번째 연습에서 리소스를 배포한 Azure 지역의 이름|

@@ -100,15 +100,14 @@ Active Directory Domain Services(AD DS) 환경에서 호스트 풀과 세션 호
 
    |설정|값|
    |---|---|
-   |Subscription|이 랩에서 사용 중인 Azure 구독의 이름|
+   |구독|이 랩에서 사용 중인 Azure 구독의 이름|
    |Resource group|새 리소스 그룹 **az140-21-RG**의 이름|
    |호스트 풀 이름|**az140-21-hp1**|
-   |부하 분산 알고리즘|**너비 우선**|
-   |최대 세션 제한|**50**|
    |위치|이 랩의 첫 번째 연습에서 리소스를 배포한 Azure 지역 또는 이와 가까운 지역의 이름 |
    |유효성 검사 환경|**아니요**|
    |호스트 풀 유형|**풀링된**|
-
+   |부하 분산 알고리즘|**너비 우선**|
+   |최대 세션 제한|**50**|
 
 1. **호스트 풀 만들기** 블레이드의 **가상 머신** 탭에서 다음 설정을 지정하고 **다음: 작업 영역 >** 을 선택합니다(다른 모든 설정은 기본값 유지).
 
@@ -119,8 +118,7 @@ Active Directory Domain Services(AD DS) 환경에서 호스트 풀과 세션 호
    |이름 접두사|**az140-21-p1**|
    |가상 머신 위치|이 랩의 첫 번째 연습에서 리소스를 배포한 Azure 지역의 이름|
    |가용성 옵션|**인프라 중복 필요 없음**|
-   |이미지 형식|**갤러리**|
-   |이미지|**Windows 10 Enterprise 다중 세션, 버전 20H2 + Microsoft 365 Apps**|
+   |이미지|**Windows 11 Enterprise 다중 세션 + Microsoft 365 앱, 버전 22H2**|
    |가상 머신 크기|**표준 D2s v3**|
    |VM 수|**2**|
    |OS 디스크 유형|**표준 SSD**|
@@ -163,8 +161,7 @@ Active Directory Domain Services(AD DS) 환경에서 호스트 풀과 세션 호
    |이름 접두사|**az140-21-p1**|
    |가상 머신 위치|처음 2개 세션 호스트 VM을 배포한 Azure 지역의 이름|
    |가용성 옵션|**인프라 중복 필요 없음**|
-   |이미지 형식|**갤러리**|
-   |이미지|**Windows 10 Enterprise 다중 세션 버전 2004 + Microsoft 365 Apps**|
+   |이미지|**Windows 11 Enterprise 다중 세션 + Microsoft 365 앱, 버전 22H2**|
    |VM 수|**1**|
    |가상 네트워크|**az140-adds-vnet11**|
    |서브넷|**hp1-Subnet(10.0.1.0/24)**|
@@ -191,15 +188,15 @@ Active Directory Domain Services(AD DS) 환경에서 호스트 풀과 세션 호
 1. **az140-21-hp1-DAG** 블레이드에서 **할당**을 선택합니다.
 1. **az140-21-hp1-DAG \| 할당** 블레이드에서 **+ 추가**를 선택합니다.
 1. **Azure AD 사용자 또는 사용자 그룹 선택** 블레이드에서 **az140-wvd-pooled**를 선택하고 **선택**을 클릭합니다.
-1. **Azure Virtual Desktop \| 애플리케이션 그룹** 블레이드로 다시 이동하여 **+ 만들기**를 선택합니다. 
+1. **Azure Virtual Desktop \| 애플리케이션 그룹** 창으로 다시 이동하여 **+ 추가**를 선택합니다. 
 1. **애플리케이션 그룹 만들기** 블레이드의 **기본** 탭에서 다음 설정을 지정하고 **다음: 애플리케이션 >** 을 선택합니다.
 
    |설정|값|
    |---|---|
-   |Subscription|이 랩에서 사용 중인 Azure 구독의 이름|
+   |구독|이 랩에서 사용 중인 Azure 구독의 이름|
    |Resource group|**az140-21-RG**|
    |호스트 풀|**az140-21-hp1**|
-   |애플리케이션 그룹 종류|**RemoteApp**|
+   |애플리케이션 그룹 종류|**RemoteApp(RAIL)**|
    |애플리케이션 그룹 이름|**az140-21-hp1-Office365-RAG**|
 
 1. **애플리케이션 그룹 만들기** 블레이드의 **애플리케이션** 탭에서 **+ 애플리케이션 추가를** 선택합니다.
@@ -254,10 +251,10 @@ Active Directory Domain Services(AD DS) 환경에서 호스트 풀과 세션 호
 
    |설정|값|
    |---|---|
-   |Subscription|이 랩에서 사용 중인 Azure 구독의 이름|
+   |구독|이 랩에서 사용 중인 Azure 구독의 이름|
    |Resource group|**az140-21-RG**|
    |호스트 풀|**az140-21-hp1**|
-   |애플리케이션 그룹 종류|**RemoteApp**|
+   |애플리케이션 그룹 종류|**RemoteApp(RAIL)**|
    |애플리케이션 그룹 이름|**az140-21-hp1-Utilities-RAG**|
 
 1. **애플리케이션 그룹 만들기** 블레이드의 **애플리케이션** 탭에서 **+ 애플리케이션 추가를** 선택합니다.
@@ -294,7 +291,7 @@ Active Directory Domain Services(AD DS) 환경에서 호스트 풀과 세션 호
 
    |설정|값|
    |---|---|
-   |Subscription|이 랩에서 사용 중인 Azure 구독의 이름|
+   |구독|이 랩에서 사용 중인 Azure 구독의 이름|
    |Resource group|**az140-21-RG**|
    |작업 영역 이름|**az140-21-ws1**|
    |이름|**az140-21-ws1**|
@@ -343,7 +340,7 @@ Active Directory Domain Services(AD DS) 환경에서 호스트 풀과 세션 호
    |사용자 이름|**Student@adatum.com**|
    |암호|**Pa55w.rd1234**|
 
-1. **az140-cl-vm11**에 연결된 원격 데스크톱 세션 내에서 Microsoft Edge를 시작하고 [Windows Desktop 클라이언트 다운로드 페이지](https://go.microsoft.com/fwlink/?linkid=2068602)로 이동합니다. 해당 페이지에서 메시지가 표시되면 **실행**을 선택하여 설치를 시작합니다. **Remote Desktop Setup** 마법사의 **Installation Scope** 페이지에서 **Install for all users of this machine** 옵션을 선택하고 **Install**을 클릭합니다. 관리 자격 증명에 대한 사용자 계정 컨트롤 관련 메시지가 표시되면 암호로 **Pa55w.rd1234**를 사용하여 **ADATUM\\Student** 사용자 이름으로 인증합니다.
+1. **az140-cl-vm11**에 연결된 원격 데스크톱 세션 내에서 Microsoft Edge를 시작하고 [Windows Desktop 클라이언트 다운로드 페이지](https://go.microsoft.com/fwlink/?linkid=2068602)로 이동합니다. 해당 페이지에서 메시지가 표시되면 **실행**을 선택하여 설치를 시작합니다. **Remote Desktop Setup** 마법사의 **Installation Scope** 페이지에서 **Install for all users of this machine** 옵션을 선택하고 **Install**을 클릭합니다. 관리 자격 증명에 대한 사용자 계정 컨트롤 관련 메시지가 표시되면 암호로 **Pa55w.rd1234\\를 사용하여** ADATUM**Student** 사용자 이름으로 인증합니다.
 1. 설치가 완료되면 **Launch Remote Desktop when setup exits** 체크박스가 선택되어 있는지 확인한 후 **Finish**를 클릭하여 Remote Desktop 클라이언트를 시작합니다.
 
 #### <a name="task-2-subscribe-to-a-azure-virtual-desktop-workspace"></a>작업 2: Azure Virtual Desktop 작업 영역 구독
@@ -352,7 +349,7 @@ Active Directory Domain Services(AD DS) 환경에서 호스트 풀과 세션 호
 
    > **참고**: 또는 **원격 데스크톱** 클라이언트 창에서 **URL로 구독**을 선택합니다. 그리고 **작업 영역 구독** 창의 **메일 또는 작업 영역 URL**에 **https://rdweb.wvd.microsoft.com/api/arm/feeddiscovery** 를 입력하고 **다음**을 선택한 다음, 메시지가 표시되면 **aduser1** 자격 증명으로 로그인합니다(userPrincipalName 특성을 사용자 이름으로 사용하고 이 계정을 만들 때 설정한 암호). 
 
-1. **모든 앱에 로그인 상태 유지** 창에서 **내 조직에서 내 기기를 관리하도록 허용** 체크박스 선택을 취소하고 **아니요, 이 앱에만 로그인합니다.** 를 선택합니다. 
+1. 메시지가 표시되면 **모든 앱에 로그인 상태 유지** 창에서 **내 조직에서 내 디바이스를 관리하도록 허용** 체크박스 선택을 취소하고 **아니요, 이 앱에만 로그인합니다**를 선택합니다. 
 1. **Remote Desktop** 페이지에 **aduser1** 사용자 계정과 그룹 등록을 통해 연결되어 있으며 작업 영역에 게시된 애플리케이션 그룹에 포함되어 있는 애플리케이션 목록이 표시되는지 확인합니다. 
 
 #### <a name="task-3-test-azure-virtual-desktop-apps"></a>작업 3: Azure Virtual Desktop 앱 테스트
@@ -360,6 +357,8 @@ Active Directory Domain Services(AD DS) 환경에서 호스트 풀과 세션 호
 1. **az140-cl-vm11**에 연결된 원격 데스크톱 세션 내의 **Remote Desktop** 클라이언트 창에 있는 애플리케이션 목록에서 **명령 프롬프트**를 두 번 클릭하여 **명령 프롬프트** 창이 시작되는지 확인합니다. 인증하라는 메시지가 표시되면 **aduser1** 사용자 계정을 만들 때 설정한 암호를 입력하고 **기억하기** 확인란을 선택한 다음, **확인**을 선택합니다.
 
    > **참고**: 처음에는 애플리케이션이 시작되려면 몇 분 정도 걸릴 수 있지만 그 이후부터는 애플리케이션이 훨씬 빠르게 시작됩니다.
+
+   > **참고**: **Microsoft Teams 시작** 로그인 프롬프트가 표시되면 닫습니다.
 
 1. 명령 프롬프트에 **hostname**을 입력하고 **Enter** 키를 눌러 명령 프롬프트가 실행되고 있는 컴퓨터의 이름을 표시합니다.
 

@@ -75,7 +75,7 @@ Azure Active Directory Domain Services(Azure AD DS) 환경에서 호스트 풀�
 
    |설정|값|
    |---|---|
-   |Subscription|이 랩에서 사용 중인 Azure 구독의 이름|
+   |구독|이 랩에서 사용 중인 Azure 구독의 이름|
    |Resource group|새 리소스 그룹 **az140-21a-RG**의 이름|
    |호스트 풀 이름|**az140-21a-hp1**|
    |위치|이 랩의 앞부분에서 Azure AD DS 인스턴스를 배포한 Azure 지역의 이름|
@@ -95,9 +95,7 @@ Azure Active Directory Domain Services(Azure AD DS) 환경에서 호스트 풀�
    |이름 접두사|**az140-21-p1**|
    |가상 머신 위치|이 랩의 첫 번째 연습에서 리소스를 배포한 Azure 지역의 이름|
    |가용성 옵션|**인프라 중복 필요 없음**|
-   |보안 유형|**Standard**
-   |이미지 형식|**갤러리**|
-   |이미지|**Windows 10 Enterprise 다중 세션 버전 2004 + Microsoft 365 Apps**|
+   |이미지|**Windows 11 Enterprise 다중 세션 + Microsoft 365 앱, 버전 22H2**|
    |가상 머신 크기|**표준 D2s v3**|
    |VM 수|**2**|
    |OS 디스크 유형|**표준 SSD**|
@@ -136,7 +134,7 @@ Azure Active Directory Domain Services(Azure AD DS) 환경에서 호스트 풀�
 
    |설정|값|
    |---|---|
-   |Subscription|이 랩에서 사용 중인 Azure 구독의 이름|
+   |구독|이 랩에서 사용 중인 Azure 구독의 이름|
    |Resource group|**az140-21a-RG**|
    |호스트 풀|**az140-21a-hp1**|
    |애플리케이션 그룹 종류|**RemoteApp**|
@@ -192,7 +190,7 @@ Azure Active Directory Domain Services(Azure AD DS) 환경에서 호스트 풀�
 
    |설정|값|
    |---|---|
-   |Subscription|이 랩에서 사용 중인 Azure 구독의 이름|
+   |구독|이 랩에서 사용 중인 Azure 구독의 이름|
    |Resource group|**az140-21a-RG**|
    |호스트 풀|**az140-21a-hp1**|
    |애플리케이션 그룹 종류|**RemoteApp**|
@@ -232,7 +230,7 @@ Azure Active Directory Domain Services(Azure AD DS) 환경에서 호스트 풀�
 
    |설정|값|
    |---|---|
-   |Subscription|이 랩에서 사용 중인 Azure 구독의 이름|
+   |구독|이 랩에서 사용 중인 Azure 구독의 이름|
    |Resource group|**az140-21a-RG**|
    |작업 영역 이름|**az140-21a-ws1**|
    |이름|**az140-21a-ws1**|

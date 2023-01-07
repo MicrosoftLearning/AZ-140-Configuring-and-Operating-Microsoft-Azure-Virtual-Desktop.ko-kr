@@ -50,10 +50,11 @@ AD DS(Active Directory Domain Services) 환경에서 배포를 준비해야 합�
 
    >**참고**: **Cloud Shell**을 처음 시작했는데 **탑재된 스토리지 없음**이라는 메시지가 표시되면 이 랩에서 사용하는 구독을 선택하고 **스토리지 만들기**를 선택합니다. 
 
-1. Azure Portal의 **Cloud Shell** PowerShell 세션에서 다음을 실행하여 **Microsoft.Compute** 리소스 공급자를 등록합니다(등록되지 않은 경우).
+1. 등록되지 않은 경우, Azure Portal의 **Cloud Shell** PowerShell 세션에서 다음을 실행하여 **Microsoft.Compute** 및 **Microsoft.Network** 리소스 공급자의 등록 상태를 확인합니다.
 
    ```powershell
    Register-AzResourceProvider -ProviderNamespace 'Microsoft.Compute'
+   Register-AzResourceProvider -ProviderNamespace 'Microsoft.Network'
    ```
 
 1. Azure Portal의 **Cloud Shell** PowerShell 세션에서 다음을 실행하여 **Microsoft.Compute** 리소스 공급자의 등록 상태를 확인합니다.
@@ -82,12 +83,15 @@ AD DS(Active Directory Domain Services) 환경에서 배포를 준비해야 합�
 1. Azure Portal의 구독 블레이드 왼쪽 세로 메뉴에 있는 **설정** 섹션에서 **사용량 및 할당량**을 선택합니다. 
 
    **참고:** 할당량을 늘리기 위해 지원 티켓을 늘릴 필요가 없을 수도 있습니다.
+
+   **참고:** 할당량 증가를 요청하려면 MFA(다단계 인증)를 사용하여 로그인해야 합니다. MFA를 사용하여 계정을 구성해야 하는 경우 [Azure Active Directory Multi-Factor Authentication 배포 계획](https://learn.microsoft.com/en-us/azure/active-directory/authentication/howto-mfa-getstarted)을 참조하세요. 
    
-1. **Azure Pass - 스폰서쉽 | 사용량 + 할당량** 블레이드에서 **지역**을 선택합니다. 그런 다음, 드롭다운 목록에서 이 랩에 사용할 Azure 지역 이름 옆에 있는 확인란을 선택합니다. 그리고 **컴퓨팅** 항목이 **지역** 항목 왼쪽의 드롭다운 목록에 나타나는지 확인하고 검색창에 **표준 BS**를 입력합니다. 
+1. **Azure Pass - 스폰서쉽 | 사용량 + 할당량** 블레이드에서 **지역**을 선택하고, 드롭다운 목록에서 이 랩에 사용할 Azure 지역 이름 옆에 있는 확인란을 선택합니다. 그리고 **적용**을 선택하고 **컴퓨팅** 항목이 **지역** 항목 왼쪽의 드롭다운 목록에 나타나는지 확인한 다음, 검색창에 **표준 BS**를 입력합니다. 
 1. 결과 목록에서 **표준 BS 제품군 vCPU** 항목 옆의 확인란을 선택하고, 도구 모음에서 **할당량 증가 요청** 항목을 선택한 다음, 드롭다운 목록에서 **새 제한 입력**을 선택합니다.
 1. **요청 할당량 증가** 창의 **새 제한** 열 텍스트 상자에 **30**을 입력한 다음, **제출**을 선택합니다.
+1. 메시지가 표시되면 **할당량 증가 요청** 창에서 **다중 팩터리 인증으로 인증**을 선택하고 프롬프트에 따라 인증합니다.
 1. 할당량 요청이 완료되도록 허용합니다.  잠시 후 **할당량 세부 정보** 블레이드에서 요청이 승인되고 할당량이 증가했음을 지정합니다. **할당량 세부 정보** 블레이드를 닫습니다.
-1. 3~6단계를 반복하여 **표준 DSv3** VM 크기에 대한 할당량 제한을 **30**으로 설정합니다.
+1. 3~7단계를 반복하여 **표준 DSv3** VM 크기에 대한 할당량 제한을 **30**으로 설정합니다.
 
    >**참고**: Azure 지역 선택 및 현재 수요에 따라 지원 요청을 발생시켜야 할 수 있습니다. 지원 요청을 만드는 프로세스에 대한 지침은 [Azure 지원 요청 만들기])https://docs.microsoft.com/en-us/azure/azure-portal/supportability/how-to-create-azure-support-request) 를 참조하세요.
 
@@ -131,7 +135,7 @@ AD DS(Active Directory Domain Services) 환경에서 배포를 준비해야 합�
 
    |설정|값|
    |---|---|
-   |Subscription|이 랩에서 사용 중인 Azure 구독의 이름|
+   |구독|이 랩에서 사용 중인 Azure 구독의 이름|
    |Resource group|**az140-11-RG**|
    |도메인 이름|**adatum.com**|
 
@@ -194,7 +198,7 @@ AD DS(Active Directory Domain Services) 환경에서 배포를 준비해야 합�
 
    |설정|값|
    |---|---|
-   |Subscription|이 랩에서 사용 중인 Azure 구독의 이름|
+   |구독|이 랩에서 사용 중인 Azure 구독의 이름|
    |Resource group|**az140-11-RG**|
    |이름|**az140-11-bastion**|
    |지역|이 연습의 이전 작업에서 리소스를 배포한 동일한 Azure 지역|
@@ -263,14 +267,14 @@ AD DS(Active Directory Domain Services) 환경에서 배포를 준비해야 합�
    foreach ($counter in $userCount) {
      New-AdUser -Name $adUserNamePrefix$counter -Path $ouPath -Enabled $True `
        -ChangePasswordAtLogon $false -userPrincipalName $adUserNamePrefix$counter@$adUPNSuffix `
-       -AccountPassword (ConvertTo-SecureString "<password>" -AsPlainText -Force) -passThru
+       -AccountPassword (ConvertTo-SecureString '<password>' -AsPlainText -Force) -passThru
    } 
 
    $adUserNamePrefix = 'wvdadmin1'
    $adUPNSuffix = 'adatum.com'
    New-AdUser -Name $adUserNamePrefix -Path $ouPath -Enabled $True `
        -ChangePasswordAtLogon $false -userPrincipalName $adUserNamePrefix@$adUPNSuffix `
-       -AccountPassword (ConvertTo-SecureString "<password>" -AsPlainText -Force) -passThru
+       -AccountPassword (ConvertTo-SecureString '<password>' -AsPlainText -Force) -passThru
 
    Get-ADGroup -Identity 'Domain Admins' | Add-AdGroupMember -Members 'wvdadmin1'
    ```

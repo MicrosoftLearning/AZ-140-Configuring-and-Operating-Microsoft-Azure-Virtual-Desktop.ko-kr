@@ -110,7 +110,15 @@ Active Directory Domain Services(AD DS) 환경에서 Azure Virtual Desktop 세�
    New-AzOperationalInsightsWorkspace -Location $location -Name $workspaceName -ResourceGroupName $resourceGroupName
    ```
 
-1. **az140-dc-vm11**에 연결된 원격 데스크톱 세션 내의 **관리자: Windows PowerShell ISE**에서 상단 메뉴에서 파일을 선택하고 **C:\\Allfiles\\Labs\\05\\CreateOrUpdateAzAutoAccount.ps1** 스크립트를 열고 **82**와 **86** 줄 사이의 코드를 여러 줄 주석으로 묶고 다음과 같이 저장합니다.
+1. **az140-dc-vm11**에 연결된 원격 데스크톱 세션 내의 **관리자: Windows PowerShell ISE**에서 상단 메뉴에서 파일을 선택하고 **C:\\Allfiles\\Labs\\05\\CreateOrUpdateAzAutoAccount.ps1** 스크립트를 열고, **97**, **98** 및 **99** 줄의 단일 줄 설명 문자를 추가하여 다음과 모습이 되도록 합니다.
+
+   ```powershell
+   #    'Az.Compute'
+   #    'Az.Resources'
+   #    'Az.Automation'
+   ```
+
+1. **C:\\Allfiles\\Labs\\05\\CreateOrUpdateAzAutoAccount.ps1** 문자열에서 **82** 및 **86** 줄 사이의 코드를 여러 줄 주석에 묶어 다음과 같은 모습이 되도록 하고 변경 내용을 파일에 저장합니다.
 
    ```powershell
    <#
@@ -121,7 +129,7 @@ Active Directory Domain Services(AD DS) 환경에서 Azure Virtual Desktop 세�
    }
    #>
    ```
-
+   
 1. **az140-dc-vm11**에 연결된 원격 데스크톱 세션 내의 **관리자: Windows PowerShell ISE** 스크립트 창에서 새 탭을 열고 다음 스크립트를 붙여넣은 다음, 실행하여 자동 스케일링 솔루션의 일부분인 Azure Automation 계정을 만듭니다.
 
    ```powershell
@@ -151,7 +159,20 @@ Active Directory Domain Services(AD DS) 환경에서 Azure Virtual Desktop 세�
 1. **az140-dc-vm11**에 연결된 원격 데스크톱 세션 내의 Azure Portal이 표시된 Microsoft Edge 창에서 **Automation 계정**을 검색하여 선택합니다. 그런 다음 **Automation 계정** 블레이드에서 새로 프로비전된 Azure Automation 계정에 해당하는 항목(**az140-automation-51** 접두사로 시작되는 항목)을 선택합니다.
 1. Automation 계정 블레이드 왼쪽의 세로 메뉴에 있는 **프로세스 자동화** 섹션에서 **Runbook**을 선택하고 Runbook 목록에서 **WVDAutoScaleRunbookARMBased** Runbook이 있는지 확인합니다.
 1. 자동화 계정 블레이드 왼쪽의 세로 메뉴에 있는 **계정 설정** 섹션에서 **실행 계정**을 선택하고 오른쪽의 계정 목록에서 **+ Azure 실행 계정** 옆에 있는 **만들기**를 클릭합니다.
-1. **Azure 실행 계정 만들기** 블레이드에서 **만들기**를 클릭하고 새 계정이 정상적으로 작성되었는지 확인합니다.
+1. **Azure 실행 계정 만들기** 블레이드에서 **만들기**를 클릭하고 새 계정이 정상적으로 작성되었는지 확인합니다. 
+<!--
+1. On the Automation Account blade, in the vertical menu on the left side, in the **Account Settings** section, select **Identity**.
+1. On the **System assigned** tab of the Identity blade of the automation account, set the **Status** to **On**, select **Save**, and, when prompted to  confirm, select **Yes**.
+1. On the **System assigned** tab of the Identity blade of the automation account, select **Azure role assignments**.
+1. On the **Azure role assignments** blade, select **+ Add role assignment (Preview)**.
+1. On the **Add role assignment (Preview)** blade, specify the following information and select **Save**.
+
+   |Setting|Value|
+   |---|---|
+   |Scope|**Subscription**|
+   |Subscription|the name of the Azure subscription where you provisioned the host pool resources|
+   |Role|**Contributor**|
+-->   
 
 #### <a name="task-3-create-an-azure-logic-app"></a>작업 3: Azure 논리 앱 만들기
 
@@ -164,7 +185,7 @@ Active Directory Domain Services(AD DS) 환경에서 Azure Virtual Desktop 세�
    Invoke-WebRequest -Uri $uri -OutFile ".\CreateOrUpdateAzLogicApp.ps1"
    ```
 
-1. **az140-dc-vm11**에 연결된 원격 데스크톱 세션 내의 **관리자: Windows PowerShell ISE**에서 상단 메뉴에서 **파일**을 선택하고 **C:\\Allfiles\\Labs\\05\\CreateOrUpdateAzLogicApp.ps1** 스크립트를 열고 **134**와 **138** 줄 사이의 코드를 여러 줄 주석으로 묶고 다음과 같이 저장합니다.
+1. **az140-dc-vm11**에 연결된 원격 데스크톱 세션 내의 **관리자: Windows PowerShell ISE**에서 상단 메뉴에서 **파일**을 선택하고 **C:\\Allfiles\\Labs\\05\\CreateOrUpdateAzLogicApp.ps1** 스크립트를 열고 **134**와 **138** 줄 사이의 코드를 여러 줄 주석으로 묶어 다음과 같은 모습이 되도록 하고 변경 사항을 저장합니다.
 
    ```powershell
    <#

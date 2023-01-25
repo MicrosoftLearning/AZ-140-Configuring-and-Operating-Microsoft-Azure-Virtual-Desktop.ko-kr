@@ -426,7 +426,7 @@ AD DS(Active Directory Domain Services) 환경에서 배포를 준비해야 합�
 1. [비즈니스용 Microsoft Edge 다운로드 페이지](https://www.microsoft.com/en-us/edge/business/download)에서 Microsoft Edge의 안정적인 최신 버전을 다운로드하여 설치 및 시작한 후 기본 설정을 사용하여 구성합니다.
 1. **az140-dc-vm11**에 연결된 원격 데스크톱 세션 내에서 Microsoft Edge를 사용하여 [Azure Portal](https://portal.azure.com)로 이동합니다. 메시지가 표시되면 이 랩에서 사용 중인 구독의 Owner 역할이 할당된 사용자 계정의 Azure AD 자격 증명을 사용하여 로그인합니다.
 1. Azure Portal에서 Azure Portal 페이지 상단의 **리소스, 서비스 및 문서 검색** 텍스트 상자를 사용하여 **Azure Active Directory** 블레이드를 검색한 후 해당 블레이드로 이동합니다. 그런 다음 Azure AD 테넌트 블레이드 허브 메뉴의 **관리** 섹션에서 **Azure AD Connect**를 선택합니다.
-1. **Azure AD Connect** 블레이드에서 **Azure AD Connect 다운로드** 링크를 선택합니다. 그러면 새 브라우저 탭이 자동으로 열리고 **Microsoft Azure Active Directory Connect** 다운로드 페이지가 표시됩니다.
+1. **Azure AD Connect** 블레이드에서 먼저 **동기화 연결** 링크를 선택한 다음 **Azure AD 연결 다운로드** 링크를 선택합니다. 그러면 새 브라우저 탭이 자동으로 열리고 **Microsoft Azure Active Directory Connect** 다운로드 페이지가 표시됩니다.
 1. **Microsoft Azure Active Directory Connect** 다운로드 페이지에서 **다운로드**를 선택합니다.
 1. **AzureADConnect.msi** 설치 관리자를 실행할지 아니면 저장할지 묻는 메시지가 표시되면 **실행**을 선택합니다. 그렇지 않으면 다운로드한 후 파일을 열어 **Microsoft Azure Active Directory 연결** 마법사를 시작합니다.
 1. **Microsoft Azure Active Directory Connect** 마법사의 **Azure AD Connect 시작** 페이지에서 **라이선스 약관 및 개인 정보 보호 공지에 동의합니다**라는 체크박스를 선택하고 **계속**을 선택합니다.
@@ -460,6 +460,6 @@ AD DS(Active Directory Domain Services) 환경에서 배포를 준비해야 합�
 
 1. **구성 완료** 페이지의 정보를 검토하고 **끝내기**를 선택하여 **Microsoft Azure Active Directory Connect** 창을 닫습니다.
 1. **az140-dc-vm11**에 연결된 원격 데스크톱 세션 내의 Azure Portal가 표시된 Microsoft Edge 창에서 Adatum Lab Azure AD 테넌트의 **사용자 - 모든 사용자** 블레이드로 이동합니다.
-1. **사용자 \| 모든 사용자** 블레이드에서 사용자 개체 목록에 이 랩 앞부분에서 만든 AD DS 사용자 계정 목록이 포함되어 있으며, **디렉터리가 동기화됨** 열에 **예** 항목이 표시되어 있음을 확인합니다.
+1. **사용자 \| 모든 사용자** 블레이드에서 사용자 개체 목록에 이 랩 앞부분에서 만든 AD DS 사용자 계정 목록이 포함되어 있으며, **온-프레미스 동기화 사용 설정됨** 열에 **예** 항목이 표시되어 있음을 확인합니다.
 
    > **참고**: 몇 분 기다렸다가 브라우저 페이지를 새로 고쳐야 AD DS 사용자 계정이 표시될 수도 있습니다.

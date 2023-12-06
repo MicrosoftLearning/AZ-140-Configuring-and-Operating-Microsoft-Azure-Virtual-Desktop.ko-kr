@@ -17,7 +17,7 @@ lab:
 
 60분
 
-## 실습 시나리오
+## 랩 시나리오
 
 Microsoft Entra DS 환경에서 Azure Virtual Desktop 호스트 이미지를 만들고 관리해야 합니다.
 
@@ -245,7 +245,7 @@ Microsoft Entra DS 환경에서 Azure Virtual Desktop 호스트 이미지를 만
    |VM 이미지 정의 이름|**az140-25-host-image**|
    |게시자|**MicrosoftWindowsDesktop**|
    |제안|**office-365**|
-   |SKU|**20h1-evd-o365pp**|
+   |SKU|**win11-22h2-avd-m365**|
 
 1. 이미지 만들기 블레이드의 **기본 사항** 탭으로 돌아가서 다음 설정을 지정하고 검토 + 만들기**를 클릭합니다**.** ** 
 

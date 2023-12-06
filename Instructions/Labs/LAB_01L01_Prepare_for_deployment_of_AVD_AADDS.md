@@ -18,7 +18,7 @@ lab:
 
 >**참고**: Microsoft Entra DS 프로비전에는 약 90분 대기 시간이 포함됩니다.
 
-## 실습 시나리오
+## 랩 시나리오
 
 Azure Active Directory 도메인 Services(Microsoft Entra DS) 환경에서 Azure Virtual Desktop 배포를 준비해야 합니다.
 
@@ -89,7 +89,7 @@ Azure Active Directory 도메인 Services(Microsoft Entra DS) 환경에서 Azure
 
    |**설정**|**값**|
    |---|---|
-   |**Search**|**표준 DSv3**|
+   |**검색**|**표준 DSv3**|
    |**모든 위치**|**모두 지운** 다음, *위치*를 확인합니다.|
    |**리소스 공급자** | **Microsoft.Compute** |
    

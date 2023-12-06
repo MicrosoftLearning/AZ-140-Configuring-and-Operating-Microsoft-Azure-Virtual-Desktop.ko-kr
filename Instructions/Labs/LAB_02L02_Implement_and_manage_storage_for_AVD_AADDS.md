@@ -17,7 +17,7 @@ lab:
 
 30분
 
-## 실습 시나리오
+## 랩 시나리오
 
 Microsoft Entra DS 환경에서 Azure Virtual Desktop 배포에 대한 스토리지를 구현하고 관리해야 합니다.
 

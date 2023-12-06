@@ -16,7 +16,7 @@ lab:
 
 60분
 
-## 실습 시나리오
+## 랩 시나리오
 
 AD DS(Active Directory 도메인 Services) 환경 배포를 준비해야 합니다.
 

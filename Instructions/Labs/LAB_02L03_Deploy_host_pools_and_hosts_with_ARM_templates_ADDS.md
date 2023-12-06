@@ -18,7 +18,7 @@ lab:
 
 45분
 
-## 실습 시나리오
+## 랩 시나리오
 
 Azure Resource Manager 템플릿을 사용하여 Azure Virtual Desktop 호스트 풀 및 호스트의 배포를 자동화해야 합니다.
 

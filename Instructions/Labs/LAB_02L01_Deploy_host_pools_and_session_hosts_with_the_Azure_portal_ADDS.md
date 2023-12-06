@@ -17,7 +17,7 @@ lab:
 
 60분
 
-## 실습 시나리오
+## 랩 시나리오
 
 AD DS(Active Directory 도메인 Services) 환경에서 호스트 풀 및 세션 호스트를 만들고 구성해야 합니다.
 

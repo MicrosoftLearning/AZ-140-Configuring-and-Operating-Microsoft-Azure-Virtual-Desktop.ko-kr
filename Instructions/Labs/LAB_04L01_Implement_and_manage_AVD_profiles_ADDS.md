@@ -18,7 +18,7 @@ lab:
 
 30분
 
-## 실습 시나리오
+## 랩 시나리오
 
 AD DS(Active Directory 도메인 Services) 환경에서 Azure Virtual Desktop 프로필 관리를 구현해야 합니다.
 

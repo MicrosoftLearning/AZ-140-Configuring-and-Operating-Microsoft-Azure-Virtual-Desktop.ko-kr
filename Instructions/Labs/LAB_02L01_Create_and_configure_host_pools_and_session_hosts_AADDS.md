@@ -17,7 +17,7 @@ lab:
 
 60분
 
-## 실습 시나리오
+## 랩 시나리오
 
 Azure Active Directory 도메인 Services(Microsoft Entra DS) 환경에서 호스트 풀 및 세션 호스트를 만들고 구성해야 합니다.
 
@@ -95,6 +95,7 @@ Azure Active Directory 도메인 Services(Microsoft Entra DS) 환경에서 호�
    |이름 접두사|**az140-21-p1**|
    |가상 머신 위치|이 랩의 첫 번째 연습에서 리소스를 배포한 Azure 지역의 이름|
    |가용성 옵션|**인프라 중복 필요 없음**|
+   |보안 유형|**Standard**|
    |이미지|**Windows 11 Enterprise 다중 세션 + Microsoft 365 앱, 버전 22H2**|
    |가상 머신 크기|**표준 D2s v3**|
    |VM 수|**2**|

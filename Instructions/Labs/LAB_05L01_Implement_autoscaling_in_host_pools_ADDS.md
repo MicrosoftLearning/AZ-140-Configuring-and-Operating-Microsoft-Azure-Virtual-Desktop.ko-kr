@@ -18,7 +18,7 @@ lab:
 
 60분
 
-## 실습 시나리오
+## 랩 시나리오
 
 AD DS(Active Directory 도메인 Services) 환경에서 Azure Virtual Desktop 세션 호스트의 자동 크기 조정을 구성해야 합니다.
 

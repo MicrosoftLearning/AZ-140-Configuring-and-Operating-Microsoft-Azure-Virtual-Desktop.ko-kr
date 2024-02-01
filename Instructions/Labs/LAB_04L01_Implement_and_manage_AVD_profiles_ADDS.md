@@ -72,7 +72,7 @@ AD DS(Active Directory 도메인 Services) 환경에서 Azure Virtual Desktop �
    ```
    
 1. Cloud Shell 닫기
-1. az140-21-p1-0에 대한 **Bastion 세션 내에서 Microsoft Edge를 시작하고, FSLogix 다운로드 페이지[로 이동하고](https://aka.ms/fslogix_download), FSLogix 압축 설치 이진 파일을 다운로드하고, C:\\Allfiles\\Labs\\04** 폴더로 추출**하고(필요한 경우 폴더 만들기), x64\\릴리스** 하위 폴더로 이동하고**, FSLogixAppsSetup.exe** 파일을 두 번 클릭하여 **Microsoft FSLogix 앱 설치를** 시작**합니다.** 마법사를 실행하고 기본 설정을 사용하여 Microsoft FSLogix 앱 설치를 단계별로 실행합니다.
+1. az140-21-p1-0에 대한 **Bastion 세션 내에서 Microsoft Edge를 시작하고, FSLogix 다운로드 페이지[로 이동하고](https://aka.ms/fslogix_download), FSLogix 압축 설치 이진 파일을 다운로드하고, C:\\Allfiles\\Labs\\04** 폴더로 추출**하고(필요한 경우 폴더 만들기), x64\\릴리스** 하위 폴더로 이동하고**, FSLogixAppsSetup.exe** 파일을 두 번 클릭하여 **Microsoft FSLogix 앱 설치 프로그램을** 시작**합니다.** 마법사를 실행하고 기본 설정을 사용하여 Microsoft FSLogix 앱 설치를 단계별로 실행합니다.
 
    > **참고**: 이미지에 이미 포함된 경우 FXLogic을 설치할 필요가 없습니다.
 

@@ -156,7 +156,7 @@ Microsoft Entra DS 환경에서 Azure Virtual Desktop 호스트 이미지를 만
    C:\Allfiles\Labs\02\vc_redist.x64.exe /install /passive /norestart /log C:\Allfiles\Labs\02\vc_redist.log
    ```
 
-1. az140-25-vm0에 대한 **Bastion 세션 내에서 Microsoft Edge에서 VM[에 Teams 데스크톱 앱 배포라는 설명 ](https://docs.microsoft.com/en-us/microsoftteams/teams-for-vdi#deploy-the-teams-desktop-app-to-the-vm) 서 페이지로 이동하고, 64비트 버전** 링크를 클릭하고**, 메시지가 표시되면 Teams_windows_x64.msi** 파일을 C:\\Allfiles\\Labs\\02** 폴더에 **저장**합니다.**
+1. az140-25-vm0에 대한 **Bastion 세션 내에서 Microsoft Edge에서 VM[에 Teams 데스크톱 앱 배포라는 설명 ](https://docs.microsoft.com/en-us/microsoftteams/teams-for-vdi#deploy-the-teams-desktop-app-to-the-vm) 서 페이지로 이동하고, 64비트 버전** 링크를 클릭한 **다음, 메시지가 표시되면 C:\\Allfiles\\Labs\\02** 폴더에 **Teams_windows_x64.msi** 파일을 저장**합니다.**
 1. Bastion 세션에서 **az140-25-vm0**으로 전환하고 **관리istrator: C:\windows\system32\cmd.exe** 창으로 전환하고 명령 프롬프트에서 다음을 실행하여 Microsoft Teams의 컴퓨터별 설치를 수행합니다.
 
    ```cmd
@@ -217,7 +217,7 @@ Microsoft Entra DS 환경에서 Azure Virtual Desktop 호스트 이미지를 만
 
 #### 작업 4: Azure Virtual Desktop 호스트 이미지 만들기
 
-1. az140-25-vm0****에 대한 **Bastion 세션 내에서 관리istrator: C:\windows\system32\cmd.exe** 창의 명령 프롬프트에서 sysprep 유틸리티를 실행하여 이미지 생성을 위한 운영 체제를 준비하고 자동으로 종료합니다.
+1. az140-25-vm0****에 대한 **Bastion 세션 내에서 관리istrator: C:\windows\system32\cmd.exe** 창의 명령 프롬프트에서 sysprep 유틸리티를 실행하여 이미지를 생성하기 위한 운영 체제를 준비하고 자동으로 종료합니다.
 
    ```cmd
    C:\Windows\System32\Sysprep\sysprep.exe /oobe /generalize /shutdown /mode:vm

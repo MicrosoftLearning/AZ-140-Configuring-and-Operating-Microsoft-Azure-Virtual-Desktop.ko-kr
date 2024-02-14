@@ -89,7 +89,7 @@ Azure Active Directory 도메인 Services(Microsoft Entra DS) 환경에서 Azure
 
    |**설정**|**값**|
    |---|---|
-   |**검색**|**표준 DSv3**|
+   |**Search**|**표준 DSv3**|
    |**모든 위치**|**모두 지운** 다음, *위치*를 확인합니다.|
    |**리소스 공급자** | **Microsoft.Compute** |
    

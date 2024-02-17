@@ -144,7 +144,7 @@ Microsoft Entra DS 환경에서 Azure Virtual Desktop 배포에 대한 스토리
    AzureStorageSid   : S-1-5-21-1102940778-2483248400-1820931179-2109
    ```
 
-1. az140-dc-vm11에 대한 **원격 데스크톱 세션 내에서 Azure Portal을 표시하는 Microsoft Edge 창으로 전환하고, 스토리지 계정을 표시하는 블레이드에서 파일 공유**를 선택하고**, Active Directory** 설정이 **구성**되었는지 **확인**합니다.
+1. az140-dc-vm11에 대한 **원격 데스크톱 세션 내에서 Azure Portal을 표시하는 Microsoft Edge 창으로 전환하고, 스토리지 계정을 표시하는 블레이드에서 파일 공유**를 선택하고 **ID 기반 액세스** 설정이 **구성**되었는지 **확인합니다.**
 
    >**참고**: 변경 내용이 Azure Portal에 반영되려면 브라우저 페이지를 새로 고쳐야 할 수 있습니다.
 

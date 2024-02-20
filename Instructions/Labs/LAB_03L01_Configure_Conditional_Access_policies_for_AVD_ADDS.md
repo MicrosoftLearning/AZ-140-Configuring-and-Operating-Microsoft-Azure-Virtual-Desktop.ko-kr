@@ -35,6 +35,10 @@ Microsoft Entra 조건부 액세스를 사용하여 AD DS(Active Directory 도�
 
 ## 지침
 
+>**중요**: Microsoft는 **Azure AD **(** Azure Active Directory**)의 이름을 Microsoft Entra ID로 **변경했습니다**. 이 변경에 대한 자세한 내용은 Azure Active Directory의 [새 이름을 참조하세요](https://learn.microsoft.com/en-us/entra/fundamentals/new-name). 이는 지속적인 노력이므로 개별 연습을 단계별로 진행하면서 랩 명령과 인터페이스 요소 간에 불일치가 있는 인스턴스가 계속 발생할 수 있습니다. 특히 이 랩**에서 Microsoft Entra 커넥트 Azure Active Directory 커넥트**** 새 이름을 지정하고, 연습 1의 **작업 4에서 서비스 연결 지점을 구성할 때 Azure Active Directory**라는 용어**가 계속 사용됩니다.
+
+>**중요**: Microsoft Entra ID P2 평가판을 활성화하려면 신용 카드 정보를 제공해야 합니다. 이러한 이유로 이 연습은 전적으로 선택 사항입니다. 대신 강좌 강사는 이 기능을 학생들에게 시연하도록 선택할 수 있습니다.
+
 ### 연습 1: Azure Virtual Desktop에 대한 Microsoft Entra 기반 조건부 액세스 준비
 
 이 연습의 주요 작업은 다음과 같습니다.
@@ -49,7 +53,10 @@ Microsoft Entra 조건부 액세스를 사용하여 AD DS(Active Directory 도�
 
 >**참고**: Microsoft Entra 조건부 액세스를 구현하려면 Microsoft Entra의 프리미엄 P1 또는 P2 라이선스가 필요합니다. 이 랩에 대해 30일 평가판을 사용합니다.
 
-1. 랩 컴퓨터에서 웹 브라우저를 시작하고, Azure Portal[로 ](https://portal.azure.com)이동하고, 이 랩에서 사용할 구독의 소유자 역할과 해당 구독과 연결된 Microsoft Entra 테넌트의 Global 관리istrator 역할을 사용하여 사용자 계정의 자격 증명을 제공하여 로그인합니다.
+1. 랩 컴퓨터에서 웹 브라우저를 시작하고, Azure Portal[로 ](https://portal.azure.com)이동한 다음, 이 랩에서 사용할 구독의 소유자 역할과 해당 구독과 연결된 Microsoft Entra 테넌트의 Global 관리istrator 역할을 사용하여 사용자 계정의 Microsoft Entra 자격 증명을 제공하여 로그인합니다.
+
+    >**중요**: Microsoft 계정이 아닌** 회사 또는 학교 계정을 **사용하고 있는지 확인합니다.
+
 1. Azure Portal에서 Azure Active Directory**를 검색하여 선택하여 **이 랩에 사용 중인 Azure 구독과 연결된 Microsoft Entra 테넌트로 이동합니다.
 1. Azure Active Directory 블레이드의 왼쪽**에 있는 세로 메뉴 모음의 관리** 섹션에서 사용자를** 클릭합니다**. 
 1. **사용자 | 모든 사용자(미리 보기)** 블레이드에서 **aduser5**를 선택합니다.
@@ -69,8 +76,7 @@ Microsoft Entra 조건부 액세스를 사용하여 AD DS(Active Directory 도�
 1. Azure Portal에서 Microsoft Entra 테넌트 개요** 블레이드로 **다시 이동하고 왼쪽**의 세로 메뉴 모음에서 관리** 섹션에서 라이선스**를 클릭합니다**.
 1. **라이선스 \| 개요** 블레이드 왼쪽의 세로 메뉴 모음에 있는 **관리** 섹션에서 **모든 제품**을 클릭합니다.
 1. **라이선스 \| 모든 제품** 블레이드의 도구 모음에서 **+ 사용/구매**를 클릭합니다.
-1. 활성화 블레이드의 ENTERPRISE MOBILITY + SECURITY E5** 섹션에서 평가판을** **클릭한 다음 활성화**를 클릭합니다**.****** 
-1. **라이선스 \| 개요** 블레이드에서 브라우저 창을 새로 고쳐 활성화가 정상적으로 완료되었는지 확인합니다. 
+1. 활성화 블레이드에서 **MICROSOFT ENTRA ID P2** 섹션에서 평가판을** **클릭한 **다음 활성화**를 클릭하고 **프롬프트에 따라 정품 인증 프로세스를 완료**합니다.
 1. **라이선스 - 모든 제품 블레이드에서** Enterprise Mobility + Security E5** 항목을 선택합니다**. 
 1. **Enterprise Mobility + Security E5** 블레이드의 도구 모음에서 + 할당**을 클릭합니다**.
 1. **라이선스 할당** 블레이드에서 **사용자 및 그룹 추가**를 클릭하고 **사용자 및 그룹 추가** 블레이드에서 **aduser5** 및 자신의 사용자 계정을 선택한 후에 **선택**을 클릭합니다.
@@ -181,7 +187,7 @@ Microsoft Entra 조건부 액세스를 사용하여 AD DS(Active Directory 도�
 
    - **이름** 텍스트 상자에 az140-31-wvdpolicy1을 입력**합니다.**
    - **할당** 섹션에서 **사용자 또는 워크로드 ID** 옵션을 선택하고 **이 정책은 무엇에 적용되나요?** 드롭다운 목록에서 ** 사용자 및 그룹**을 선택하고 **사용자 및 그룹 선택** 섹션에서 **사용자 및 그룹** 확인란을 선택하고 **선택** 블레이드에서 **aduser5**를 클릭한 다음, **선택**을 클릭합니다.
-   - **할당** 섹션에서 **클라우드 앱 또는 작업**을 클릭하고 **이 정책을 적용할 항목 선택** 스위치에서 **클라우드 앱** 옵션이 선택되어 있는지 확인합니다. 그런 다음, **앱 선택** 옵션을 클릭하고 **선택** 창의 **검색** 텍스트 상자에 **9cdead84-a844-4324-93f2-b2e6bb768d07**을 입력합니다. 그 후 결과 목록에서 **Azure Virtual Desktop** 항목 옆에 있는 체크박스를 선택하고 **검색** 텍스트 상자에 **a4a365df-50f1-4397-bc59-1a1564b8bb9c**를 입력한 다음, **Microsoft 원격 데스크톱** 항목 옆에 있는 체크박스를 선택하고 **선택**을 클릭합니다. 
+   - 할당 섹션에서 클라우드 앱 또는 작업을** 클릭하고**, 이 정책이 전환**에** 적용되는 항목 선택에서 **클라우드 앱** 옵션이 선택되어 있는지 확인하고, 앱** 선택 옵션을 클릭하고**, **선택** 블레이드의 검색** 텍스트 상자에서 **Azure Virtual Desktop**을 입력**하고, 결과 목록에서 Azure Virtual Desktop** 항목 옆에 **있는 검사 상자를 선택합니다.** **  **검색** 텍스트 상자에 Microsoft 원격 데스크톱** 입력**하고 Microsoft 원격 데스크톱 항목 옆에 있는 **검사** 상자를 선택한 다음 선택을** 클릭합니다**. 
 
    > **참고**: Azure Virtual Desktop(앱 ID 9cdead84-a844-4324-93f2-b2e6bb768d07)은 사용자가 피드를 구독하고 연결 중에 Azure Virtual Desktop 게이트웨이에 인증할 때 사용됩니다. Microsoft 원격 데스크톱(앱 ID a4a365df-50f1-4397-bc59-1a1564b8bb9c)은 Single Sign-On이 사용하도록 설정된 경우 사용자가 세션 호스트에 인증할 때 사용됩니다.
 

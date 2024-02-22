@@ -308,7 +308,7 @@ AD DS(Active Directory 도메인 Services) 환경에서 Azure Virtual Desktop �
 1. Azure Virtual Desktop 호스트를 포함하는 Active Directory 그룹 구성
 1. MSIX 앱 연결에 대한 Azure Files 공유 설정
 1. Azure Virtual Desktop 세션 호스트에서 MSIX 앱 연결 이미지 탑재 및 등록
-1. 애플리케이션 그룹에 MSIX 앱 게시
+1. MSIX 앱을 애플리케이션 그룹에 게시
 1. MSIX 앱 연결의 기능 유효성 검사
 
 #### 작업 1: Azure Virtual Desktop 호스트를 포함하는 Active Directory 그룹 구성

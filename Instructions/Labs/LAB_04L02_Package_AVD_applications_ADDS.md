@@ -38,6 +38,8 @@ AD DS(Active Directory 도메인 Services) 환경에서 Azure Virtual Desktop �
 
 ## 지침
 
+>**중요**: Microsoft는 **Azure AD **(** Azure Active Directory**)의 이름을 Microsoft Entra ID로 **변경했습니다**. 이 변경에 대한 자세한 내용은 Azure Active Directory의 [새 이름을 참조하세요](https://learn.microsoft.com/en-us/entra/fundamentals/new-name). 이는 지속적인 노력이므로 개별 연습을 단계별로 진행하면서 랩 명령과 인터페이스 요소 간에 불일치가 있는 인스턴스가 계속 발생할 수 있습니다. 이 사항을 고려합니다(특히 이 랩**에서 Microsoft Entra 커넥트** Azure Active Directory 커넥트** 새 이름을 **지정합니다).
+
 ### 연습 1: MSIX 앱 패키지 준비 및 만들기
 
 이 연습의 주요 작업은 다음과 같습니다.
@@ -306,7 +308,7 @@ AD DS(Active Directory 도메인 Services) 환경에서 Azure Virtual Desktop �
 1. Azure Virtual Desktop 호스트를 포함하는 Active Directory 그룹 구성
 1. MSIX 앱 연결에 대한 Azure Files 공유 설정
 1. Azure Virtual Desktop 세션 호스트에서 MSIX 앱 연결 이미지 탑재 및 등록
-1. 애플리케이션 그룹에 MSIX 앱 게시
+1. MSIX 앱을 애플리케이션 그룹에 게시
 1. MSIX 앱 연결의 기능 유효성 검사
 
 #### 작업 1: Azure Virtual Desktop 호스트를 포함하는 Active Directory 그룹 구성
@@ -464,18 +466,17 @@ AD DS(Active Directory 도메인 Services) 환경에서 Azure Virtual Desktop �
 1. **Azure Virtual Desktop \| 애플리케이션 그룹** 블레이드에서 **az140-21-hp1-Utilities-RAG** 애플리케이션 그룹 항목을 선택합니다.
 1. **az140-21-hp1-Utilities-RAG** 블레이드의 왼쪽에 있는 세로 메뉴의 **관리** 섹션에서 애플리케이션을** 선택합니다**. 
 1. **az140-21-hp1-Utilities-RAG \| 애플리케이션** 블레이드에서 + 추가**를 클릭합니다**.
-1. 애플리케이션** 추가 블레이드에서 **다음 설정을 지정하고 저장**을 선택합니다**.
+1. 애플리케이션 추가 블레이드의 ****기본 및** **아이콘** 탭에서 다음 설정을 지정하고 저장**을 선택합니다**.**
 
    |설정|값|
    |---|---|
-   |애플리케이션 소스|**MSIX 패키지**|
-   |MSIX 패키지|이미지에 포함된 패키지를 나타내는 이름|
-   |MSIX 애플리케이션|**XMLNOTEPAD**|
-   |애플리케이션 이름|**XML 메모장**|
+   |애플리케이션 소스|**앱 연결**|
+   |Package(패키지)|이미지에 포함된 패키지를 나타내는 이름|
+   |애플리케이션|**XMLNOTEPAD**|
+   |애플리케이션 식별자|**XML 메모장**|
    |표시 이름|**XML 메모장**|
    |설명|**XML 메모장**|
-   |아이콘 경로|**C:\\Program Files\\WindowsApps\\Xml메모장_2.8.0.0_x64__4vm7ty4fw38e8\\VFS\\ProgramFilesX86\\LovettSoftware\\Xml메모장\\Xml메모장.exe**|
-   |아이콘 인덱스|**0**|
+   |아이콘 원본|**기본값**|
 
 1. **Azure Virtual Desktop \| 애플리케이션 그룹** 블레이드로 다시 이동하여 **az140-21-hp1-DAG** 애플리케이션 그룹 항목을 선택합니다.
 1. **az140-21-hp1-DAG** 블레이드의 왼쪽에 있는 세로 **메뉴의 관리** 섹션에서 애플리케이션을** 선택합니다**. 

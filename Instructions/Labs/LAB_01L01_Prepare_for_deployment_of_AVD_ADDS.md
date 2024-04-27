@@ -1,7 +1,7 @@
 ---
 lab:
   title: '랩: AD DS(Azure Virtual Desktop) 배포 준비'
-  module: 'Module 1: Plan a AVD Architecture'
+  module: 'Module 1: Plan an AVD Architecture'
 ---
 
 # 랩 - AD DS(Azure Virtual Desktop) 배포 준비
@@ -14,7 +14,7 @@ lab:
 
 ## 예상 소요 시간
 
-60분
+60 분
 
 ## 랩 시나리오
 
@@ -203,7 +203,7 @@ AD DS(Active Directory 도메인 Services) 환경 배포를 준비해야 합니�
    |---|---|
    |구독|이 랩에서 사용 중인 Azure 구독의 이름|
    |Resource group|**az140-11-RG**|
-   |이름|**az140-11-bastion**|
+   |속성|**az140-11-bastion**|
    |지역|이 연습의 이전 작업에서 리소스를 배포한 동일한 Azure 지역|
    |계층|**기본**|
    |가상 네트워크|**az140-adds-vnet11**|

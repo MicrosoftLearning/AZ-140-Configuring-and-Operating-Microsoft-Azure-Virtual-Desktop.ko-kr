@@ -16,7 +16,7 @@ lab:
 
 ## 예상 소요 시간
 
-60분
+60 분
 
 ## 랩 시나리오
 
@@ -31,7 +31,7 @@ Microsoft Entra 조건부 액세스를 사용하여 AD DS(Active Directory 도�
 
 ## 랩 파일
 
-- 없음 
+- None 
 
 ## 지침
 
@@ -47,7 +47,7 @@ Microsoft Entra 조건부 액세스를 사용하여 AD DS(Active Directory 도�
 1. Microsoft Entra MFA(Multi-Factor Authentication) 구성
 1. Microsoft Entra MFA에 대한 사용자 등록
 1. 하이브리드 Microsoft Entra 조인 구성
-1. Microsoft Entra 커넥트 델타 동기화 트리거
+1. Microsoft Azure Active Directory 커넥트 델타 동기화 트리거
 
 #### 작업 1: Microsoft Entra Premium P2 라이선스 구성
 
@@ -101,7 +101,7 @@ Microsoft Entra 조건부 액세스를 사용하여 AD DS(Active Directory 도�
 > **참고**: 이 기능을 활용하여 Microsoft Entra 조인 상태 기반으로 디바이스에 대한 조건부 액세스를 설정할 때 추가 보안을 구현할 수 있습니다.
 
 1. 랩 컴퓨터의 Azure Portal을 표시하는 웹 브라우저에서 가상 머신을 검색하여 선택하고 **가상 머신**** 블레이드에서 **az140-dc-vm11**을 선택합니다**.
-1. **az140-dc-vm11** 블레이드에서 **연결**을 선택하고 드롭다운 메뉴에서 **베스천**을 선택합니다. **az140-dc-vm11 \| 연결** 블레이드의 **베스천** 탭에서 **베스천 사용**을 선택합니다.
+1. az140-dc-vm11** 블레이드에서 커넥트** 선택하고 **드롭다운 메뉴에서 Bastion**을 통해 커넥트 선택합니다**.**
 1. 메시지가 표시되면 다음 자격 증명을 제공하고 **연결**을 선택합니다.
 
    |설정|값|
@@ -109,18 +109,17 @@ Microsoft Entra 조건부 액세스를 사용하여 AD DS(Active Directory 도�
    |사용자 이름|**Student**|
    |암호|**Pa55w.rd1234**|
 
-1. az140-dc-vm11에 대한 **Bastion 세션 내에서 시작** 메뉴에서 Microsoft Entra 커넥트** 폴더를 확장하고 **Microsoft Entra 커넥트** 선택합니다**.****
-   > **참고** 동기화 서비스가 실행되고 있지 않다는 실패 오류 창이 나타나면 PowerShell 명령 창으로 이동하여 **Start-Service “ADSync”** 를 입력한 다음, 4단계를 다시 시도합니다.
-1. **Microsoft Entra 커넥트** 창의 **Microsoft Entra 커넥트** 시작 페이지에서 구성**을 선택합니다**.
-1. **Microsoft Entra 커넥트** 창의 **추가 작업** 페이지에서 디바이스 옵션** 구성을 선택하고 **다음**을 선택합니다**.
-1. **Microsoft Entra 커넥트** 창의 **개요** 페이지에서 하이브리드 Microsoft Entra 조**인 및 디바이스 쓰기 저장**에 **대한 **정보를 검토하고 다음**을 선택합니다**.
-1. **Microsoft Entra 커넥트 창의 Microsoft Entra** 커넥트** 페이지에서 이전 연습에서 **만든 aadsyncuser** 사용자 계정의 **자격 증명을 사용하여 인증하고 다음**을 선택합니다**.  
+1. az140-dc-vm11에 대한 **Bastion 세션 내에서 시작** 메뉴에서 Azure AD 커넥트** 폴더를 확장하고 **Azure AD 커넥트** 선택합니다**.****
 
-   > **참고**: 이 랩에서 이전에 기록한 aadsyncuser** 계정의 **userPrincipalName 특성을 제공하고 이 사용자 계정을 만들 때 설정한 암호를 지정합니다. 
+   > **참고** 동기화 서비스가 실행되고 있지 않다는 오류 창이 표시되면 PowerShell 명령 창으로 이동하여 시작 서비스 "ADSync"**를 입력**한 다음 이전 단계를 다시 시도합니다.
 
-1. **Microsoft Entra 커넥트** 창의 **디바이스 옵션** 페이지에서 하이브리드 Microsoft Entra 조**인 구성 옵션이 선택되어 있는지 확인하고 **다음**을 선택합니다**. 
-1. **Microsoft Entra 커넥트** 창**의 **디바이스 운영 체제** 페이지에서 Windows 10 이상 조인 디바이스** 검사box에서 기본 다음을 선택합니다****. 
-1. **Microsoft Entra 커넥트 창의 **SCP 구성** 페이지에서 adatum.com** 항목 옆에 **있는 검사** 상자를 선택하고 인증 **서비스** 드롭다운 목록에서 Microsoft Entra** 항목을 선택하고 **추가**를 선택합니다**. 
+1. **Microsoft Azure Active Directory 커넥트** 창의 **Azure AD 커넥트** 시작 페이지에서 구성**을 선택합니다**.
+1. **Microsoft Azure Active Directory 커넥트** 창의 **추가 작업** 페이지에서 디바이스 옵션** 구성을 선택하고 **다음**을 선택합니다**.
+1. **Microsoft Azure Active Directory 커넥트** 창의 **개요** 페이지에서 하이브리드 Microsoft Entra 조**인 및 디바이스 쓰기 저장**에 **대한 **정보를 검토하고 다음**을 선택합니다**.
+1. **Microsoft Azure Active Directory 커넥트 창의 **Microsoft Entra**에 커넥트** 페이지에서 이전 랩에서 만든 aadsyncuser** 사용자 계정의 **자격 증명을 사용하여 인증하고 다음**을 선택합니다**.  
+1. **Microsoft Azure Active Directory 커넥트** 창의 **디바이스 옵션** 페이지에서 하이브리드 Azure AD 조**인 구성 옵션이 선택되어 있는지 확인하고 **다음**을 선택합니다**. 
+1. **Microsoft Azure Active Directory 커넥트** 창의 **디바이스 운영 체제** 페이지에서 Windows 10 이상을 선택하고**기본 조인된 디바이스** 검사box를 선택하고 다음**을 선택합니다**. 
+1. **Microsoft Azure Active Directory 커넥트 창의 **SCP 구성** 페이지에서 adatum.com** 항목 옆에 **있는 검사** 상자를 선택하고 인증 **서비스** 드롭다운 목록에서 Azure Active Directory** 항목을 선택하고 **추가**를 선택합니다**. 
 1. 메시지가 표시되면 Enterprise 관리 자격 증명** 대화 상자에서 **다음 자격 증명을 지정하고 확인을** 선택합니다**.
 
    |설정|값|
@@ -128,8 +127,8 @@ Microsoft Entra 조건부 액세스를 사용하여 AD DS(Active Directory 도�
    |사용자 이름|**ADATUM\Student**|
    |암호|**Pa55w.rd1234**|
 
-1. **Microsoft Entra 커넥트** 창의 **SCP 구성** 페이지로 돌아가서 다음**을 선택합니다**.
-1. **Microsoft Entra 커넥트** 창의 **구성** 준비 페이지에서 구성**을 선택하고 **구성이 완료되면 종료**를 선택합니다**.
+1. **Microsoft Azure Active Directory 커넥트** 창의 **SCP 구성** 페이지로 돌아가서 다음**을 선택합니다**.
+1. **Microsoft Azure Active Directory 커넥트** 창의 **구성** 준비 페이지에서 구성**을 선택하고 **구성이 완료되면 종료**를 선택합니다**.
 1. az140-dc-vm11에 대한 **Bastion 세션 내에서 Windows PowerShell ISE**를 관리자로 시작**** 합니다.
 1. az140-dc-vm11에 대한 **Bastion 세션 내에서 관리istrator: Windows PowerShell ISE** 콘솔에서 **다음을 실행하여 az140-cl-vm11** 컴퓨터 계정을 **WVDClients** OU(조직 구성 단위)로 이동합니다**.**
 
@@ -138,22 +137,21 @@ Microsoft Entra 조건부 액세스를 사용하여 AD DS(Active Directory 도�
    ```
 
 1. az140-dc-vm11에 대한 **Bastion 세션 내에서 시작** 메뉴에서 Microsoft Entra 커넥트** 폴더를 확장하고 **Microsoft Entra 커넥트** 선택합니다**.****
-1. **Microsoft Entra 커넥트** 창의 **Microsoft Entra 커넥트** 시작 페이지에서 구성**을 선택합니다**.
-1. **Microsoft Entra 커넥트** 창의 **추가 작업** 페이지에서 동기화 옵션** 사용자 지정을 선택하고 **다음**을 선택합니다**.
-1. **Microsoft Entra 커넥트 창의 Microsoft Entra** 커넥트** 페이지에서 이전 연습에서 **만든 aadsyncuser** 사용자 계정의 **자격 증명을 사용하여 인증하고 다음**을 선택합니다**. 
+1. **Microsoft Azure Active Directory 커넥트** 창의 **Azure AD 커넥트** 시작 페이지에서 구성**을 선택합니다**.
+1. **Microsoft Azure Active Directory 커넥트** 창의 **추가 작업** 페이지에서 동기화 옵션** 사용자 지정을 선택하고 **다음**을 선택합니다**.
+1. **Microsoft Azure Active Directory 커넥트 창의 Microsoft Entra**에 커넥트** 페이지에서 이전 연습에서 **만든 aadsyncuser** 사용자 계정의 **자격 증명을 사용하여 인증하고 다음**을 선택합니다**. 
+1. **Microsoft Azure Active Directory 커넥트 창의 **디렉터리** 커넥트** 페이지에서 다음**을 선택합니다**.
+1. **Microsoft Azure Active Directory 커넥트** 창의 **Do기본 및 OU 필터링** 페이지에서 선택한 do기본 및 OU** 옵션이 **선택되어 있는지 확인하고, adatum.com** 노드를 확장하고**, ToSync** OU 옆에 **있는 검사 상자가 선택되어 있는지 확인하고, WVDClients** OU 옆에 있는 **검사 상자를 선택하고, 다음**을 선택합니다**.
+1. **Microsoft Azure Active Directory 커넥트** 창의 **선택적 기능** 페이지에서 기본 설정을 적용하고 다음**을 선택합니다**.
+1. **Microsoft Azure Active Directory 커넥트** 창의 **구성** 준비 페이지에서 구성이 완료되면** 검사box **동기화 프로세스를 시작하고 구성**을 선택합니다**.
+1. 구성 완료** 페이지에서 정보를 검토하고 종료**를 **선택하여 **Microsoft Azure Active Directory 커넥트** 창을 닫습니다**.
 
-   > **참고**: 이 랩에서 이전에 기록한 aadsyncuser** 계정의 **userPrincipalName 특성을 제공하고 이 사용자 계정을 만들 때 설정한 암호를 지정합니다. 
+#### 작업 5: 전체 동기화를 커넥트 Microsoft Azure Active Directory 트리거
 
-1. **Microsoft Entra 커넥트 창의 **디렉터리** 커넥트** 페이지에서 다음**을 선택합니다**.
-1. **Microsoft Entra 커넥트** 창의 Do기본 및 OU 필터링** 페이지에서 **선택한 do기본 및 OU** 옵션이 **선택되어 있는지 확인하고, adatum.com** 노드를 확장하고**, ToSync** OU 옆에 **있는 검사 상자가 선택되어 있는지 확인하고, WVDClients** OU 옆에 있는 **검사 상자를 선택하고, 다음**을 선택합니다**.
-1. **Microsoft Entra 커넥트** 창의 **선택적 기능** 페이지에서 기본 설정을 적용하고 다음**을 선택합니다**.
-1. **Microsoft Entra 커넥트** 창의 **구성** 준비 페이지에서 구성이 완료되면** 검사box **동기화 프로세스를 시작하고 구성**을 선택합니다**.
-1. 구성 완료** 페이지에서 정보를 검토하고 종료**를 **선택하여 **Microsoft Entra 커넥트** 창을 닫습니다**.
-
-#### 작업 5: Microsoft Entra 커넥트 델타 동기화 트리거
-
+1. 랩 컴퓨터의 Azure Portal에서 가상 머신을 검색하여 선택하고 **가상 머신**** 블레이드에서 **az140-cl-vm11** 항목을 선택합니다**. 그러면 az140-cl-vm11** 블레이드가 열립니다**.
+1. **az140-cl-vm11** 블레이드 내에서 다시 시작을** 선택한 **다음 성공적으로 다시 시작한 가상 머신** 알림이 나타날 때까지 **기다립니다.
 1. az140-dc-vm11에 대한 **Bastion 세션 내에서 관리istrator: Windows PowerShell ISE** 창으로 전환**** 합니다.
-1. az140-dc-vm11에 대한 **Bastion 세션 내에서 관리istrator: Windows PowerShell ISE** 콘솔 창에서 **다음을 실행하여 Microsoft Entra 커넥트 델타 동기화를 트리거**합니다.
+1. az140-dc-vm11에 대한 **Bastion 세션 내에서 관리istrator: Windows PowerShell ISE** 콘솔 창에서 **다음을 실행하여 전체 동기화를 커넥트 Microsoft Azure Active Directory를 트리거**합니다.
 
    ```powershell
    Import-Module -Name "C:\Program Files\Microsoft Azure AD Sync\Bin\ADSync"
@@ -161,9 +159,9 @@ Microsoft Entra 조건부 액세스를 사용하여 AD DS(Active Directory 도�
    ```
 
 1. az140-dc-vm11에 대한 **Bastion 세션 내에서 Microsoft Edge를 시작하고 Azure Portal[로 이동합니다](https://portal.azure.com).** 메시지가 표시되면 이 랩에서 사용 중인 Azure 구독과 연결된 Microsoft Entra 테넌트의 Global 관리istrator 역할과 함께 사용자 계정의 Microsoft Entra 자격 증명을 사용하여 로그인합니다.
-1. az140-dc-vm11**에 **대한 Bastion 세션 내에서 Azure Portal을 표시하는 Microsoft Edge 창에서 Azure Active Directory**를 검색하고 선택하여 **이 랩에 사용 중인 Azure 구독과 연결된 Microsoft Entra 테넌트로 이동합니다.
-1. Azure Active Directory 블레이드의 왼쪽**에 있는 세로 메뉴 모음의 관리** 섹션에서 디바이스**를 클릭합니다**. 
-1. 디바이스 |** 모든 디바이스** 블레이드에서 디바이스 목록을 검토하고 az140-cl-vm11** 디바이스가 조인 유형** 열에 **하이브리드 Microsoft Entra 조인 항목과 함께 **나열되는지** 확인**합니다.
+1. az140-dc-vm11**에 **대한 Bastion 세션 내에서 Azure Portal을 표시하는 Microsoft Edge 창에서 Microsoft Entra ID**를 검색하여 선택하여 **이 랩에 사용 중인 Azure 구독과 연결된 Microsoft Entra 테넌트로 이동합니다.
+1. Microsoft Entra ID 블레이드의 왼쪽**에 있는 세로 메뉴 모음의 관리** 섹션에서 디바이스**를 클릭합니다**. 
+1. 디바이스 |** 모든 디바이스** 블레이드에서 디바이스 목록을 검토하고 az140-cl-vm11** 디바이스가 조인 유형** 열에 **Microsoft Entra 하이브리드 조인 항목과 함께 **나열되는지** 확인**합니다.
 
    > **참고**: 디바이스가 Azure Portal에 표시되기 전에 동기화가 수행될 때까지 몇 분 정도 기다려야 할 수 있습니다.
 

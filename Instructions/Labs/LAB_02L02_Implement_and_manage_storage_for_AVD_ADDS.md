@@ -19,7 +19,7 @@ lab:
 
 ## 랩 시나리오
 
-Microsoft Entra DS 환경에서 Azure Virtual Desktop 배포에 대한 스토리지를 구현하고 관리해야 합니다.
+AD DS 환경에서 Azure Virtual Desktop 배포에 대한 스토리지를 구현하고 관리해야 합니다.
 
 ## 목표
   
@@ -29,7 +29,7 @@ Microsoft Entra DS 환경에서 Azure Virtual Desktop 배포에 대한 스토리
 
 ## 랩 파일
 
-- 없음
+- None
 
 ## 지침
 
@@ -47,7 +47,7 @@ Microsoft Entra DS 환경에서 Azure Virtual Desktop 배포에 대한 스토리
 
 1. 랩 컴퓨터에서 웹 브라우저를 시작하고, Azure Portal[로 ](https://portal.azure.com)이동하고, 이 랩에서 사용할 구독에서 소유자 역할이 있는 사용자 계정의 자격 증명을 제공하여 로그인합니다.
 1. Azure Portal에서 가상 머신을 검색하여 선택하고 **가상 머신**** 블레이드에서 **az140-dc-vm11**을 선택합니다**.
-1. **az140-dc-vm11** 블레이드에서 **연결**을 선택하고 드롭다운 메뉴에서 **베스천**을 선택합니다. **az140-dc-vm11 \| 연결** 블레이드의 **베스천** 탭에서 **베스천 사용**을 선택합니다.
+1. az140-dc-vm11** 블레이드에서 커넥트** 선택하고 **드롭다운 메뉴에서 Bastion**을 통해 커넥트 선택합니다**.**
 1. 메시지가 표시되면 다음 자격 증명을 제공하고 **연결**을 선택합니다.
 
    |설정|값|
@@ -55,14 +55,14 @@ Microsoft Entra DS 환경에서 Azure Virtual Desktop 배포에 대한 스토리
    |사용자 이름|**Student@adatum.com**|
    |암호|**Pa55w.rd1234**|
 
-1. az140-dc-vm11에 대한 **원격 데스크톱 세션 내에서 Microsoft Edge를 시작하고 Azure Portal[로 이동합니다](https://portal.azure.com).** 메시지가 표시되면 이 랩에서 사용 중인 구독에서 소유자 역할이 있는 사용자 계정의 Microsoft Entra 자격 증명을 사용하여 로그인합니다.
-1. **az140-dc-vm11**에 연결된 원격 데스크톱 세션 내의 Azure Portal이 표시된 Microsoft Edge 창에서 **스토리지 계정**을 검색하여 선택한 후 **스토리지 계정** 블레이드에서 **+ 만들기**를 선택합니다.
+1. az140-dc-vm11에 대한 **Bastion 세션 내에서 Microsoft Edge를 시작하고 Azure Portal[로 이동합니다](https://portal.azure.com).** 메시지가 표시되면 이 랩에서 사용 중인 구독에서 소유자 역할이 있는 사용자 계정의 Microsoft Entra 자격 증명을 사용하여 로그인합니다.
+1. az140-dc-vm11에 대한 **Bastion 세션 내에서 Azure Portal을 표시하는 Microsoft Edge 창에서 Storage 계정을 검색하여 선택하고 **Storage 계정**** 블레이드에서 **+ 만들기**를 선택합니다**.**
 1. **스토리지 계정 만들기** 블레이드의 **기본** 탭에서 다음 설정을 지정합니다(나머지는 기본값을 그대로 유지).
 
    |설정|값|
    |---|---|
    |구독|이 랩에서 사용 중인 Azure 구독의 이름|
-   |Resource group|새 리소스 그룹 **az140-22-RG**의 이름|
+   |Resource group|az140-22-RG**라는 **새** 리소스 그룹 만들기**|
    |스토리지 계정 이름|문자로 시작하는 소문자와 숫자로 구성된 3에서 15 사이의 전역적으로 고유한 이름|
    |지역|Azure Virtual Desktop 랩 환경을 호스팅하는 Azure 지역의 이름|
    |성능|**Standard**|
@@ -77,32 +77,27 @@ Microsoft Entra DS 환경에서 Azure Virtual Desktop 배포에 대한 스토리
 
 #### 작업 2: Azure Files 공유 만들기
 
-1. az140-dc-vm11에 대한 **원격 데스크톱 세션 내에서 Azure Portal을 표시하는 Microsoft Edge 창에서 Storage 계정 블레이드로 **다시 이동하여 새로 만든 스토리지 계정을** 나타내는 항목을** 선택합니다.
+1. az140-dc-vm11에 대한 **Bastion 세션 내에서 Azure Portal을 표시하는 Microsoft Edge 창에서 Storage 계정 블레이드로 **돌아가서 새로 만든 스토리지 계정을** 나타내는 항목을** 선택합니다.
 1. 스토리지 계정 블레이드의 **데이터 스토리지** 섹션에서 파일 공유**를 선택한 **다음+ 파일 공유**를 선택합니다**.
-1. 새 파일 공유 블레이드에서 **다음 설정을 지정하고 만들기**를 선택합니다**(다른 설정은 기본값으로 유지**).
+1. 새 파일 공유 블레이드에서 **다음 설정을 지정하고 다음: 백업 >** 선택합니다**(다른 설정은 기본값으로 유지**).
 
    |설정|값|
    |---|---|
    |속성|**az140-22-profiles**|
-   |계층|**트랜잭션 최적화됨**|
+   |액세스 계층|**트랜잭션 최적화됨**|
+
+1. 백업 블레이드에서 **백업** 사용 검사 상자의 선택을 취소**하고 검토 + 만들기**를 선택하고 **유효성 검사 프로세스가 완료되기를 기다린 다음 만들기**를 선택합니다**.**
 
 #### 작업 3: Azure Storage 계정에 AD DS 인증 사용 
 
-1. **az140-dc-vm11**에 연결된 원격 데스크톱 내의 Microsoft Edge 창에서 다른 탭을 열고 [Azure Files 샘플 GitHub 리포지토리](https://github.com/Azure-Samples/azure-files-samples/releases)로 이동합니다. 그런 다음, 압축된 **AzFilesHybrid.zip** PowerShell 모듈의 최신 버전을 다운로드하여 **C:\\Allfiles\\Labs\\02** 폴더에 압축을 풉니다(필요하면 폴더 만들기).
-1. az140-dc-vm11에 대한 **원격 데스크톱 세션 내에서 관리자 권한으로 Windows PowerShell ISE**를 시작하고 **관리istrator: Windows PowerShell ISE** 스크립트 창에서 **다음을 실행하여 값**이 3**인 Zone.Identifier** 대체 데이터 스트림을 제거**합니다. 이는 인터넷에서 다운로드되었음을** 나타냅니다.
+1. az140-dc-vm11에 대한 **Bastion 세션 내에서 Microsoft Edge 창에서 다른 탭을 열고, Azure Files 샘플 GitHub 리포지[토리로 이동하고](https://github.com/Azure-Samples/azure-files-samples/releases), [압축된 **AzFilesHybrid.zip** PowerShell 모듈의 최신 버전]을 다운로드하고, C:\\Allfiles\\Labs\\02** 폴더에 콘텐츠를 **추출합니다(필요한 경우 폴더 만들기**).
+1. az140-dc-vm11에 대한 **Bastion 세션 내에서 관리자 권한으로 Windows PowerShell ISE**를 시작하고 **관리istrator: Windows PowerShell ISE** 스크립트 창에서 **다음을 실행하여 값**이 3**인 Zone.Identifier** 대체 데이터 스트림을 제거**합니다. 이는 인터넷에서 다운로드되었음을** 나타냅니다.
 
    ```powershell
    Get-ChildItem -Path C:\Allfiles\Labs\02 -File -Recurse | Unblock-File
    ```
 
-1. **관리istrator: Windows PowerShell ISE** 콘솔에서 다음을 실행하여 Azure 구독에 로그인합니다.
-
-   ```powershell
-   Connect-AzAccount
-   ```
-
-1. 메시지가 표시되면 이 랩에서 사용 중인 구독에서 소유자 역할을 사용하여 사용자 계정의 Microsoft Entra 자격 증명으로 로그인합니다.
-1. az140-dc-vm11에 대한 **원격 데스크톱 세션 내에서 관리istrator: Windows PowerShell ISE** 스크립트 창에서 **다음을 실행하여 후속 스크립트를 실행하는 데 필요한 변수를** 설정합니다.
+1. az140-dc-vm11에 대한 **Bastion 세션 내에서 관리istrator: Windows PowerShell ISE** 스크립트 창에서 **다음을 실행하여 후속 스크립트를 실행하는 데 필요한 변수를** 설정합니다.
 
    ```powershell
    $subscriptionId = (Get-AzContext).Subscription.Id
@@ -110,7 +105,7 @@ Microsoft Entra DS 환경에서 Azure Virtual Desktop 배포에 대한 스토리
    $storageAccountName = (Get-AzStorageAccount -ResourceGroupName $resourceGroupName)[0].StorageAccountName
    ```
 
-1. az140-dc-vm11에 대한 **원격 데스크톱 세션 내에서 관리istrator: Windows PowerShell ISE** 스크립트 창에서 다음을 실행하여 이 작업의 앞부분에서 **만든 Azure Storage 계정을 나타내고 AD DS 인증을 구현하는 데 사용되는 AD DS 컴퓨터 개체를 만듭니**다.
+1. az140-dc-vm11에 대한 **Bastion 세션 내에서 관리istrator: Windows PowerShell ISE** 스크립트 창에서 다음을 실행하여 이 작업의 앞부분에서 **만든 Azure Storage 계정을 나타내고 AD DS 인증을 구현하는 데 사용되는 AD DS 컴퓨터 개체를 만듭니**다.
 
    >**참고**: 이 스크립트 블록을 실행할 때 오류가 발생하는 경우 CopyToPSPath.ps1 스크립트와 동일한 디렉터리에 있는지 확인합니다. 이 랩의 앞부분에서 파일을 추출한 방법에 따라 AzFilesHybrid라는 하위 폴더에 있을 수 있습니다. PowerShell 컨텍스트에서 **cd AzFilesHybrid**를 사용하여 디렉터리를 폴더로 변경합니다.
 
@@ -125,7 +120,7 @@ Microsoft Entra DS 환경에서 Azure Virtual Desktop 배포에 대한 스토리
       -OrganizationalUnitDistinguishedName 'OU=WVDInfra,DC=adatum,DC=com'
    ```
 
-1. az140-dc-vm11에 대한 **원격 데스크톱 세션 내에서 관리istrator: Windows PowerShell ISE** 스크립트 창에서 **다음을 실행하여 AD DS 인증이 Azure Storage 계정에서 사용하도록 설정되어 있는지 확인**합니다.
+1. az140-dc-vm11에 대한 **Bastion 세션 내에서 관리istrator: Windows PowerShell ISE** 스크립트 창에서 **다음을 실행하여 AD DS 인증이 Azure Storage 계정에서 사용하도록 설정되어 있는지 확인**합니다.
 
    ```powershell
    $storageaccount = Get-AzStorageAccount -ResourceGroupName $resourceGroupName -Name $storageAccountName
@@ -144,36 +139,45 @@ Microsoft Entra DS 환경에서 Azure Virtual Desktop 배포에 대한 스토리
    AzureStorageSid   : S-1-5-21-1102940778-2483248400-1820931179-2109
    ```
 
-1. az140-dc-vm11에 대한 **원격 데스크톱 세션 내에서 Azure Portal을 표시하는 Microsoft Edge 창으로 전환하고, 스토리지 계정을 표시하는 블레이드에서 파일 공유**를 선택하고 **ID 기반 액세스** 설정이 **구성**되었는지 **확인합니다.**
+1. az140-dc-vm11에 대한 **Bastion 세션 내에서 Azure Portal을 표시하는 Microsoft Edge 창으로 전환하고, 스토리지 계정을 표시하는 블레이드에서 파일 공유**를 선택하고 **ID 기반 액세스** 설정이 **구성**되었는지 **확인합니다.**
 
    >**참고**: 변경 내용이 Azure Portal에 반영되려면 브라우저 페이지를 새로 고쳐야 할 수 있습니다.
 
 #### 작업 4: Azure Files RBAC 기반 권한 구성
 
-1. az140-dc-vm11에 대한 원격 데스크톱 세션 **내에서 Azure Portal을 표시하는 Microsoft Edge 창의 블레이드에서 이 연습의 앞부분에서 만든 스토리지 계정의 속성을 표시하는 블레이드의 왼쪽에 있는 **세로 메뉴의 데이터 스토리지** 섹션에서 파일 공유**를 선택합니다**.**
+1. az140-dc-vm11에 대한 **Bastion 세션 내에서 Azure Portal을 표시하는 Microsoft Edge 창의 블레이드에서 이 연습의 앞부분에서 만든 스토리지 계정의 속성을 표시하는 블레이드의 왼쪽에 있는 **세로 메뉴의 데이터 스토리지** 섹션에서 파일 공유**를 선택합니다**.**
 1. **파일 공유** 블레이드의 공유 목록에서 az140-22-profiles** 항목을 선택합니다**.
 1. **az140-22-profiles** 블레이드의 왼쪽 세로 메뉴에서 액세스 제어(IAM)**를 선택합니다**.
 1. 스토리지 계정의 **IAM(액세스 제어)** 블레이드에서 + 추가**를 선택하고 **드롭다운 메뉴에서 역할 할당** 추가를 선택합니다**. 
-1. **역할 할당 추가** 블레이드에서 다음 설정을 지정하고 **검토 + 할당**을 선택합니다.
+1. 역할 할당 추가 블레이드의 **역할** 탭에서 **다음 설정을 지정하고 다음**을 선택합니다**.**
 
    |설정|값|
    |---|---|
-   |역할|**Storage 파일 데이터 SMB 공유 기여자**|
-   |다음에 대한 액세스 할당|**사용자, 그룹 또는 서비스 주체**|
+   |작업 함수 역할|**Storage 파일 데이터 SMB 공유 기여자**|
+
+1. 역할 할당 추가 블레이드의 **구성원** 탭에서 **+ 구성원** 선택을 클릭하고 **다음 설정을 지정하고 선택을** 클릭합니다**.** 
+
+   |설정|값|
+   |---|---|
    |선택|**az140-wvd-users**|
-
+1. 역할 할당 추가 블레이드에서 **검토 + 할당**을 선택한 **다음 검토 + 할당**을 선택합니다**.**
 1. 스토리지 계정의 **IAM(액세스 제어)** 블레이드에서 + 추가**를 선택하고 **드롭다운 메뉴에서 역할 할당** 추가를 선택합니다**. 
-1. **역할 할당 추가** 블레이드에서 다음 설정을 지정하고 **검토 + 할당**을 선택합니다.
+1. 역할 할당 추가 블레이드의 **역할** 탭에서 **다음 설정을 지정하고 다음**을 선택합니다**.**
 
    |설정|값|
    |---|---|
-   |역할|**스토리지 파일 데이터 SMB 공유 관리자 권한 기여자**|
-   |다음에 대한 액세스 할당|**사용자, 그룹 또는 서비스 주체**|
+   |작업 함수 역할|**Storage 파일 데이터 SMB 공유 높은 권한 기여자**|
+
+1. 역할 할당 추가 블레이드의 **구성원** 탭에서 **+ 구성원** 선택을 클릭하고 **다음 설정을 지정하고 선택을** 클릭합니다**.** 
+
+   |설정|값|
+   |---|---|
    |선택|**az140-wvd-admins**|
+1. 역할 할당 추가 블레이드에서 **검토 + 할당**을 선택한 **다음 검토 + 할당**을 선택합니다**.**
 
 #### 작업 5: Azure Files 파일 시스템 권한 구성
 
-1. az140-dc-vm11에 대한 **원격 데스크톱 세션 내에서 관리istrator: Windows PowerShell ISE** 창으로 전환**하고 관리istrator: Windows PowerShell ISE** 스크립트 창에서 다음을 실행하여 이 연습의 앞부분에서 **만든 스토리지 계정의 이름과 키를 참조하는 변수를 만듭니**다.
+1. az140-dc-vm11에 대한 **Bastion 세션 내에서 관리istrator: Windows PowerShell ISE** 창으로 전환**하고 관리istrator: Windows PowerShell ISE** 스크립트 창에서 다음을 실행하여 이 연습의 앞부분에서 **만든 스토리지 계정의 이름과 키를 참조하는 변수를 만듭니**다.
 
    ```powershell
    $resourceGroupName = 'az140-22-RG'

@@ -12,12 +12,12 @@ lab:
 - Azure 구독
 - Azure 구독과 연결된 Microsoft Entra 테넌트의 전역 관리자 역할 및 Azure 구독의 소유자 또는 기여자 역할이 있는 Microsoft 계정 또는 Microsoft Entra 계정.
 - 완료된 **Azure Virtual Desktop의 배포 준비(AD DS)** 랩
-- 완료된 랩 **AD DS(Azure Virtual Desktop 프로필 관리)**
-- 완료된 랩 **WVD에 대한 조건부 액세스 정책 구성(AD DS)**
+- 완료된 랩 **에서 AVD(AD DS)에 대한 조건부 액세스 정책 구성**
+- 완료된 랩 **AD DS(AVD 프로필) 구현 및 관리**
 
 ## 예상 소요 시간
 
-60분
+60 분
 
 ## 랩 시나리오
 
@@ -28,7 +28,7 @@ AD DS(Active Directory 도메인 Services) 환경에서 Azure Virtual Desktop �
 이 랩을 완료하면 다음을 수행할 수 있습니다.
 
 - MSIX 앱 패키지 준비 및 만들기
-- Microsoft Entra DS 환경에서 Azure Virtual Desktop에 대한 MSIX 앱 연결 이미지 구현
+- AD DS 환경에서 Azure Virtual Desktop에 대한 MSIX 앱 연결 이미지 구현
 - AD DS 환경에서 Azure Virtual Desktop에서 MSIX 앱 연결 구현
 
 ## 랩 파일
@@ -62,9 +62,9 @@ AD DS(Active Directory 도메인 Services) 환경에서 Azure Virtual Desktop �
    Get-AzVM -ResourceGroup 'az140-21-RG' | Start-AzVM -NoWait
    ```
 
-   >**참고**: 명령은 -NoWait 매개 변수에 의해 결정된 대로 비동기적으로 실행되므로 동일한 PowerShell 세션 내에서 즉시 다른 PowerShell 명령을 실행할 수 있지만 Azure VM이 실제로 시작되기까지 몇 분 정도 걸립니다. 
+   > **참고**: 명령은 -NoWait 매개 변수에 의해 결정된 대로 비동기적으로 실행되므로 동일한 PowerShell 세션 내에서 즉시 다른 PowerShell 명령을 실행할 수 있지만 Azure VM이 실제로 시작되기까지 몇 분 정도 걸립니다. 
 
-   >**참고**: 이전 랩의 첫 번째 작업(AVD 프로필 구현 및 관리)에서 az140-21-RG 리소스 그룹의 세션 호스트에서 PSRemoting을 사용하도록 설정한 경우 Azure VM이 시작될 때까지 기다리지 않고 다음 작업으로 직접 진행할 수 있습니다. az140-21-RG 리소스 그룹의 세션 호스트에서 이전에 PSRemoting을 사용하도록 설정하지 않은 경우 VM이 시작될 때까지 기다린 다음 다음 명령을 실행합니다.
+   > **참고**: 이전 랩의 첫 번째 작업(AVD 프로필 구현 및 관리)에서 az140-21-RG 리소스 그룹의 세션 호스트에서 PSRemoting을 사용하도록 설정한 경우 Azure VM이 시작될 때까지 기다리지 않고 다음 작업으로 직접 진행할 수 있습니다. az140-21-RG 리소스 그룹의 세션 호스트에서 이전에 PSRemoting을 사용하도록 설정하지 않은 경우 VM이 시작될 때까지 기다린 다음 다음 명령을 실행합니다.
 
 1. Cloud Shell**의 **PowerShell 세션에서 다음을 실행하여 세션 호스트에서 PowerShell 원격을 사용하도록 설정합니다.
 
@@ -95,7 +95,7 @@ AD DS(Active Directory 도메인 Services) 환경에서 Azure Virtual Desktop �
 #### 작업 3: MSIX 패키징을 위해 Windows 10을 실행하는 Azure VM 준비
 
 1. 랩 컴퓨터의 Azure Portal에서 가상 머신을 검색하여 선택하고 **가상 **머신** 블레이드의 가상 머신** 목록에서 az140-cl-vm42** 항목을 선택합니다**. 그러면 **az140-cl-vm42** 블레이드가 열립니다.
-1. **az140-cl-vm42** 블레이드에서 **연결**을 선택하고 드롭다운 메뉴에서 **베스천**을 선택합니다. **az140-cl-vm42 \| 연결** 블레이드의 **베스천** 탭에서 **베스천 사용**을 선택합니다.
+1. az140-cl-vm42** 블레이드에서 커넥트** 선택하고 **드롭다운 메뉴에서 Bastion**을 통해 커넥트 선택합니다**.**
 1. 메시지가 표시되면 이 사용자 계정을 만들 때 설정한 사용자 이름 및 암호로 **wvdadmin1@adatum.com** 로그인합니다. 
 1. az140-cl-vm42**에 대한 **Bastion 세션 내에서 windows PowerShell ISE**를 관리자 권한으로 시작**합니다. 관리istrator: Windows PowerShell ISE** 콘솔에서 **다음을 실행하여 MSIX 패키징을 위한 운영 체제를 준비합니다.
 
@@ -164,7 +164,7 @@ AD DS(Active Directory 도메인 Services) 환경에서 Azure Virtual Desktop �
 
 1. az140-cl-vm42**에 대한 **Bastion 세션 내에서 Microsoft Store** 앱을 시작**합니다.
 1. **Microsoft Store** 앱에서 MSIX 패키징 도구를** 검색하여 선택하고 **MSIX **패키징 도구** 페이지에서 가져오기**를 선택합니다**.
-1. 메시지가 표시되면 로그인을 건너뛰고 설치가 완료될 때까지 기다립니다. 설치가 완료되면 **열기**를 선택하고 **진단 데이터 보내기** 대화 상자에서 **거절**을 선택합니다. 
+1. 메시지가 표시되면 로그인을 건너뛰고 설치가 완료될 때까지 기다렸다가 시작을 선택하고 **진단 데이터** 보내기 대화 상자에서 **거부**를 선택합니다**.** 
 
 #### 작업 7: MSIX 패키지 만들기
 
@@ -190,6 +190,9 @@ AD DS(Active Directory 도메인 Services) 환경에서 Azure Virtual Desktop �
 
 1. az140-cl-vm42에 대한 **Bastion 세션 내에서 MSIX 패키징 도구** 인터페이스로 전환하고**, **작업** 선택 페이지에서 애플리케이션 패키지 - 앱 패키지** 항목 만들기를 선택합니다**.** 그러면 새 패키지** 만들기 마법사가 **시작됩니다.
 1. **새 패키지** 만들기 마법사의 환경** 선택 페이지에서 이 컴퓨터**의 **패키지 만들기 옵션이 선택되어 있는지 확인하고 **다음**을 선택하고 **MSIX 패키징 도구 드라이버** 설치**를 기다립니다.
+
+   > **참고**: MSIX 패키징 도구 드라이버 설치에는 5-10이 소요됩니다. 상태 열에는 처음에 Checking이 표시**되고 설치되면 Installed**라고 표시됩니다**.**
+
 1. **새 패키지** 만들기 마법사의 **컴퓨터** 준비 페이지에서 권장 사항을 검토합니다. 보류 중인 재부팅이 있는 경우 운영 체제를 다시 시작하고, 계정을 사용하여 **wvdadmin1@adatum.com** 다시 로그인한 다음, 계속하기 전에 MSIX 패키징 도구를** 다시 시작**합니다. 
 
    >**참고**: MSIX 패키징 도구는 일시적으로 Windows 업데이트 및 Windows Search를 사용하지 않도록 설정합니다. 이 경우 Windows Search 서비스가 이미 비활성화되어 있습니다. 
@@ -197,13 +200,11 @@ AD DS(Active Directory 도메인 Services) 환경에서 Azure Virtual Desktop �
 1. 새 패키지** 만들기 마법사의 **컴퓨터** 준비 페이지에서 다음**을 클릭합니다**.**
 1. **새 패키지 만들기** 마법사의 **설치 프로그램 선택** 페이지에서 **패키지하려는 설치 프로그램 선택** 텍스트 상자 옆에 있는 **찾아보기**를 선택합니다. 그런 다음, **열기** 대화 상자에서 **C:\\AllFiles\\Labs\\04** 폴더로 이동하여 **XmlNotepadSetup.msi**를 선택하고 **열기**를 클릭합니다. 
 1. **새 패키지 만들기** 마법사의 **설치 프로그램 선택** 페이지에 있는 **서명 기본 설정** 드롭다운 목록에서 **인증서(.pfx)로 서명** 항목을 선택합니다. 그런 다음, **인증서 찾아보기** 텍스트 상자 옆에 있는 **찾아보기**를 선택하고 **열기** 대화 상자에서 **C:\\AllFiles\\Labs\\04** 폴더로 이동해 **adatum.pfx** 파일을 선택한 후 **열기**를 클릭합니다. **암호** 텍스트 상자에는 **Pa55w.rd1234**를 입력하고 **다음**을 클릭합니다.
-1. **새 패키지 만들기 마법사의 **패키지** 정보** 페이지에서 패키지 정보를 검토하고 게시자 이름이 CN=Adatum**으로 설정되어 있는지 확인하고 다음**을 **선택합니다**. 그러면 다운로드한 소프트웨어의 설치가 트리거됩니다.
-1. **XML메모장 설치** 창에서 사용권 계약 조건에 동의하고 설치**를 선택하고 **설치가 완료되면 XML 시작 메모장 검사** 상자를 선택하고 **마침**을 선택합니다**.
-1. 메시지가 표시되면 XML 메모장 분석 창에서 **아니요**를 선택하고**, XML 메모장 실행 중인지 확인하고, 닫고, MSIX 패키징 도구** 창에서 **새 패키지** 만들기 마법사로 다시 **전환하고, 다음**을 선택합니다**.**
-
-   > **참고**: 이 경우 설치를 완료하기 위해 다시 시작할 필요가 없습니다.
-
-1. **새 패키지** 만들기 마법사의 **첫 번째 시작 작업** 페이지에서 제공된 정보를 검토하고 다음**을 선택합니다**.
+1. **새 패키지 만들기 마법사의 **패키지** 정보** 페이지에서 패키지 정보를 검토하고 게시자 이름이 CN=Adatum**으로 설정되어 있는지 확인하고 다음**을 **선택합니다**.
+1. **패키지** 페이지에 적용할 가속기 선택 페이지에서 다음**을 선택합니다**. 그러면 다운로드한 소프트웨어의 설치가 트리거됩니다.
+1. **XML메모장 설치** 창에서 사용권 계약의 조건에 동의하고 설치**를 선택하고 **설치가 완료되면 마침**을 선택합니다**.
+1. **새 패키지** 만들기 마법사의 **설치** 페이지에서 다음**을 선택합니다**.
+1. **새 패키지** 만들기 마법사의 **첫 번째 시작 작업** 관리 페이지에서 제공된 정보를 검토하고 다음**을 선택합니다**.
 1. 메시지가 표시 **되면 [예**]를 선택하고 **계속 진행합니다**.
 1. **새 패키지** 만들기 마법사의 **서비스 보고서** 페이지에서 나열된 서비스가 없는지 확인하고 다음**을 선택합니다**.
 1. **새 패키지 만들기** 마법사의 **패키지 만들기** 페이지 **위치 저장** 텍스트 상자에 **C:\\Allfiles\\Labs\\04\\XmlNotepad\XmlNotepad.msix**를 입력하고 **만들기**를 클릭합니다.
@@ -212,14 +213,14 @@ AD DS(Active Directory 도메인 Services) 환경에서 Azure Virtual Desktop �
 1. **XmlNotepad.msix** 파일을 **C:\\Allfiles\\Labs\\04** 폴더로 복사합니다.
 
 
-### 연습 2: Microsoft Entra DS 환경에서 Azure Virtual Desktop에 대한 MSIX 앱 연결 이미지 구현
+### 연습 2: AD DS 환경에서 Azure Virtual Desktop에 대한 MSIX 앱 연결 이미지 구현
 
 이 연습의 주요 작업은 다음과 같습니다.
 
-1. Window 10 Enterprise Edition을 실행하는 Azure VM에서 Hyper-V 사용
+1. Window 11 Enterprise 다중 세션을 실행하는 Azure VM에서 Hyper-V 사용
 1. MSIX 앱 연결 이미지 만들기
 
-#### 작업 1: Window 10 Enterprise Edition을 실행하는 Azure VM에서 Hyper-V 사용
+#### 작업 1: Window 11 Enterprise 다중 세션을 실행하는 Azure VM에서 Hyper-V 사용
 
 1. az140-cl-vm42**에 대한 **Bastion 세션 내에서 관리istrator: Windows PowerShell ISE** 콘솔에서 **다음을 실행하여 MSIX 앱 연결을 위한 대상 Azure Virtual Desktop 호스트를 준비합니다. 
 
@@ -262,44 +263,21 @@ AD DS(Active Directory 도메인 Services) 환경에서 Azure Virtual Desktop �
 
 1. az140-cl-vm42에 대한 **Bastion 세션 내에서 Microsoft Edge**를 시작하고 **을 찾**https://aka.ms/msixmgr**습니다.** 그러면 **msixmgr.zip** 파일(MSIX 관리 도구 보관)이 **다운로드** 폴더에 자동으로 다운로드됩니다.
 1. 파일 탐색기에서 **다운로드** 폴더로 이동하여 압축된 파일을 열고 **x64** 폴더의 내용을 **C:\\AllFiles\\Labs\\04** 폴더에 복사합니다. 
-1. az140-cl-vm42에 대한 **Bastion 세션 내에서 관리자 권한으로 Windows PowerShell ISE**를 시작하고 **관리istrator: Windows PowerShell ISE** 스크립트 창에서 **다음을 실행하여 MSIX 앱 연결 이미지로 사용할 VHD 파일을 만듭니**다.
+1. az140-cl-vm42에 대한 **Bastion 세션 내에서 관리자 권한으로 Windows PowerShell ISE**를 시작하고 **관리istrator: Windows PowerShell ISE** 스크립트 창에서 **다음을 실행하여 MSIX 앱 연결 이미지를 저장할 폴더를 만듭니**다.
 
    ```powershell
    New-Item -ItemType Directory -Path 'C:\Allfiles\Labs\04\MSIXVhds' -Force
-   New-VHD -SizeBytes 128MB -Path 'C:\Allfiles\Labs\04\MSIXVhds\XmlNotepad.vhd' -Dynamic -Confirm:$false
    ```
 
-1. **관리istrator: Windows PowerShell ISE** 스크립트 창에서 다음을 실행하여 새로 만든 VHD 파일을 탑재합니다.
-
-   ```powershell
-   $vhdObject = Mount-VHD -Path 'C:\Allfiles\Labs\04\MSIXVhds\XmlNotepad.vhd' -Passthru
-   ```
-
-1. **관리istrator: Windows PowerShell ISE** 스크립트 창에서 다음을 실행하여 디스크를 초기화하고, 새 파티션을 만들고, 포맷하고, 사용 가능한 첫 번째 드라이브 문자를 할당합니다.
-
-   ```powershell
-   $disk = Initialize-Disk -Passthru -Number $vhdObject.Number
-   $partition = New-Partition -AssignDriveLetter -UseMaximumSize -DiskNumber $disk.Number
-   Format-Volume -FileSystem NTFS -Confirm:$false -DriveLetter $partition.DriveLetter -Force
-   ```
-
-   > **참고**: F: 드라이브의 서식을 지정하라는 팝업 창이 표시되면 취소**를 선택합니다**.
-
-1. **관리istrator: Windows PowerShell ISE** 스크립트 창에서 다음을 실행하여 MSIX 파일을 호스트하고 이전 작업에서 만든 MSIX 패키지로 압축을 풀 폴더 구조를 만듭니다.
+1. **관리istrator: Windows PowerShell ISE** 스크립트 창에서 다음을 실행하여 MSIX 파일을 호스트하고 이전 작업에서 만든 MSIX 패키지로 압축을 풀 VHD를 만듭니다.
 
    ```powershell
    $appName = 'XmlNotepad'
-   New-Item -ItemType Directory -Path "$($partition.DriveLetter):\Apps" -Force
    Set-Location -Path 'C:\AllFiles\Labs\04\x64'
-   .\msixmgr.exe -Unpack -packagePath ..\$appName.msix -destination "$($partition.DriveLetter):\Apps" -applyacls
+   .\msixmgr.exe -Unpack -packagePath ..\$appName.msix -destination ..\MSIXVhds\$appName.vhd -applyacls -create -filetype vhd -vhdSize 128 -rootDirectory Apps
    ```
 
-1. az140-cl-vm42**에 대한 **Bastion 세션 내에서 파일 탐색기 F:\\Apps** 폴더로 **이동하여 해당 콘텐츠를 검토합니다. 폴더에 대한 액세스 권한을 얻으라는 메시지가 표시되면 **계속**을 선택합니다.
-1. az140-cl-vm42**에 대한 **Bastion 세션 내에서 관리istrator: Windows PowerShell ISE** 콘솔에서 **다음을 실행하여 MSIX 이미지로 사용할 VHD 파일을 분리합니다.
-
-   ```powershell
-   Dismount-VHD -Path "C:\Allfiles\Labs\04\MSIXVhds\$appName.vhd" -Confirm:$false
-   ```
+1. az140-cl-vm42에 대한 **Bastion 세션 내에서 파일 탐색기 C:\AllFiles\Labs\04\MSIXVhds** 폴더로 이동하여 **Xml메모장.vhd라는 가상 디스크가 있는지 확인**합니다.
 
 ### 연습 3: Azure Virtual Desktop 세션 호스트에서 MSIX 앱 연결 구현
 
@@ -314,7 +292,7 @@ AD DS(Active Directory 도메인 Services) 환경에서 Azure Virtual Desktop �
 #### 작업 1: Azure Virtual Desktop 호스트를 포함하는 Active Directory 그룹 구성
 
 1. 랩 컴퓨터로 전환하고, Azure Portal을 표시하는 웹 브라우저에서 가상 머신을 검색하여 선택하고 **, 가상 머신**** 블레이드에서 **az140-dc-vm11**을 선택합니다**.
-1. **az140-dc-vm11** 블레이드에서 **연결**을 선택하고 드롭다운 메뉴에서 **베스천**을 선택합니다. **az140-dc-vm11 \| 연결** 블레이드의 **베스천** 탭에서 **베스천 사용**을 선택합니다.
+1. az140-dc-vm11** 블레이드에서 커넥트** 선택하고 **드롭다운 메뉴에서 Bastion**을 통해 커넥트 선택합니다**.**
 1. 메시지가 표시되면 다음 자격 증명을 제공하고 **연결**을 선택합니다.
 
    |설정|값|
@@ -347,18 +325,18 @@ AD DS(Active Directory 도메인 Services) 환경에서 Azure Virtual Desktop �
 
    > **참고**: 이 단계는 그룹 멤버 자격 변경이 적용되도록 합니다. 
 
-1. az140-dc-vm11에 대한 **Bastion 세션 내에서 시작** 메뉴에서 Microsoft Entra 커넥트** 폴더를 확장하고 **Microsoft Entra 커넥트** 선택합니다**.****
-1. **Microsoft Entra 커넥트** 창의 **Microsoft Entra 커넥트** 시작 페이지에서 구성**을 선택합니다**.
+1. az140-dc-vm11에 대한 **Bastion 세션 내에서 시작** 메뉴에서 Microsoft Azure AD 커넥트** 폴더를 확장하고 **Microsoft Azure AD 커넥트** 선택합니다**.****
+1. **Microsoft Azure Active Directory 커넥트** 창의 **Azure AD 커넥트** 시작 페이지에서 구성**을 선택합니다**.
 1. **Microsoft Entra 커넥트** 창의 **추가 작업** 페이지에서 동기화 옵션** 사용자 지정을 선택하고 **다음**을 선택합니다**.
-1. **Microsoft Entra 커넥트 창의 Microsoft Entra**에 커넥트** 페이지에서 이 사용자 계정을 만들 때 설정한 암호로 이 작업의 앞부분에서 **식별한 aadsyncuser** 사용자 계정의 **사용자 계정 이름을 사용하여 인증합니다.
-1. **Microsoft Entra 커넥트 창의 **디렉터리** 커넥트** 페이지에서 다음**을 선택합니다**.
-1. **Microsoft Entra 커넥트** 창의 **Do기본 및 OU 필터링** 페이지에서 선택한 동기화기본 및 OU** 옵션이 **선택되어 있는지 확인하고, adatum.com** 노드를 확장하고**, WVDInfra** OU 옆에 **있는 검사 상자를 선택하고(선택한 다른 검사 상자를 변경하지 않음) 다음**을 선택합니다**.
-1. **Microsoft Entra 커넥트** 창의 **선택적 기능** 페이지에서 기본 설정을 적용하고 다음**을 선택합니다**.
-1. **Microsoft Entra 커넥트** 창의 **구성** 준비 페이지에서 구성이 완료되면** 검사box **동기화 프로세스를 시작하고 구성**을 선택합니다**.
-1. 구성 완료** 페이지에서 정보를 검토하고 종료**를 **선택하여 **Microsoft Entra 커넥트** 창을 닫습니다**.
+1. **Microsoft Azure Active Directory 커넥트 창의 **Microsoft Entra**에 커넥트** 페이지에서 이 사용자 계정을 만들 때 설정한 암호와 함께 이 작업의 앞부분에서 식별한 aadsyncuser** 사용자 계정의 **사용자 계정 이름을 사용하여 인증합니다.
+1. **Microsoft Azure Active Directory 커넥트 창의 **디렉터리** 커넥트** 페이지에서 다음**을 선택합니다**.
+1. **Microsoft Azure Active Directory 커넥트** 창의 **Do기본 및 OU 필터링** 페이지에서 선택한 동기화 작업기본 및 OU** 옵션이 **선택되어 있는지 확인하고, adatum.com** 노드를 확장하고**, WVDInfra** OU 옆에 **있는 검사 상자를 선택하고(선택한 다른 검사 상자를 변경하지 않음) 다음**을 선택합니다**.
+1. **Microsoft Azure Active Directory 커넥트** 창의 **선택적 기능** 페이지에서 기본 설정을 적용하고 다음**을 선택합니다**.
+1. **Microsoft Azure Active Directory 커넥트** 창의 **구성** 준비 페이지에서 구성이 완료되면** 검사box **동기화 프로세스를 시작하고 구성**을 선택합니다**.
+1. 구성 완료** 페이지에서 정보를 검토하고 종료**를 **선택하여 **Microsoft Azure Active Directory 커넥트** 창을 닫습니다**.
 1. az140-dc-vm11에 대한 **Bastion 세션 내에서 Microsoft Edge를 시작하고 Azure Portal[로 이동합니다](https://portal.azure.com).** 메시지가 표시되면 이 랩에서 사용 중인 Azure 구독과 연결된 Microsoft Entra 테넌트의 Global 관리istrator 역할과 함께 사용자 계정의 Microsoft Entra 자격 증명을 사용하여 로그인합니다.
-1. az140-dc-vm11**에 **대한 Bastion 세션 내에서 Azure Portal을 표시하는 Microsoft Edge 창에서 Azure Active Directory**를 검색하고 선택하여 **이 랩에 사용 중인 Azure 구독과 연결된 Microsoft Entra 테넌트로 이동합니다.
-1. Azure Active Directory 블레이드의 왼쪽**에 있는 세로 메뉴 모음의 관리** 섹션에서 그룹을** 클릭합니다**. 
+1. az140-dc-vm11**에 **대한 Bastion 세션 내에서 Azure Portal을 표시하는 Microsoft Edge 창에서 Microsoft Entra ID**를 검색하여 선택하여 **이 랩에 사용 중인 Azure 구독과 연결된 Microsoft Entra 테넌트로 이동합니다.
+1. Microsoft Entra ID 블레이드의 왼쪽**에 있는 세로 메뉴 모음의 관리** 섹션에서 그룹을** 클릭합니다**. 
 1. **그룹 | 모든 그룹** 블레이드의 그룹 목록에서 **az140-hosts-42-p1** 항목을 선택합니다.
 
    > **참고**: 표시할 그룹에 대한 페이지를 새로 고쳐야 할 수 있습니다.
@@ -375,47 +353,64 @@ AD DS(Active Directory 도메인 Services) 환경에서 Azure Virtual Desktop �
 
 1. az140-cl-vm42**에 **대한 Bastion 세션 내에서 Azure Portal을 표시하는 Microsoft Edge 창에서 Storage 계정을** 검색하여 선택하고 **Storage 계정** 블레이드에서 **사용자 프로필을 호스트하도록 구성한 스토리지 계정을 선택합니다.
 
-   > **참고**: 랩의 이 부분은 랩 Azure AD DS(Virtual Desktop 프로필 관리)** 또는 **Azure Virtual Desktop 프로필 관리(Microsoft Entra DS)를 완료**해야 합니다.**
+   > **참고**: 랩의 이 부분은 AVD용 스토리지 구현 및 관리(AD DS) 또는 **AVD(Microsoft Entra DS)**용 스토리지 구현 및 관리 랩**을 완료해야 합니다.**
 
    > **참고**: 프로덕션 시나리오에서는 별도의 스토리지 계정을 사용하는 것이 좋습니다. 이렇게 하려면 사용자 프로필을 호스팅하는 스토리지 계정에 대해 이미 구현한 Microsoft Entra DS 인증을 위해 해당 스토리지 계정을 구성해야 합니다. 동일한 스토리지 계정을 사용하여 개별 랩에서 중복 단계를 최소화합니다.
 
 1. 스토리지 계정 블레이드의 왼쪽 세로 메뉴에서 IAM(Access Control)**을 선택합니다**.
 1. 스토리지 계정의 **IAM(액세스 제어)** 블레이드에서 + 추가**를 선택하고 **드롭다운 메뉴에서 역할 할당** 추가를 선택합니다**. 
-1. 역할 할당** 추가 블레이드에서 **다음 설정을 지정하고 저장**을 선택합니다**.
+1. 역할 할당 추가 블레이드의 **역할** 탭에서 **다음 설정을 지정하고 다음**을 선택합니다**.**
 
    |설정|값|
    |---|---|
-   |역할|**스토리지 파일 데이터 SMB 공유 관리자 권한 기여자**|
-   |다음에 대한 액세스 할당|**사용자, 그룹 또는 서비스 주체**|
-   |선택|**az140-wvd-admins**|
+   |작업 함수 역할|**Storage 파일 데이터 SMB 공유 기여자**|
 
-   > **참고**: az140-wvd-admins** 그룹에는 **공유 권한을 구성하는 데 사용할 wvdadmin1** 사용자 계정이 포함되어 **있습니다. 
-
-1. 이전 두 단계를 반복하여 다음 역할 할당을 구성합니다.
+1. 역할 할당 추가 블레이드의 **구성원** 탭에서 **+ 구성원** 선택을 클릭하고 **다음 설정을 지정하고 선택을** 클릭합니다**.** 
 
    |설정|값|
    |---|---|
-   |역할|**스토리지 파일 데이터 SMB 공유 관리자 권한 기여자**|
-   |다음에 대한 액세스 할당|**사용자, 그룹 또는 서비스 주체**|
-   |선택|**az140-hosts-42-p1**|
-
-   |설정|값|
-   |---|---|
-   |역할|**스토리지 파일 데이터 SMB 공유 읽기 권한자**|
-   |다음에 대한 액세스 할당|**사용자, 그룹 또는 서비스 주체**|
    |선택|**az140-wvd-users**|
 
-   > **참고**: Azure Virtual Desktop 사용자 및 호스트는 적어도 파일 공유에 대한 읽기 권한이 필요합니다.
+1. 역할 할당 추가 블레이드에서 **검토 + 할당**을 선택한 **다음 검토 + 할당**을 선택합니다**.**
+1. 스토리지 계정의 **IAM(액세스 제어)** 블레이드에서 + 추가**를 선택하고 **드롭다운 메뉴에서 역할 할당** 추가를 선택합니다**. 
+1. 역할 할당 추가 블레이드의 **역할** 탭에서 **다음 설정을 지정하고 다음**을 선택합니다**.**
+
+   |설정|값|
+   |---|---|
+   |작업 함수 역할|**Storage 파일 데이터 SMB 공유 높은 권한 기여자**|
+
+1. 역할 할당 추가 블레이드의 **구성원** 탭에서 **+ 구성원** 선택을 클릭하고 **다음 설정을 지정하고 선택을** 클릭합니다**.** 
+
+   |설정|값|
+   |---|---|
+   |선택|**az140-wvd-admins**|
+
+1. 역할 할당 추가 블레이드에서 **검토 + 할당**을 선택한 **다음 검토 + 할당**을 선택합니다**.**
+1. 스토리지 계정의 **IAM(액세스 제어)** 블레이드에서 + 추가**를 선택하고 **드롭다운 메뉴에서 역할 할당** 추가를 선택합니다**. 
+1. 역할 할당 추가 블레이드의 **역할** 탭에서 **다음 설정을 지정하고 다음**을 선택합니다**.**
+
+   |설정|값|
+   |---|---|
+   |작업 함수 역할|**Storage 파일 데이터 SMB 공유 높은 권한 기여자**|
+
+1. 역할 할당 추가 블레이드의 **구성원** 탭에서 **+ 구성원** 선택을 클릭하고 **다음 설정을 지정하고 선택을** 클릭합니다**.** 
+
+   |설정|값|
+   |---|---|
+   |선택|**az140-hosts-42-p1**|
+
+1. 역할 할당 추가 블레이드에서 **검토 + 할당**을 선택한 **다음 검토 + 할당**을 선택합니다**.**
 
 1. 스토리지 계정 블레이드의 왼쪽에 있는 세로 **메뉴의 데이터 스토리지** 섹션에서 파일 공유**를 선택한 **다음+ 파일 공유**를 선택합니다**.
-1. 새 파일 공유 블레이드에서 **다음 설정을 지정하고 만들기**를 선택합니다**(다른 설정은 기본값으로 유지**).
+1. 새 파일 공유 블레이드에서 **다음 설정을 지정하고 다음: 백업 >** 선택합니다**(다른 설정은 기본값으로 유지**).
 
    |설정|값|
    |---|---|
    |속성|**az140-42-msixvhds**|
+   |액세스 계층|**트랜잭션 최적화됨**|
 
+1. 백업 블레이드에서 **백업** 사용 검사 상자의 선택을 취소**하고 검토 + 만들기**를 선택하고 **유효성 검사 프로세스가 완료되기를 기다린 다음 만들기**를 선택합니다**.**
 1. Azure Portal을 표시하는 Microsoft Edge의 파일 공유 목록에서 새로 만든 파일 공유를 선택합니다. 
-
 1. Bastion 세션에서 **az140-cl-vm42**** 로 이동하고 명령 프롬프트**** 창에서 **다음을 실행하여 **az140-42-msixvhds** 공유에 드라이브를 매핑하고(자리 표시자를 스토리지 계정 이름으로 바꾸기`<storage-account-name>`) 명령이 성공적으로 완료되었는지 확인합니다.
 
    ```cmd
@@ -438,7 +433,7 @@ AD DS(Active Directory 도메인 Services) 환경에서 Azure Virtual Desktop �
 
    ```powershell
    New-Item -ItemType Directory -Path 'Z:\packages' 
-   Copy-Item -Path 'C:\Allfiles\Labs\04\MSIXVhds\XmlNotepad.vhd' -Destination 'Z:\packages' -Force
+   Copy-Item -Path 'C:\Allfiles\Labs\04\MSIXVhds\XmlNotepad.vhd' -Destination 'Z:\packages\' -Force
    ```
 
 #### 작업 3: Azure Virtual Desktop 세션 호스트에 MSIX 앱 연결 이미지 탑재 및 등록
@@ -466,7 +461,7 @@ AD DS(Active Directory 도메인 Services) 환경에서 Azure Virtual Desktop �
 1. **Azure Virtual Desktop \| 애플리케이션 그룹** 블레이드에서 **az140-21-hp1-Utilities-RAG** 애플리케이션 그룹 항목을 선택합니다.
 1. **az140-21-hp1-Utilities-RAG** 블레이드의 왼쪽에 있는 세로 메뉴의 **관리** 섹션에서 애플리케이션을** 선택합니다**. 
 1. **az140-21-hp1-Utilities-RAG \| 애플리케이션** 블레이드에서 + 추가**를 클릭합니다**.
-1. 애플리케이션 추가 블레이드의 ****기본 및** **아이콘** 탭에서 다음 설정을 지정하고 저장**을 선택합니다**.**
+1. 애플리케이션 추가 블레이드의 ****기본 및** **아이콘** 탭에서 다음 설정을 지정하고 검토 + 추가**를 선택합니다**.**
 
    |설정|값|
    |---|---|
@@ -476,29 +471,31 @@ AD DS(Active Directory 도메인 Services) 환경에서 Azure Virtual Desktop �
    |애플리케이션 식별자|**XML 메모장**|
    |표시 이름|**XML 메모장**|
    |설명|**XML 메모장**|
-   |아이콘 원본|**기본값**|
 
+1. 구성된 설정을 검토한 다음 추가**를 선택합니다**.
 1. **Azure Virtual Desktop \| 애플리케이션 그룹** 블레이드로 다시 이동하여 **az140-21-hp1-DAG** 애플리케이션 그룹 항목을 선택합니다.
 1. **az140-21-hp1-DAG** 블레이드의 왼쪽에 있는 세로 **메뉴의 관리** 섹션에서 애플리케이션을** 선택합니다**. 
 1. **az140-21-hp1-DAG \| 애플리케이션** 블레이드에서 + 추가**를 클릭합니다**.
-1. 애플리케이션** 추가 블레이드에서 **다음 설정을 지정하고 저장**을 선택합니다**.
+1. 애플리케이션** 추가 블레이드에서 **다음 설정을 지정하고 검토 + 추가**를 선택합니다**.
 
    |설정|값|
    |---|---|
    |애플리케이션 소스|**MSIX 패키지**|
    |MSIX 패키지|이미지에 포함된 패키지를 나타내는 이름|
-   |애플리케이션 이름|**XML 메모장**|
+   |애플리케이션 식별자|**XML 메모장**|
    |표시 이름|**XML 메모장**|
    |설명|**XML 메모장**|
+
+1. 구성된 설정을 검토한 다음 추가**를 선택합니다**.
 
 #### 작업 5: MSIX 앱 연결의 기능 유효성 검사
 
 1. az140-cl-vm42에 대한 **Bastion 세션 내에서 Microsoft Edge를 시작하고 Windows Desktop 클라이언트 다운로드 페이지[로 ](https://go.microsoft.com/fwlink/?linkid=2068602)이동한 다음 다운로드가 완료되면 파일** 열기를 선택하여 **설치를 시작**합니다. **원격 데스크톱 설치** 마법사의 설치 범위** 페이지에서 이 컴퓨터**의 **모든 사용자에 대해 설치 옵션을 **선택하고 설치**를 클릭합니다**. 
 1. 설치가 완료되면 설치가 **종료**될 때 원격 데스크톱 시작 검사 상자가 선택되어 있는지 확인하고 마침**을 클릭하여 **원격 데스크톱 클라이언트를 시작합니다.
 1. **Remote Desktop** 클라이언트 창에서 **구독**을 선택하고 메시지가 표시되면 **aduser1** 사용자 계정 이름으로 로그인합니다. 암호로는 이 사용자 계정을 만들 때 설정한 암호를 사용합니다. 
-1. 메시지가 표시되면 모든 앱**에 로그인된 상태로 유지 창에서 **조직에서 내 디바이스**를 관리할 수 있도록 허용 검사box를 선택 취소**하고 [아니요]를 클릭하고 **이 앱에만** 로그인합니다.
 1. 원격 데스크톱 클라이언트 창의 **az140-21-ws1** 섹션 내에서 **XML 메모장** 아이콘을 두 번 클릭하고**, 메시지가 표시되면 암호를 제공하고, XML 메모장 성공적으로 시작되었는지 확인합니다.**
-
+1. az140-cl-vm42에 대한 **Bastion 세션 내에서 시작을** 마우스 오른쪽 단추로 클릭하고 **마우스 오른쪽 단추로 클릭 메뉴에서 종료 또는 로그아웃**을 선택한 **다음, 계단식 메뉴에서 로그아웃**을 선택합니다**.**
+1. 연결이 **끊긴** 대화 상자에서 닫기를** 선택합니다**.
 
 ### 연습 4: 랩에서 프로비전되고 사용되는 Azure VM 중지 및 할당 취소
 

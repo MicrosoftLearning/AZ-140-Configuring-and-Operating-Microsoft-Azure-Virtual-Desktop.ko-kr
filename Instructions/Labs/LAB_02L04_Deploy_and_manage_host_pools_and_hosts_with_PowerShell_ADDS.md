@@ -41,15 +41,15 @@ AD DS(Active Directory 도메인 Services) 환경에서 PowerShell을 사용하�
 
 1. PowerShell을 사용하여 Azure Virtual Desktop 호스트 풀 배포 준비
 1. PowerShell을 사용하여 Azure Virtual Desktop 호스트 풀 만들기
-1. PowerShell을 사용하여 Windows 10 Enterprise를 실행하는 Azure VM의 템플릿 기반 배포 수행
-1. PowerShell을 사용하여 Windows 10 Enterprise를 세션 호스트로 실행하는 Azure VM을 Azure Virtual Desktop 호스트 풀에 추가
+1. PowerShell을 사용하여 Windows 11 Enterprise를 실행하는 Azure VM의 템플릿 기반 배포 수행
+1. PowerShell을 사용하여 Windows 11 Enterprise를 세션 호스트로 실행하는 Azure VM을 Azure Virtual Desktop 호스트 풀에 추가합니다.
 1. Azure Virtual Desktop 세션 호스트의 배포 확인
 
 #### 작업 1: PowerShell을 사용하여 Azure Virtual Desktop 호스트 풀 배포 준비
 
 1. 랩 컴퓨터에서 웹 브라우저를 시작하고, Azure Portal[로 ](https://portal.azure.com)이동하고, 이 랩에서 사용할 구독에서 소유자 역할이 있는 사용자 계정의 자격 증명을 제공하여 로그인합니다.
 1. Azure Portal에서 가상 머신을 검색하여 선택하고 **가상 머신**** 블레이드에서 **az140-dc-vm11**을 선택합니다**.
-1. **az140-dc-vm11** 블레이드에서 **연결**을 선택하고 드롭다운 메뉴에서 **베스천**을 선택합니다. **az140-dc-vm11 \| 연결** 블레이드의 **베스천** 탭에서 **베스천 사용**을 선택합니다.
+1. az140-dc-vm11** 블레이드에서 커넥트** 선택하고 **드롭다운 메뉴에서 Bastion**을 통해 커넥트 선택합니다**.**
 1. 메시지가 표시되면 다음 자격 증명을 제공하고 **연결**을 선택합니다.
 
    |설정|값|
@@ -58,18 +58,6 @@ AD DS(Active Directory 도메인 Services) 환경에서 PowerShell을 사용하�
    |암호|**Pa55w.rd1234**|
 
 1. az140-dc-vm11에 대한 **Bastion 세션 내에서 Windows PowerShell ISE**를 관리자로 시작**** 합니다.
-1. az140-dc-vm11에 대한 **Bastion 세션 내에서 관리istrator: Windows PowerShell ISE** 콘솔에서 **다음을 실행하여 Azure Virtual Desktop 풀 세션 호스트의 컴퓨터 개체를 호스트할 WVDInfra**라는 **조직 단위의 고유 이름을 식별**합니다.
-
-   ```powershell
-   (Get-ADOrganizationalUnit -Filter "Name -eq 'WVDInfra'").distinguishedName
-   ```
-
-1. az140-dc-vm11에 대한 **Bastion 세션 내에서 관리istrator: Windows PowerShell ISE** 스크립트 창에서 **다음을 실행하여 Azure Virtual Desktop 호스트를 AD DS에 조인하는 데 사용할 ADATUM\\Student** 계정의 **UPN 접미사를 식별합니다기본(**student@adatum.com**).**
-
-   ```powershell
-   (Get-ADUser -Filter {sAMAccountName -eq 'student'} -Properties userPrincipalName).userPrincipalName
-   ```
-
 1. az140-dc-vm11에 대한 **Bastion 세션 내에서 관리istrator: Windows PowerShell ISE** 스크립트 창에서 **다음을 실행하여 DesktopVirtualization PowerShell 모듈을 설치합니다(메시지가 표시되면 [모두** 예 클릭]****).
 
    ```powershell
@@ -87,21 +75,8 @@ AD DS(Active Directory 도메인 Services) 환경에서 PowerShell을 사용하�
    |속성|**hp3-Subnet**|
    |서브넷 주소 범위|**10.0.3.0/24**|
 
-1. az140-dc-vm11에 대한 **Bastion 세션 내에서 Azure Portal 페이지의 맨 위에 있는 검색 리소스, 서비스 및 문서** 텍스트 상자를 사용하여 **네트워크 보안 그룹을 검색하고 탐색**하고 네트워크 **보안 그룹**** 블레이드에서 **az140-11-RG** 리소스 그룹에서 보안 그룹을** 선택합니다.
-1. 네트워크 보안 그룹 블레이드의 왼쪽 **세로 메뉴에서 설정** 섹션에서 속성을** 클릭합니다**.
-1. 속성** 블레이드의 **리소스 ID** 텍스트 상자 오른쪽에 있는 클립보드**로 복사 아이콘을 **클릭합니다**. 
-
-   > **참고**: 구독 ID는 다르지만 값은 형식 `/subscriptions/de8279a3-0675-40e6-91e2-5c3728792cb5/resourceGroups/az140-11-RG/providers/Microsoft.Network/networkSecurityGroups/az140-cl-vm11-nsg`과 유사해야 합니다. 다음 작업에서 필요하므로 기록합니다.
-
 #### 작업 2: PowerShell을 사용하여 Azure Virtual Desktop 호스트 풀 만들기
 
-1. az140-dc-vm11에 대한 **Bastion 세션 내에서 관리istrator: Windows PowerShell ISE** 스크립트 창에서 **다음을 실행하여 Azure 구독에 로그인**합니다.
-
-   ```powershell
-   Connect-AzAccount
-   ```
-
-1. 메시지가 표시되면 사용자 계정의 자격 증명에 이 랩에서 사용 중인 구독의 소유자 역할을 제공합니다.
 1. az140-dc-vm11에 대한 **Bastion 세션 내에서 관리istrator: Windows PowerShell ISE** 스크립트 창에서 **다음을 실행하여 Azure 가상 네트워크 **az140-adds-vnet111**을 호스팅하는 Azure 지역을 식별**합니다.
 
    ```powershell
@@ -139,7 +114,7 @@ AD DS(Active Directory 도메인 Services) 환경에서 PowerShell을 사용하�
    New-AzRoleAssignment -ObjectId $aadGroupObjectId -RoleDefinitionName $roleDefinitionName -ResourceName $dagAppGroupName -ResourceGroupName $resourceGroupName -ResourceType 'Microsoft.DesktopVirtualization/applicationGroups'
    ```
 
-#### 작업 3: PowerShell을 사용하여 Windows 10 Enterprise를 실행하는 Azure VM의 템플릿 기반 배포 수행
+#### 작업 3: PowerShell을 사용하여 Windows 11 Enterprise를 실행하는 Azure VM의 템플릿 기반 배포 수행
 
 1. 랩 컴퓨터에서 배포된 스토리지 계정으로 이동합니다. 파일 공유 블레이드에서 **az140-22-profiles** 파일 공유를 선택합니다.
 
@@ -147,7 +122,7 @@ AD DS(Active Directory 도메인 Services) 환경에서 PowerShell을 사용하�
 
 1. **az140-dc-vm11**에 대한 베스천 세션 내에서 파일 탐색기 열고 이전에 구성된 Z: 또는 파일 공유 연결에 할당된 드라이브 문자로 이동합니다. 업로드된 배포 파일을 **C:\AllFiles\Labs\02**에 복사합니다.
 
-1. az140-dc-vm11에 대한 **Bastion 세션 내에서 관리istrator: Windows PowerShell ISE** 콘솔에서 다음을 실행하여 이전 작업에서 **만든 호스트 풀에서 Azure Virtual Desktop 세션 호스트 역할을 하는 Windows 10 Enterprise(다중 세션)를 실행하는 Azure VM을 배포**합니다.
+1. az140-dc-vm11에 대한 **Bastion 세션 내에서 관리istrator: Windows PowerShell ISE** 콘솔에서 다음을 실행하여 이전 작업에서 **만든 호스트 풀에서 Azure Virtual Desktop 세션 호스트 역할을 하는 Windows 11 Enterprise(다중 세션)를 실행하는 Azure VM을 배포**합니다.
 
    ```powershell
    $resourceGroupName = 'az140-24-RG'
@@ -160,7 +135,7 @@ AD DS(Active Directory 도메인 Services) 환경에서 PowerShell을 사용하�
      -TemplateParameterFile C:\AllFiles\Labs\02\az140-24_azuredeployhp3.parameters.json
    ```
 
-   > **참고**: 배포가 완료될 때까지 기다린 후 다음 작업을 진행하세요. 5분 정도 걸릴 수 있습니다. 
+   > **참고**: 배포가 완료될 때까지 기다린 후 다음 작업을 진행하세요. 이 작업은 약 5-10분 정도 걸릴 수 있습니다. 
 
    > **참고**: 배포는 Azure Resource Manager 템플릿을 사용하여 Azure VM을 프로비전하고 운영 체제를 AD DS가 수행하는 adatum.com** 자동으로 조인하는 **VM 확장을 적용합니다기본.
 
@@ -170,10 +145,13 @@ AD DS(Active Directory 도메인 Services) 환경에서 PowerShell을 사용하�
    Get-ADComputer -Filter "sAMAccountName -eq 'az140-24-p3-0$'"
    ```
 
-#### 작업 4: PowerShell을 사용하여 Windows 10 Enterprise를 호스트로 실행하는 Azure VM을 Azure Virtual Desktop 호스트 풀에 추가
+#### 작업 4: PowerShell을 사용하여 Windows 11 Enterprise를 호스트로 실행하는 Azure VM을 Azure Virtual Desktop 호스트 풀에 추가
 
 1. az140-dc-vm11에 **대한 Bastion 세션 내에서 Azure Portal을 표시하는 브라우저 창에서 가상 머신을 검색하여 선택하고 **가상 **머신** 블레이드의 가상 머신** 목록에서 az140-24-p3-0**을 선택합니다**.**
-1. **az140-24-p3-0** 블레이드에서 **연결**을 선택하고, 드롭다운 메뉴에서 **RDP**를 선택하고, **az140-24-p3-0 \| 연결** 블레이드의 **RDP** 탭에 있는 **IP 주소** 드롭다운 목록에서 **개인 IP 주소(10.0.3.4)** 항목을 선택한 다음, **RDP 파일 다운로드**를 선택합니다.
+1. **az140-24-p3-0** 블레이드에서 커넥트** 선택하고 **드롭다운 메뉴에서 **커넥트**
+1. 개인 IP 주소를 사용하여** **커넥트 확인 **| 10.0.3.4**
+1. 네이**티브 RDP 섹션 내에서 RDP** 파일** 다운로드를 선택합니다**.
+1. 메시지가 표시되면 유지를 선택한 **다음 다운로드한 **az140-24-p3-0.rdp** 파일을** 클릭합니다.
 1. 메시지가 표시되면 다음 자격 증명으로 로그인합니다.
 
    |설정|값|
@@ -203,29 +181,22 @@ AD DS(Active Directory 도메인 Services) 환경에서 PowerShell을 사용하�
    $webClient.DownloadFile($wvdBootLoaderInstallerURL,"$labFilesFolder/$wvdBootLoaderInstallerName")
    ```
 
-1. az140-24-p3-0에 대한 **원격 데스크톱 세션 내에서 관리이스트레이터: Windows PowerShell ISE** 스크립트 창에서 **다음을 실행하여 최신 버전의 PowerShellGet 모듈을 설치합니다(확인 메시지가 표시되면 예** 선택**).**
+1. **관리istrator: Windows PowerShell ISE** 콘솔에서 다음을 실행하여 최신 버전의 Az PowerShell 모듈을 설치합니다. NuGet 공급자를 설치하라는 메시지가 표시되면 Y** 키를 누릅니**다.
 
    ```powershell
-   [Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12
-   Install-Module -Name PowerShellGet -Force -SkipPublisherCheck
+   Install-Module -Name Az -Force
    ```
 
-1. **관리istrator: Windows PowerShell ISE** 콘솔에서 다음을 실행하여 최신 버전의 Az.DesktopVirtualization PowerShell 모듈을 설치합니다.
+   > **참고**: Az 모듈 설치의 출력이 나타나기까지 3~5분 정도 기다려야 할 수 있습니다. 출력이 중지된 후** 5분 **더 기다려야 할 수도 있습니다. 이는 정상적인 동작입니다.
+
+1. **관리istrator: Windows PowerShell ISE** 콘솔에서 다음을 실행하여 Azure 구독에 로그인합니다.
 
    ```powershell
-   Install-Module -Name Az.DesktopVirtualization -AllowClobber -Force
-   Install-Module -Name Az -AllowClobber -Force
-   ```
-
-1. **관리istrator: Windows PowerShell ISE** 콘솔에서 다음을 실행하여 PowerShell 실행 정책을 수정하고 Azure 구독에 로그인합니다.
-
-   ```powershell
-   Set-ExecutionPolicy -ExecutionPolicy Bypass -Scope CurrentUser -Force
    Connect-AzAccount
    ```
 
 1. 메시지가 표시되면 사용자 계정의 자격 증명에 이 랩에서 사용 중인 구독의 소유자 역할을 제공합니다.
-1. az140-24-p3-0에 대한 **원격 Desktopliveid 세션 내에서 관리istrator: Windows PowerShell ISE** 콘솔에서 다음을 실행하여 이 연습의 앞부분에서 **프로비전한 풀에 새 세션 호스트를 조인하는 데 필요한 토큰을 생성**합니다.
+1. az140-24-p3-0에 대한 **원격 데스크톱 세션 내에서 관리istrator: Windows PowerShell ISE** 콘솔에서 다음을 실행하여 이 연습의 앞부분에서 **프로비전한 풀에 이 세션 호스트를 조인하는 데 필요한 토큰을 생성**합니다.
 
    ```powershell
    $resourceGroupName = 'az140-24-RG'
@@ -246,6 +217,8 @@ AD DS(Active Directory 도메인 Services) 환경에서 PowerShell을 사용하�
    ```powershell
    Start-Process -FilePath "msiexec.exe" -ArgumentList "/i $wvdBootLoaderInstallerName", "/quiet", "/qn", "/norestart", "/passive", "/l* $labFilesFolder\BootLoaderInstall.log" | Wait-process
    ```
+
+1. az140-24-p3-0에 대한 **원격 데스크톱 세션 내에서 시작을** 마우스 오른쪽 단추로 클릭하고**, 마우스 오른쪽 단추로 클릭 메뉴에서 종료 또는 로그아웃**을 선택하고**, 계단식 메뉴에서 로그아웃**을 클릭합니다**.**
 
 #### 작업 5: Azure Virtual Desktop 호스트의 배포 확인
 

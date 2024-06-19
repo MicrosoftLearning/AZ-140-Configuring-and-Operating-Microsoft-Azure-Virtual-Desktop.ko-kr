@@ -97,7 +97,20 @@ AD DS 환경에서 Azure Virtual Desktop 배포를 위한 스토리지를 구현
    Get-ChildItem -Path C:\Allfiles\Labs\02 -File -Recurse | Unblock-File
    ```
 
-1. **az140-dc-vm11**에 연결된 원격 데스크톱 세션 내의 **관리자: Windows PowerShell ISE** 스크립트 창에서 다음 명령을 실행하여 후속 스크립트를 실행하는 데 필요한 변수를 설정합니다.
+1. **관리자: Windows PowerShell ISE** 콘솔에서 다음 명령을 실행하여 Azure 구독에 로그인합니다.
+
+   ```powershell
+   Connect-AzAccount
+   ```
+
+1. 메시지가 표시되면 이 랩에서 사용 중인 구독의 소유자 역할이 있는 Entra ID 사용자 계정의 자격 증명을 제공합니다.
+1. **관리자: Windows PowerShell ISE** 콘솔에서 다음을 실행하여 Windows 계정 관리자를 사용하지 않도록 설정합니다.
+
+   ```powershell
+   Update-AzConfig -EnableLoginByWam $false
+   ```
+   
+1. **관리자: Windows PowerShell ISE** 스크립트 창에서 다음 명령을 실행하여 후속 스크립트를 실행하는 데 필요한 변수를 설정합니다.
 
    ```powershell
    $subscriptionId = (Get-AzContext).Subscription.Id
@@ -105,7 +118,7 @@ AD DS 환경에서 Azure Virtual Desktop 배포를 위한 스토리지를 구현
    $storageAccountName = (Get-AzStorageAccount -ResourceGroupName $resourceGroupName)[0].StorageAccountName
    ```
 
-1. **az140-dc-vm11**에 연결된 원격 데스크톱 세션 내의 **관리자: Windows PowerShell ISE** 스크립트 창에서 다음 명령을 실행하여 AD DS 컴퓨터 개체를 만듭니다. 이 개체는 이 작업의 앞부분에서 만든 Azure Storage 계정에 해당되며, 해당 계정의 AD DS 인증을 구현하는 데 사용됩니다.
+1. **관리자: Windows PowerShell ISE** 스크립트 창에서 다음 명령을 실행하여 AD DS 컴퓨터 개체를 만듭니다. 이 개체는 이 작업의 앞부분에서 만든 Azure Storage 계정에 해당되며, 해당 계정의 AD DS 인증을 구현하는 데 사용됩니다.
 
    >**참고**: 이 스크립트 블록을 실행할 때 오류가 발생하면 CopyToPSPath.ps1 스크립트와 동일한 디렉터리에 있는지 확인합니다. 이 랩의 앞부분에서 파일을 추출한 방법에 따라 AzFilesHybrid라는 하위 폴더에 있을 수 있습니다. PowerShell 컨텍스트에서 **cd AzFilesHybrid**를 사용하여 디렉터리를 폴더로 변경합니다.
 
@@ -120,7 +133,7 @@ AD DS 환경에서 Azure Virtual Desktop 배포를 위한 스토리지를 구현
       -OrganizationalUnitDistinguishedName 'OU=WVDInfra,DC=adatum,DC=com'
    ```
 
-1. **az140-dc-vm11**에 연결된 원격 데스크톱 세션 내의 **관리자: Windows PowerShell ISE** 스크립트 창에서 다음 명령을 실행하여 Azure Storage 계정에서 AD DS 인증이 사용하도록 설정되어 있는지 확인합니다.
+1. **관리자: Windows PowerShell ISE** 스크립트 창에서 다음 명령을 실행하여 Azure Storage 계정에서 AD DS 인증이 사용하도록 설정되어 있는지 확인합니다.
 
    ```powershell
    $storageaccount = Get-AzStorageAccount -ResourceGroupName $resourceGroupName -Name $storageAccountName

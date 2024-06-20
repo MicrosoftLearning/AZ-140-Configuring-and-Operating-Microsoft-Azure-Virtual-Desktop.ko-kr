@@ -327,7 +327,13 @@ AD DS(Active Directory Domain Services) 환경에서 배포를 준비해야 합�
    Connect-AzAccount
    ```
 
-1. 메시지가 표시되면 이 랩에서 사용 중인 구독의 Owner 역할이 할당된 사용자 계정의 자격 증명을 입력합니다.
+1. 메시지가 표시되면 이 랩에서 사용 중인 구독의 소유자 역할이 있는 Entra ID 사용자 계정의 자격 증명을 제공합니다.
+1. **관리자: Windows PowerShell ISE** 콘솔에서 다음을 실행하여 Windows 계정 관리자를 사용하지 않도록 설정합니다.
+
+   ```powershell
+   Update-AzConfig -EnableLoginByWam $false
+   ```
+
 1. **관리자: Windows PowerShell ISE** 콘솔에서 다음을 실행하여 Azure 구독과 연결된 Microsoft Entra 테넌트의 ID 속성을 검색합니다.
 
    ```powershell

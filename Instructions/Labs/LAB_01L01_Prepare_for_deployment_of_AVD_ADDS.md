@@ -321,6 +321,12 @@ AD DS(Active Directory Domain Services) 환경에서 배포를 준비해야 합�
 
    > **참고**: Az 모듈 설치의 출력이 표시되기까지 3~5분 정도 기다려야 할 수 있습니다. 출력이 중지된 **후** 5분을 더 기다려야 할 수도 있습니다. 이는 정상적인 동작입니다.
 
+1. **관리자: Windows PowerShell ISE** 콘솔에서 다음을 실행하여 Windows 계정 관리자를 사용하지 않도록 설정합니다.
+
+   ```powershell
+   Update-AzConfig -EnableLoginByWam $false
+   ```
+
 1. **관리자: Windows PowerShell ISE** 콘솔에서 다음 명령을 실행하여 Azure 구독에 로그인합니다.
 
    ```powershell
@@ -328,12 +334,6 @@ AD DS(Active Directory Domain Services) 환경에서 배포를 준비해야 합�
    ```
 
 1. 메시지가 표시되면 이 랩에서 사용 중인 구독의 소유자 역할이 있는 Entra ID 사용자 계정의 자격 증명을 제공합니다.
-1. **관리자: Windows PowerShell ISE** 콘솔에서 다음을 실행하여 Windows 계정 관리자를 사용하지 않도록 설정합니다.
-
-   ```powershell
-   Update-AzConfig -EnableLoginByWam $false
-   ```
-
 1. **관리자: Windows PowerShell ISE** 콘솔에서 다음을 실행하여 Azure 구독과 연결된 Microsoft Entra 테넌트의 ID 속성을 검색합니다.
 
    ```powershell

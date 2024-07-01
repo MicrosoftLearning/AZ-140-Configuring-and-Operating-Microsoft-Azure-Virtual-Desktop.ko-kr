@@ -136,7 +136,7 @@ Microsoft Entra 조건부 액세스를 사용하여 AD DS(Active Directory Domai
    Move-ADObject -Identity "CN=az140-cl-vm11,CN=Computers,DC=adatum,DC=com" -TargetPath "OU=WVDClients,DC=adatum,DC=com"
    ```
 
-1. **az140-dc-vm11**에 연결된 Bastion 세션 내의 **시작** 메뉴에서 **Microsoft Entra Connect** 폴더를 확장하고 **Microsoft Entra Connect**를 선택합니다.
+1. **az140-dc-vm11**에 연결된 Bastion 세션 내의 **시작** 메뉴에서 **Azure AD Connect** 폴더를 확장하고 **Azure AD Connect**를 선택합니다.
 1. **Microsoft Azure Active Directory Connect** 창의 **Azure AD Connect 시작** 페이지에서 **구성**을 선택합니다.
 1. **Microsoft Azure Active Directory Connect** 창의 **추가 작업** 페이지에서 **동기화 옵션 사용자 지정**을 선택하고 **다음**을 선택합니다.
 1. **Microsoft Azure Active Directory Connect** 창의 **Microsoft Entra에 연결** 페이지에서 이전 연습에서 만든 **aadsyncuser** 사용자 계정의 자격 증명을 사용하여 인증하고 **다음**을 선택합니다. 
@@ -264,7 +264,7 @@ Microsoft Entra 조건부 액세스를 사용하여 AD DS(Active Directory Domai
 
 #### 작업 1: 랩에서 프로비전 및 사용한 Azure VM 할당 취소
 
-1. 랩 컴퓨터로 전환한 다음 Azure Portal이 표시된 웹 브라우저 창에서 **Cloud Shell** 창 내에 **PowerShell** 셸 세션을 엽니다.
+1. 랩 컴퓨터로 전환하고 Azure Portal을 표시하는 웹 브라우저 창에서 **Cloud Shell** 창 내에서 **PowerShell** 셸 세션을 엽니다.
 1. Cloud Shell 창의 PowerShell 세션에서 다음 명령을 실행하여 이 랩에서 만들고 사용한 모든 Azure VM의 목록을 표시합니다.
 
    ```powershell

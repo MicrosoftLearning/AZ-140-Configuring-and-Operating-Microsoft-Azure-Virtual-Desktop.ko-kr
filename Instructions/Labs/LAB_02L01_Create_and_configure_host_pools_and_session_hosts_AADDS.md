@@ -95,9 +95,9 @@ Azure Active Directory Domain Services(Microsoft Entra DS) 환경에서 호스�
    |이름 접두사|**az140-21-p1**|
    |가상 머신 위치|이 랩의 첫 번째 연습에서 리소스를 배포한 Azure 지역의 이름|
    |가용성 옵션|**인프라 중복 필요 없음**|
-   |보안 유형|**Standard**|
+   |보안 유형|**신뢰할 수 있는 시작 가상 머신**|
    |이미지|**Windows 11 Enterprise 다중 세션 + Microsoft 365 앱, 버전 22H2**|
-   |가상 머신 크기|**표준 D2s v3**|
+   |가상 머신 크기|**표준 DC2s_v3**|
    |VM 수|**2**|
    |OS 디스크 유형|**표준 SSD**|
    |가상 네트워크|**az140-aadds-vnet11a**|

@@ -195,7 +195,7 @@ Azure Active Directory Domain Services(Microsoft Entra DS) 환경에서 Azure Vi
    |속성|**az140-aadds-vnet11a**|
    |주소 범위|**10.10.0.0/16**|
    |서브넷 이름|**aadds-Subnet**|
-   |서브넷 이름|**10.10.0.0/24**|
+   |주소 범위|**10.10.0.0/24**|
 
 1. **가상 네트워크 만들기** 블레이드의 **네트워킹** 탭으로 돌아와 **다음**을 선택합니다(나머지는 기존 값을 그대로 유지).
 1. **Microsoft Entra Domain Services 만들기** 블레이드의 **관리** 탭에서 기본 설정을 수락하고 **다음**을 선택합니다.

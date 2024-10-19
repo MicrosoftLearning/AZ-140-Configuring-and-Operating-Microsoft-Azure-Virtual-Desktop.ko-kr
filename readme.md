@@ -1,3 +1,5 @@
+**이 과정은 **2024/9/30**에 종료됩니다. 과정이 종료되면 모든 GitHub Repos가 제거됩니다. 감사합니다.**
+
 # AZ-140: Microsoft Azure Virtual Desktop 구성 및 작동
 
 - **[랩 링크(HTML 형식)](https://microsoftlearning.github.io/AZ-140-Configuring-and-Operating-Microsoft-Azure-Virtual-Desktop/)**

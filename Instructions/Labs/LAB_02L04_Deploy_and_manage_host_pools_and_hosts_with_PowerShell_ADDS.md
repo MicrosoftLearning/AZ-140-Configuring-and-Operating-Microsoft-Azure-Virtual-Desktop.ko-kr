@@ -68,7 +68,7 @@ Active Directory Domain Services(AD DS) 환경에서 PowerShell을 사용하여 
 
 1. **az140-dc-vm11**에 연결된 Bastion 세션 내에서 Microsoft Edge를 시작하고 [Azure Portal](https://portal.azure.com)로 이동합니다. 메시지가 표시되면 이 랩에서 사용 중인 구독의 Owner 역할이 할당된 사용자 계정의 Azure AD 자격 증명을 사용하여 로그인합니다.
 1. **az140-dc-vm11**에 연결된 Bastion 세션 내의 Azure Portal에서 Azure Portal 페이지 상단의 **리소스, 서비스 및 문서 검색** 텍스트 상자를 사용하여 **가상 네트워크**를 검색한 후 해당 위치로 이동합니다. 그런 다음 **가상 네트워크** 블레이드에서 **az140-adds-vnet11**을 선택합니다. 
-1. **az140-adds-vnet11** 블레이드에서 **서브넷**을 선택하고 **서브넷 **블레이드에서 **+ 서브넷**을 선택합니다. 그런 다음 **서브넷 추가** 블레이드에서 다음 설정을 지정하고(나머지 설정은 모두 기본값으로 유지) **저장**을 클릭합니다.
+1. **az140-adds-vnet11** 블레이드에서 **서브넷**을 선택하고 **서브넷** 블레이드에서 **+ 서브넷**을 선택합니다. 그런 다음 **서브넷 추가** 블레이드에서 다음 설정을 지정하고(나머지 설정은 모두 기본값으로 유지) **저장**을 클릭합니다.
 
    |설정|값|
    |---|---|
@@ -277,7 +277,7 @@ Active Directory Domain Services(AD DS) 환경에서 PowerShell을 사용하여 
 
 #### 작업 1: 랩에서 프로비전한 Azure VM 할당 취소
 
-1. 랩 컴퓨터로 전환한 다음 Azure Portal이 표시된 웹 브라우저 창에서 **Cloud Shell** 창 내에 **PowerShell** 셸 세션을 엽니다.
+1. 랩 컴퓨터로 전환한 다음, Azure Portal이 표시된 웹 브라우저 창에서 **Cloud Shell** 창 내에 **PowerShell** 셸 세션을 엽니다.
 1. Cloud Shell 창 내의 PowerShell 세션에서 다음 명령을 실행하여 이 랩에서 만든 모든 Azure VM의 목록을 표시합니다.
 
    ```powershell

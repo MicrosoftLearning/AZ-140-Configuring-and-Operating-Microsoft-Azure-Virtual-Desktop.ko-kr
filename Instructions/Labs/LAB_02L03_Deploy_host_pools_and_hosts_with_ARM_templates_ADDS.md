@@ -12,7 +12,7 @@ lab:
 - 이 랩에서 사용할 Azure 구독
 - 이 랩에서 사용할 Azure 구독에 대한 소유자 또는 기여자 역할, 그리고 해당 Azure 구독에 연결된 Microsoft Entra 테넌트의 전역 관리자 역할이 할당되어 있는 Microsoft 계정 또는 Microsoft Entra 계정.
 - 완료된 **Azure Virtual Desktop의 배포 준비(AD DS)** 랩
-- 완료된 랩 **Azure Portal을 사용하여 호스트 풀 및 세션 호스트 배포(AD DS)**
+- **Azure Portal을 사용하여 호스트 풀 및 세션 호스트 배포(AD DS)** 랩 완료
 
 ## 예상 소요 시간
 
@@ -267,7 +267,7 @@ Azure Resource Manager 템플릿을 사용하여 Azure Virtual Desktop 호스트
 
 #### 작업 1: 랩에서 프로비전한 Azure VM 할당 취소
 
-1. 랩 컴퓨터로 전환한 다음 Azure Portal이 표시된 웹 브라우저 창에서 **Cloud Shell** 창 내에 **PowerShell** 셸 세션을 엽니다.
+1. 랩 컴퓨터로 전환한 다음, Azure Portal이 표시된 웹 브라우저 창에서 **Cloud Shell** 창 내에 **PowerShell** 셸 세션을 엽니다.
 1. Cloud Shell 창 내의 PowerShell 세션에서 다음 명령을 실행하여 이 랩에서 만든 모든 Azure VM의 목록을 표시합니다.
 
    ```powershell

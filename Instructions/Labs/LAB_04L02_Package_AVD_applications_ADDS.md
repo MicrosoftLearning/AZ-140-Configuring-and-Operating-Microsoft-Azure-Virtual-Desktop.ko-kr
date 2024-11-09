@@ -507,7 +507,7 @@ Active Directory Domain Services(AD DS) 환경에서 Azure Virtual Desktop 애�
 
 #### 작업 1: 랩에서 프로비전 및 사용한 Azure VM 할당 취소
 
-1. 랩 컴퓨터로 전환한 다음 Azure Portal이 표시된 웹 브라우저 창에서 **Cloud Shell** 창 내에 **PowerShell** 셸 세션을 엽니다.
+1. 랩 컴퓨터로 전환하고 Azure Portal을 표시하는 웹 브라우저 창에서 **Cloud Shell** 창 내에서 **PowerShell** 셸 세션을 엽니다.
 1. Cloud Shell 창의 PowerShell 세션에서 다음 명령을 실행하여 이 랩에서 만들고 사용한 모든 Azure VM의 목록을 표시합니다.
 
    ```powershell

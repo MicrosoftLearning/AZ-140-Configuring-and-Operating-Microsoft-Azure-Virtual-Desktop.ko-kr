@@ -71,7 +71,7 @@ Azure Active Directory Domain Services(Microsoft Entra DS) 환경에서 호스�
 #### 작업 2: Azure Virtual Desktop 호스트 풀 배포
 
 1. **az140-cl-vm11a**에 대한 Bastion 세션 내의 Azure Portal을 표시하는 Microsoft Edge 창에서 **Azure Virtual Desktop**을 검색 및 선택하고 **Azure Virtual Desktop** 블레이드의 왼쪽 세로 메뉴에 있는 **관리** 섹션에서 **호스트 풀**을 선택하고 **Azure Virtual Desktop \| 호스트 풀** 블레이드에서 **+ 만들기**를 선택합니다. 
-1. **호스트 풀 만들기** 블레이드의 **기본** 탭에서 다음 설정을 지정하고 **다음: 가상 머신 >** 을 선택합니다.
+1. **호스트 풀 만들기** 블레이드의 **기본 사항** 탭에서 다음 설정을 지정하고 **다음: 가상 머신 >** 을 선택합니다.
 
    |설정|값|
    |---|---|
@@ -87,7 +87,7 @@ Azure Active Directory Domain Services(Microsoft Entra DS) 환경에서 호스�
 
    > **참고**: 사용자에게 RemoteApp 및 데스크톱 앱이 모두 게시된 경우 기본 설정 앱 그룹 유형에 따라 피드에 표시할 앱 유형이 결정됩니다.
 
-1. **호스트 풀 만들기** 블레이드의 **가상 머신** 탭에서 다음 설정을 지정하고(다른 설정은 기본값으로 유지) **다음: 작업 영역 >**(*<Azure_AD_domain_name>* 자리 표시자를 Microsoft Entra DS 인스턴스를 배포한 구독과 연결된 Microsoft Entra 테넌트의 이름으로 바꾸고 자리 표시자 `<password>`을(를) aadadmin1 계정을 만들 때 설정한 암호로 바꿉니다).
+1. **호스트 풀 만들기** 블레이드의 **가상 머신** 탭에서 다음 설정을 지정하고(기타 설정은 기본값으로 유지), **다음: 작업 영역 >** 을 선택합니다(*<Azure_AD_domain_name>* 자리 표시자를 Microsoft Entra DS 인스턴스를 배포한 구독과 연결된 Microsoft Entra 테넌트 이름으로 대체하고, `<password>` 자리 표시자를 aadadmin1 계정을 생성할 때 설정한 비밀번호로 대체합니다).
 
    > **참고**: 사용한 암호를 기억해야 합니다. 이 랩과 이후 랩에서 나중에 필요합니다.
 
@@ -134,7 +134,7 @@ Azure Active Directory Domain Services(Microsoft Entra DS) 환경에서 호스�
 1. **az140-21a-hp1-DAG \| 할당** 블레이드에서 **+ 추가**를 선택합니다.
 1. **Microsoft Entra 사용자 또는 사용자 그룹** 블레이드에서 **az140-wvd-apooled**를 선택하고 **선택**을 클릭합니다.
 1. **Azure Virtual Desktop \| 애플리케이션 그룹** 블레이드로 돌아가서 **+만들기**를 선택합니다.
-1. **애플리케이션 그룹 만들기** 블레이드의 **기본** 탭에서 다음 설정을 지정하고 **다음: 애플리케이션 >** 을 선택합니다.
+1. **애플리케이션 그룹 만들기** 블레이드의 **기본 사항** 탭에서 다음 설정을 지정하고 **다음: 애플리케이션 >** 을 선택합니다.
 
    |설정|값|
    |---|---|
@@ -172,7 +172,7 @@ Azure Active Directory Domain Services(Microsoft Entra DS) 환경에서 호스�
    |애플리케이션 소스|**시작 메뉴**|
    |애플리케이션|**PowerPoint**|
    |설명|**Microsoft PowerPoint**|
-   |명령줄 필요|**문제**|
+   |명령줄 필요|**No**|
 
 1. **애플리케이션 그룹 만들기** 블레이드의 **애플리케이션** 탭으로 돌아와 **다음: 할당 >** 을 선택합니다.
 1. **애플리케이션 그룹 만들기** 블레이드의 **할당** 탭에서 **+ Microsoft Entra 사용자 또는 사용자 그룹 추가**를 선택합니다.
@@ -190,7 +190,7 @@ Azure Active Directory Domain Services(Microsoft Entra DS) 환경에서 호스�
 
 1. **az140-cl-vm11a**에 대한 Bastion 세션 내에서 Azure Portal을 표시하는 웹 브라우저 창에서 **Azure Virtual Desktop**을 검색 및 선택하고, **Azure Virtual Desktop** 블레이드에서 **애플리케이션 그룹**을 선택합니다.
 1. **Azure Virtual Desktop \| 애플리케이션 그룹** 블레이드에서 **+ 만들기**를 선택합니다. 
-1. **애플리케이션 그룹 만들기** 블레이드의 **기본** 탭에서 다음 설정을 지정하고 **다음: 애플리케이션 >** 을 선택합니다.
+1. **애플리케이션 그룹 만들기** 블레이드의 **기본 사항** 탭에서 다음 설정을 지정하고 **다음: 애플리케이션 >** 을 선택합니다.
 
    |설정|값|
    |---|---|
@@ -212,7 +212,7 @@ Azure Active Directory Domain Services(Microsoft Entra DS) 환경에서 호스�
    |아이콘 경로|**C:\Windows\system32\cmd.exe**|
    |아이콘 인덱스|**0**|
    |설명|**Windows 명령 프롬프트**|
-   |명령줄 필요|**문제**|
+   |명령줄 필요|**No**|
 
 1. **애플리케이션 그룹 만들기** 블레이드의 **애플리케이션** 탭으로 돌아와 **다음: 할당 >** 을 선택합니다.
 1. **애플리케이션 그룹 만들기** 블레이드의 **할당** 탭에서 **+ Microsoft Entra 사용자 또는 사용자 그룹 추가**를 선택합니다.
@@ -230,7 +230,7 @@ Azure Active Directory Domain Services(Microsoft Entra DS) 환경에서 호스�
 
 1. **az140-cl-vm11a**에 대한 Bastion 세션 내에서 Azure Portal을 표시하는 Microsoft Edge 창에서 **Azure Virtual Desktop**을 검색 및 선택하고, **Azure Virtual Desktop** 블레이드에서 **작업 영역**을 선택합니다.
 1. **Azure Virtual Desktop \| 작업 영역** 블레이드에서 **+ 만들기**를 선택합니다. 
-1. **작업 영역 만들기** 블레이드의 **기본** 탭에서 다음 설정을 지정하고 **다음: 애플리케이션 그룹 >** 을 선택합니다.
+1. **작업 영역 만들기** 블레이드의 **기본 사항** 탭에서 다음 설정을 지정하고 **다음: 애플리케이션 그룹 >** 을 선택합니다.
 
    |설정|값|
    |---|---|

@@ -60,7 +60,7 @@ Active Directory Domain Services(AD DS) 환경에서 호스트 풀과 세션 호
 1. **az140-dc-vm11**에 연결된 원격 데스크톱 세션 내의 **관리자: Windows PowerShell ISE** 콘솔에서 다음 명령을 실행하여 조직 구성 단위를 만듭니다. 이 조직 구성 단위는 Azure Virtual Desktop 호스트의 컴퓨터 개체를 호스트합니다.
 
    ```powershell
-   New-ADOrganizationalUnit 'WVDInfra' –path 'DC=adatum,DC=com' -ProtectedFromAccidentalDeletion $false
+   New-ADOrganizationalUnit 'WVDInfra' -path 'DC=adatum,DC=com' -ProtectedFromAccidentalDeletion $false
    ```
 
 1. **관리자: Windows PowerShell ISE** 콘솔에서 다음 명령을 실행하여 **aduser1** 계정의 사용자 계정 이름을 확인합니다.

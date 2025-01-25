@@ -11,7 +11,7 @@ lab:
 
 - 이 랩에서 사용할 Azure 구독
 - 이 랩에서 사용할 Azure 구독에 대한 Owner 또는 Contributor 역할을 가지며 해당 Azure 구독에 연결된 Entra 테넌트에 디바이스를 가입시기에 충분한 사용 권한이 있는 Microsoft Entra 사용자 계정
-- *Azure Portal(Entra ID)을 사용하여 호스트 풀 및 세션 호스트 배포* 랩을 완료
+- *Azure Portal (Entra ID)을 사용하여 호스트 풀 및 세션 호스트 배포* 랩을 완료
 - *Azure Portal(Entra ID)을 사용하여 호스트 풀 및 세션 호스트 관리* 랩을 완료
 
 ## 예상 소요 시간

@@ -1,11 +1,3 @@
-#README
-
-We've turned off the ability to report issues directly on this repo and do not monitor PRs.
-
-Provide feedback here: https://aka.ms/provide-feedback
-
-Or, if you are a trainer with a microsoft.com email address, please create a ticket in AzDO.
-
 # AZ-140: Microsoft Azure Virtual Desktop 구성 및 작동
 
 - **[랩 링크(HTML 형식)](https://microsoftlearning.github.io/AZ-140-Configuring-and-Operating-Microsoft-Azure-Virtual-Desktop/)**
@@ -38,7 +30,9 @@ Or, if you are a trainer with a microsoft.com email address, please create a tic
 
 ## 주의
 
-**이 랩은 사용하기로 결정한 ID 공급자에 따라 2개의 별도 트랙으로 구성됩니다.**
+> **중요**: Azure Virtual Desktop 구현을 위한 Microsoft Entra ID 기반 시나리오를 대상으로 랩이 업데이트되었습니다(이 랩에 대한 지침은 **지침** -&gt;**Labs_EntraID** 디렉터리에 있음). 
+
+> **중요**: 다음 두 트랙은 더 이상 유지 관리되거나 지원되지 않습니다(이 랩에 대한 지침은 **지침** -&gt;**랩** 디렉터리에 있음).
 
 - AD DS(Active Directory Domain Services) 이 트랙은 다음과 같은 랩으로 구성됩니다.
 
@@ -53,7 +47,7 @@ Or, if you are a trainer with a microsoft.com email address, please create a tic
    - LAB_04L02_Package_AVD_applications_ADDS.md
    - LAB_05L01_Implement_autoscaling_in_host_pools_ADDS.md
 
-- Azure AD DS(Azure Active Directory Domain Services) 이 트랙은 다음과 같은 랩으로 구성됩니다.
+- Microsoft Entra Domain Services (Microsoft Entra DS). 이 트랙은 다음과 같은 랩으로 구성됩니다.
 
    - LAB_01L01_Prepare_for_deployment_of_AVD_AADDS.md
    - LAB_02L01_Create_and_configure_host_pools_and_session_hosts_AADDS.md

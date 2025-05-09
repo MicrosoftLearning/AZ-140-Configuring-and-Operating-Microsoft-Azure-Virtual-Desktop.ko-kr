@@ -15,7 +15,7 @@ lab:
 
 ## 예상 소요 시간
 
-40분
+60분
 
 ## 랩 시나리오
 
@@ -100,7 +100,7 @@ lab:
     |구독|이 랩에서 사용 중인 Azure 구독의 이름|
     |Resource group|**az140-11e-RG**|
     |속성|**az140-11-pehp1**|
-    |네트워크 인터페이스 이름|**az140-11-pehp1-nic**|
+    |Network Interface Name|**az140-11-pehp1-nic**|
     |지역|Azure Virtual Desktop 환경을 배포한 Azure 지역의 이름|
 
 1. **프라이빗 엔드포인트 만들기** 페이지의 **리소스** 탭에서 다음 설정을 지정한 후 **다음: 가상 네트워크 >** 를 선택합니다.
@@ -148,7 +148,7 @@ lab:
     |구독|이 랩에서 사용 중인 Azure 구독의 이름|
     |Resource group|**az140-11e-RG**|
     |속성|**az140-11-pefeeddwnld**|
-    |네트워크 인터페이스 이름|**az140-11-pefeeddwnld-nic**|
+    |Network Interface Name|**az140-11-pefeeddwnld-nic**|
     |지역|Azure Virtual Desktop 환경을 배포한 Azure 지역의 이름|
 
 1. **프라이빗 엔드포인트 만들기** 페이지의 **리소스** 탭에서 다음 설정을 지정한 후 **다음: 가상 네트워크 >** 를 선택합니다.
@@ -196,7 +196,7 @@ lab:
     |구독|이 랩에서 사용 중인 Azure 구독의 이름|
     |Resource group|**az140-11e-RG**|
     |속성|**az140-11-pefeeddisc**|
-    |네트워크 인터페이스 이름|**az140-11-pefeeddisc-nic**|
+    |Network Interface Name|**az140-11-pefeeddisc-nic**|
     |지역|Azure Virtual Desktop 환경을 배포한 Azure 지역의 이름|
 
 1. **프라이빗 엔드포인트 만들기** 페이지의 **리소스** 탭에서 다음 설정을 지정한 후 **다음: 가상 네트워크 >** 를 선택합니다.
@@ -222,14 +222,14 @@ lab:
     |구독|이 랩에서 사용 중인 Azure 구독의 이름|
     |Resource group|**az140-11e-RG**|
 
-    > **참고**: 이 단계에서는 이전 작업 중 하나에서 만든 **privatelink.wvd.microsoft.com**이라는 프라이빗 DNS 영역을 활용합니다.
+    > **참고**: 이 단계를 수행하면 **privatelink-global.wvd.microsoft.com**이라는 프라이빗 DNS 영역이 생성됩니다.
 
 1. **프라이빗 엔드포인트 만들기** 페이지의 **태그** 탭에서 **검토 + 만들기**를 선택합니다.
 1. **프라이빗 엔드포인트 만들기** 페이지의 **검토 + 만들기** 탭에서 **만들기**를 선택합니다.
 
     > **참고**: 배포가 완료될 때까지 기다리지 말고 다음 작업을 진행하세요. 배포는 1분 정도 걸릴 수 있습니다.
 
-    > **참고**: Private Link를 사용하려는 각 작업 영역에 대한 피드 하위 리소스에 대한 프라이빗 엔드포인트를 만들어야 합니다.
+    > **참고**: Private Link를 사용하려는 각 작업 영역의 전역 하위 리소스에 대한 프라이빗 엔드포인트를 만들어야 합니다.
 
     > **참고**: 네트워크 변경 내용을 적용하려면 대상 호스트 풀에서 세션 호스트를 다시 시작해야 합니다.
 
@@ -275,7 +275,7 @@ lab:
     |지역|Azure Virtual Desktop 환경을 배포한 Azure 지역의 이름|
     |가용성 옵션|**인프라 중복 필요 없음**|
     |보안 유형|**Standard**|
-    |이미지|**Windows 11 Pro, version 23H2 - x64 Gen2**|
+    |이미지|**Windows 11 Pro, version 24H2 - x64 Gen2**|
     |크기|**표준 DC2s_v3**|
     |사용자 이름|유효한 사용자 이름으로 자유롭게 선택|
     |암호|유효한 암호로 자유롭게 선택|

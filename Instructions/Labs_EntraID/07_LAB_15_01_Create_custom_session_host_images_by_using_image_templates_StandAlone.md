@@ -382,7 +382,7 @@ Azure Virtual Desktop 환경을 구현하려고 합니다. Azure Virtual Desktop
     |가상 머신 크기|**표준 DC2s_v3**|
     |VM 수|**1**|
     |OS 디스크 유형|**표준 SSD**|
-    |OS 디스크 크기|**기본 크기(128GiB)**|
+    |OS 디스크 크기|**기본 크기**|
     |부팅 진단|**관리형 스토리지 계정으로 활성화(권장)**|
     |가상 네트워크|az140-vnet15d|
     |서브넷|**hp1-Subnet**|
